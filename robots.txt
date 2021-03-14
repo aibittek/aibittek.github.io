@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /categories/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Disallow: /old/
+
+Sitemap: http://kui.ge/sitemap.xml
+Sitemap: http://kui.ge/baidusitemap.xml
