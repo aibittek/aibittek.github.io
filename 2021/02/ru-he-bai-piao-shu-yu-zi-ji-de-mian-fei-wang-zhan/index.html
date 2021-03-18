@@ -41,7 +41,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -448,9 +448,6 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.css">
-        
 
         
 
@@ -515,16 +512,16 @@
 <p>打开后，如图所示</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223151623811.png" alt="Git Bash命令行"></p>
 <p>在命令行中输入全局配置，user.name和user.email配置信息</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"你的GitHub用户名"</span>
-<span class="token function">git</span> config --global user.email <span class="token string">"你的GitHub注册邮箱"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"你的GitHub用户名"</span>
+<span class="token function">git</span> config --global user.email <span class="token string">"你的GitHub注册邮箱"</span></code></pre>
 <p>生成ssh密钥文件，提示内容时直接回车即可：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssh-keygen -t rsa -C <span class="token string">"你的GitHub注册邮箱"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">ssh-keygen -t rsa -C "你的GitHub注册邮箱"</code></pre>
 <p>创建成功后，大概是这个样子，注意红色框框的文件，需要打开，把内容拷贝到GitHub上去。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223152128655.png" alt="image-20210223152128655"></p>
 <p>打开<a href="https://link.zhihu.com/?target=https://github.com/settings/keys" rel="external nofollow noreferrer">GitHub_Settings_keys</a> 页面，新建new SSH Key</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223152525778.png" alt="新增SSH Key"></p>
 <p>标题Title可以随便写，增加成功后在Git Bash命令行中，输入</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">ssh</span> git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">ssh git@github.com</code></pre>
 <p>输入后，得到红框中的内容说明SSH Key设置成功</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223152757219.png" alt="SSH Key设置成功信息"></p>
 <p>设置SSH Key的原因是，当我们编写好文章后，需要通过Git命令把内容推送给GitHub服务器上，这就需要账号密码验证，我们刚上传了id_rsa.pub的内容是公钥，私钥在咱们电脑上，这样在提交时就可以通过非对称加密的公钥与私钥来完成账号的验证了，就能检测提交代码者的身份是合法的了。</p>
@@ -535,9 +532,9 @@
 </li>
 <li><p>Hexo安装</p>
 <p> hexo-cli安装</p>
- <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">npm install -g hexo-cli</code></pre>
 <p> 创建blog</p>
- <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo init blog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">hexo init blog</code></pre>
 <p> 以上的命令在当前目录下创建了一个blog目录，其中包含了Hexo的相关信息</p>
 </li>
 <li><p>hexo测试</p>
@@ -547,30 +544,30 @@
 <p> 通过hexo s命令在本地创建一个server服务，默认是localhost:4000</p>
 <p> 通过hexo d命令deploy部署静态网页到GitHub或其他你想发布的地方</p>
 <p> 可以通过hexo g和hexo s，然后在浏览器中输入local host:4000检查是否已经可以看到你的网页了</p>
- <pre class="line-numbers language-none"><code class="language-none">hexo g
-hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre><code>hexo g
+hexo s</code></pre>
 <p> 构建时候，如果出现LF will be replaced的警告，可以通过以下的命令解决：</p>
- <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> config --global core.autocrlf <span class="token boolean">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">git config --global core.autocrlf false</code></pre>
 <p> 这条命令是禁用自动转换，这个不设置后面上传时会出现警告</p>
 </li>
 <li><p>测试发布</p>
 <p> 打开创建blog根目录下的_config.yml配置文件，修改deploy字段</p>
- <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
   <span class="token key atrule">type</span><span class="token punctuation">:</span> git
   <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/aibittek/aibittek.github.io.git
-  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master</code></pre>
 <p> 注意repo填写的是仓库地址，可以进入仓库进行复制粘贴过来，防止写错了部署不成功，branch是版本分支的意思，按照下图中左侧可以查看分支名称，有可能新版本分支是main哦，小心一点</p>
 <p> <img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223154908917.png" alt="复制仓库地址"></p>
 </li>
 </ol>
 <p>安装提交git部署的插件</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">npm install hexo-deployer-git --save</code></pre>
 <p>输入命令进行部署</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo clean
+<pre class=" language-shell"><code class="language-shell">hexo clean
 hexo g
-hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+hexo d</code></pre>
 <p>其中clean是清除之前构建的内容，也可以通过一条命令完成以上的步骤</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo clean <span class="token operator">&amp;&amp;</span> hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">hexo clean && hexo g -d</code></pre>
 <p>部署成功后，会把hexo g构建的静态网页部署到_config.yml，deploy填写的repo仓库中，现在通过网页浏览你的网站吧，通过<strong>用户名.github.io</strong>来访问哦。</p>
 <h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><h3 id="绑定个性域名"><a href="#绑定个性域名" class="headerlink" title="绑定个性域名"></a>绑定个性域名</h3><p>你一定觉得使用github.io域名不够酷，想要一个自己的域名吧🤭</p>
 <p>可以通过申请一个域名，把原本访问<strong>用户名.github.io</strong>改为访问你自己的域名即可，需要<strong>域名申请和域名绑定</strong>。</p>
@@ -587,7 +584,7 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <p>最后还要在你的博客目录下，增加一个CNAME文件，内容就写你的域名即可</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223161658525.png" alt="CNAME域名文件"></p>
 <p>完成以上的步骤后，在blog目录下，执行以下命令，对新修改的内容进行部署发布</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo clean <span class="token operator">&amp;&amp;</span> hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">hexo clean && hexo g -d</code></pre>
 <p>发布成功后，使用你自己的域名来访问就可以访问到GitHub Pages里面的静态网页啦，演示如下</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223161857758.png" alt="个性化域名访问GitHub Pages演示"></p>
 <h3 id="高效发布文章"><a href="#高效发布文章" class="headerlink" title="高效发布文章"></a>高效发布文章</h3><h4 id="Typora图床编辑"><a href="#Typora图床编辑" class="headerlink" title="Typora图床编辑"></a>Typora图床编辑</h4><p>网站搭建好之后，是不是就想着发布分享自己的文章内容了呢，那么就要选择一款高效的工具，这里推荐的是Typora Markdown工具，不好意思不是推荐，我想强制你用这个😄。因为实在是太好用了，可以在写的同时渲染出结果，所见即所得，还有很多的优点，这里就不一一介绍啦。</p>
@@ -627,14 +624,12 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <p>下载之后解压，把hexo-theme-matery目录放到博客的themes目录下即可</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223171352328.png" alt="matery主题"></p>
 <p>修改根目录下的_config.yaml配置文件，使得新增加的主题生效</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Extensions</span>
-<span class="token comment">## Plugins: https://hexo.io/plugins/</span>
-<span class="token comment">## Themes: https://hexo.io/themes/</span>
-<span class="token key atrule">theme</span><span class="token punctuation">:</span> hexo<span class="token punctuation">-</span>theme<span class="token punctuation">-</span>matery<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Extensions</span>
+<span class="token comment" spellcheck="true">## Plugins: https://hexo.io/plugins/</span>
+<span class="token comment" spellcheck="true">## Themes: https://hexo.io/themes/</span>
+<span class="token key atrule">theme</span><span class="token punctuation">:</span> hexo<span class="token punctuation">-</span>theme<span class="token punctuation">-</span>matery</code></pre>
 <p>通过以下命令构建部署之后，访问网页查看结果是不是已经焕然一新了呢😄</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo clean <span class="token operator">&amp;&amp;</span> hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
+<pre class=" language-shell"><code class="language-shell">hexo clean && hexo g -d</code></pre>
 <h4 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h4><p>当然主题还有很多优化设置，比如主页怎么显示，动画怎么展示等等，这些matery已经都提供了修改方法，在源码的Readme文件中的配置一栏，这里就不详述了，可根据自己的需求在文档的配置章节，根据自己的喜好进行自定义修改，传送门：<a target="_blank" href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" rel="external nofollow noreferrer noopener">https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md</a></p>
 <h4 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h4><p>以上文档中提到了支持的评论系统，但是没有具体说明如何支持，这里咱们介绍下。</p>
 <p>目前不需要服务端的评论系统有两个用的比较多的，一个是valine，一个是Gitalk。</p>
@@ -656,17 +651,17 @@ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <blockquote>
 <p>  注意如果不是这个主题，可能没有集成Gitalk，需要按照Gitalk的要求进行配置，<a target="_blank" href="https://github.com/gitalk/gitalk" rel="external nofollow noreferrer noopener">源码及文档地址</a></p>
 </blockquote>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># the Gitalk config，default disabled</span>
-<span class="token comment"># Gitalk 评论模块的配置，默认为不激活</span>
+<pre class=" language-shell"><code class="language-shell"># the Gitalk config，default disabled
+# Gitalk 评论模块的配置，默认为不激活
 gitalk:
-  enable: <span class="token boolean">true</span>
-  owner: aibittek <span class="token comment">#填写你OAuth App的用户名</span>
-  repo: aibittek.github.io <span class="token comment">#填写你自己的</span>
+  enable: true
+  owner: aibittek #填写你OAuth App的用户名
+  repo: aibittek.github.io #填写你自己的
   oauth:
-    clientId: <span class="token comment">#填写上面获取到的</span>
-    clientSecret: <span class="token comment">#填写上面获取到的</span>
-  admin: aibittek <span class="token comment">#填写你自己的，github用户名</span>
-  proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    clientId: #填写上面获取到的
+    clientSecret: #填写上面获取到的
+  admin: aibittek #填写你自己的，github用户名
+  proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token</code></pre>
 <p>按照以上填写就可以了，多了一个proxy，是为了解决近期的一个BUG的，参考下一章节。</p>
 <h4 id="Gitalk-BUG修复"><a href="#Gitalk-BUG修复" class="headerlink" title="Gitalk BUG修复"></a>Gitalk BUG修复</h4><p>最近使用Gitalk的都出现了不能评论的问题，具体原因可参考<a target="_blank" href="https://github.com/gitalk/gitalk/issues/429" rel="external nofollow noreferrer noopener">issue</a></p>
 <p>错误提示：<strong>Error: Request failed with status code 403</strong></p>
@@ -677,7 +672,7 @@ gitalk:
 <p>  注意：Gitalk有安全漏洞，从而导致GitHub获取到全局的读写权限，最差的可能是你的GitHub全站可能会被人删除跑路/(ㄒoㄒ)/~~，具体说明如下：<a target="_blank" href="https://www.v2ex.com/t/535608" rel="external nofollow noreferrer noopener">https://www.v2ex.com/t/535608</a></p>
 </blockquote>
 <p>打开gitalk.ejs代码，增加以下一行即可，完结撒花解决这个BUG了</p>
-<pre class="line-numbers language-js" data-language="js"><code class="language-js">proxy<span class="token operator">:</span> <span class="token string">'&lt;%- theme.gitalk.proxy %>'</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-js"><code class="language-js">proxy<span class="token punctuation">:</span> <span class="token string">'&lt;%- theme.gitalk.proxy %>'</span><span class="token punctuation">,</span></code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223175045009.png" alt="构造增加proxy字段"></p>
 <p>重新构建部署后，打开网站看看是不是可以评论啦</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223175227501.png" alt="评论界面"></p>
@@ -729,11 +724,11 @@ gitalk:
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210222165652588.png" alt="获取跟踪ID"></p>
 <p>增加统计功能</p>
 <p>在Hexo的主题配置文件_config.yml中查找googleAnalytics完成跟踪ID的添加，按照以下参考Google Analytics统计功能</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># Add google analytics configuration</span>
-<span class="token comment"># 添加 Google Analytics 配置</span>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Add google analytics configuration</span>
+<span class="token comment" spellcheck="true"># 添加 Google Analytics 配置</span>
 <span class="token key atrule">googleAnalytics</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">id</span><span class="token punctuation">:</span> UA<span class="token punctuation">-</span>xxxxxxxx<span class="token punctuation">-</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token key atrule">id</span><span class="token punctuation">:</span> UA<span class="token punctuation">-</span>xxxxxxxx<span class="token punctuation">-</span><span class="token number">1</span></code></pre>
 <h4 id="谷歌收录"><a href="#谷歌收录" class="headerlink" title="谷歌收录"></a>谷歌收录</h4><h5 id="收录域名提交"><a href="#收录域名提交" class="headerlink" title="收录域名提交"></a>收录域名提交</h5><ol>
 <li><p>登录<a target="_blank" href="https://search.google.com/search-console/about" rel="external nofollow noreferrer noopener">谷歌搜索排名网址</a></p>
 <p> <img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210222222819218.png" alt="收录域名提交"></p>
@@ -760,13 +755,12 @@ gitalk:
 </ol>
 <h5 id="Sitemap谷歌收录"><a href="#Sitemap谷歌收录" class="headerlink" title="Sitemap谷歌收录"></a>Sitemap谷歌收录</h5><ul>
 <li><p>安装插件</p>
-  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> hexo-generator-sitemap --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class=" language-shell"><code class="language-shell">npm install hexo-generator-sitemap --save</code></pre>
+</li>
 <li><p>修改配置文件</p>
 <p>  修改根节点_config.xml，添加以下内容：</p>
-  <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">sitemap</span><span class="token punctuation">:</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> sitemap.xml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">sitemap</span><span class="token punctuation">:</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> sitemap.xml</code></pre>
 </li>
 </ul>
 <h4 id="百度收录"><a href="#百度收录" class="headerlink" title="百度收录"></a>百度收录</h4><p>提交百度有网页直接提交、手动提交、主动推送，自动推送和sitemap五种方式，各自的优缺点可以看<a target="_blank" href="https://zhuanlan.zhihu.com/p/129740968" rel="external nofollow noreferrer noopener">这篇博文</a>。</p>
@@ -787,35 +781,35 @@ gitalk:
 <li>  <strong>安装hexo-baidu-url-submit插件</strong></li>
 </ul>
 <p>首先，在Hexo根目录下，安装本插件：</p>
-<pre class="line-numbers language-undefined" data-language="undefined"><code class="language-undefined">npm install hexo-baidu-url-submit --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-undefined"><code class="language-undefined">npm install hexo-baidu-url-submit --save</code></pre>
 <p><strong>请注意， 本插件的配置文件中包含秘钥， 请把您的Hexo博客源文件托管到私有仓库里。</strong></p>
 <ul>
 <li>  <strong>配置_config.yml文件</strong></li>
 </ul>
 <p>同样在根目录下，把以下内容配置到<code>_config.yml</code>文件中:</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">baidu_url_submit</span><span class="token punctuation">:</span>
-  <span class="token key atrule">count</span><span class="token punctuation">:</span> <span class="token number">10</span> 				<span class="token comment">## 比如10，代表提交最新的10个链接</span>
-  <span class="token key atrule">host</span><span class="token punctuation">:</span> kui.ge 				<span class="token comment">## 在百度站长平台中注册的域名</span>
-  <span class="token key atrule">token</span><span class="token punctuation">:</span> your_token 		<span class="token comment">## 请注意这是您的秘钥，请不要发布在公众仓库里!</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> baidu_urls.txt 		<span class="token comment">## 文本文档的地址，新链接会保存在此文本文档里</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">baidu_url_submit</span><span class="token punctuation">:</span>
+  <span class="token key atrule">count</span><span class="token punctuation">:</span> <span class="token number">10                 </span><span class="token comment" spellcheck="true">## 比如10，代表提交最新的10个链接</span>
+  <span class="token key atrule">host</span><span class="token punctuation">:</span> kui.ge                 <span class="token comment" spellcheck="true">## 在百度站长平台中注册的域名</span>
+  <span class="token key atrule">token</span><span class="token punctuation">:</span> your_token         <span class="token comment" spellcheck="true">## 请注意这是您的秘钥，请不要发布在公众仓库里!</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> baidu_urls.txt         <span class="token comment" spellcheck="true">## 文本文档的地址，新链接会保存在此文本文档里</span></code></pre>
 <p>your_token可以通过登录<a target="_blank" href="https://ziyuan.baidu.com/" rel="external nofollow noreferrer noopener">百度搜索资源平台</a>，找到自动提交中的主动推送，找到token，填写进入即可。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210222174736408.png" alt="主动推送token获取"></p>
 <ul>
 <li>  <strong>检查url</strong></li>
 </ul>
 <p>其次，记得查看<code>_config.yml</code>文件中url的值， 必须包含是百度站长平台注册的域名（一般有www）， 比如:</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># URL</span>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># URL</span>
 <span class="token key atrule">url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//kui.ge
 <span class="token key atrule">root</span><span class="token punctuation">:</span> /
-<span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>year/<span class="token punctuation">:</span>month/<span class="token punctuation">:</span>title/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>year/<span class="token punctuation">:</span>month/<span class="token punctuation">:</span>title/</code></pre>
 <ul>
 <li>  <strong>加入deploy</strong></li>
 </ul>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
 <span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> git
   <span class="token key atrule">repo</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/aibittek/aibittek.github.io.git
   <span class="token key atrule">branch</span><span class="token punctuation">:</span> master
-<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> baidu_url_submitter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> baidu_url_submitter</code></pre>
 <p>执行hexo d的时候，新的链接就会被推送了。</p>
 <p>成功推送的显示结果</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223180208395.png" alt="成功推送的显示结果"></p>
@@ -824,19 +818,16 @@ gitalk:
 <p>新链接的产生，<code>hexo g</code>会产生一个文本文件，里面包含最新的链接</p>
 <p>新链接的提交，<code>hexo d</code>会从上述文件中读取链接，提交至百度搜索引擎。</p>
 <h5 id="自动推送"><a href="#自动推送" class="headerlink" title="自动推送"></a>自动推送</h5><p><code>hexo-theme-matery/_config.yml</code> 默认打开，如下：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># 百度搜索资源平台提交链接</span>
-<span class="token key atrule">baiduPush</span><span class="token punctuation">:</span> <span class="token boolean important">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># 百度搜索资源平台提交链接</span>
+<span class="token key atrule">baiduPush</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
 <h5 id="Sitemap百度收录"><a href="#Sitemap百度收录" class="headerlink" title="Sitemap百度收录"></a>Sitemap百度收录</h5><ul>
 <li><p>安装插件</p>
-  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> hexo-generator-baidu-sitemap --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<pre class=" language-shell"><code class="language-shell">npm install hexo-generator-baidu-sitemap --save</code></pre>
+</li>
 <li><p>修改配置文件</p>
 <p>  修改根节点_config.xml，添加以下内容：</p>
-  <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">baidusitemap</span><span class="token punctuation">:</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> baidusitemap.xml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-
-
-
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">baidusitemap</span><span class="token punctuation">:</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> baidusitemap.xml</code></pre>
 </li>
 </ul>
 <h5 id="查看百度收录结果"><a href="#查看百度收录结果" class="headerlink" title="查看百度收录结果"></a>查看百度收录结果</h5><p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223094905172.png" alt="这是反例，1天了还没收录，还是各种手段都一起上的结果"></p>
@@ -853,35 +844,35 @@ gitalk:
 <p>  seo搜索引擎优化认为，网站的最佳结构是用户从首页点击三次就可以到达任何一个页面</p>
 </blockquote>
 <p>但是我们使用hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于seo，爬虫就会经常爬不到我们的文章，修改 hexo 配置文件：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>year/<span class="token punctuation">:</span>month/<span class="token punctuation">:</span>title/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>year/<span class="token punctuation">:</span>month/<span class="token punctuation">:</span>title/</code></pre>
 <h5 id="nofollow设置"><a href="#nofollow设置" class="headerlink" title="nofollow设置"></a>nofollow设置</h5><p>外链越多，搜索引擎给此站点的权重就越低，即排位越后。为了提高权重，可以禁止搜索引擎跟进外链，添加 nofollow 属性就可以做到。</p>
 <p>hexo 博客根目录安装插件</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> hexo-filter-nofollow --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">npm install hexo-filter-nofollow --save</code></pre>
 <p>编辑 hexo 配置文件，添加：</p>
-<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">nofollow</span><span class="token punctuation">:</span>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">nofollow</span><span class="token punctuation">:</span>
   <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">field</span><span class="token punctuation">:</span> post <span class="token comment"># post：仅处理文章内容，site：处理全站所有页面</span>
+  <span class="token key atrule">field</span><span class="token punctuation">:</span> post <span class="token comment" spellcheck="true"># post：仅处理文章内容，site：处理全站所有页面</span>
   <span class="token key atrule">exclude</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> <span class="token string">'exclude1.com'</span>
-    <span class="token punctuation">-</span> <span class="token string">'exclude2.com'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">-</span> <span class="token string">'exclude2.com'</span></code></pre>
 <h5 id="增加robots-txt"><a href="#增加robots-txt" class="headerlink" title="增加robots.txt"></a>增加robots.txt</h5><p>在 source 目录下添加 robots.txt ，编写爬虫规则，参考如下</p>
-<pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">User-agent: *
-Allow: &#x2F;
-Allow: &#x2F;archives&#x2F;
-Allow: &#x2F;tags&#x2F;
-Allow: &#x2F;categories&#x2F;
+<pre class=" language-txt"><code class="language-txt">User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /tags/
+Allow: /categories/
 
-Disallow: &#x2F;vendors&#x2F;
-Disallow: &#x2F;js&#x2F;
-Disallow: &#x2F;lib&#x2F;
-Disallow: &#x2F;css&#x2F;
-Disallow: &#x2F;fonts&#x2F;
-Disallow: &#x2F;vendors&#x2F;
-Disallow: &#x2F;fancybox&#x2F;
-Disallow: &#x2F;old&#x2F;
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Disallow: /old/
 
-Sitemap: http:&#x2F;&#x2F;kui.ge&#x2F;sitemap.xml
-Sitemap: http:&#x2F;&#x2F;kui.ge&#x2F;baidusitemap.xml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Sitemap: http://kui.ge/sitemap.xml
+Sitemap: http://kui.ge/baidusitemap.xml</code></pre>
 <h4 id="收录工具"><a href="#收录工具" class="headerlink" title="收录工具"></a>收录工具</h4><p>对于这么多的搜索引擎，使用命令的方式或者分别登录不同平台的搜索引擎进行提交不太方便，有没有聚合的能在一个地方对所有的所有引擎提交收录呢，整理了网页版本和软件版本，有需要的可以学习使用下哦，效率更高。</p>
 <h5 id="网页版本"><a href="#网页版本" class="headerlink" title="网页版本"></a>网页版本</h5><p><a target="_blank" href="https://www.sousuoyinqingtijiao.com/" rel="external nofollow noreferrer noopener">https://www.sousuoyinqingtijiao.com/</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210223100423764.png" alt="image-20210223100423764"></p>
@@ -1471,7 +1462,7 @@ Sitemap: http:&#x2F;&#x2F;kui.ge&#x2F;baidusitemap.xml<span aria-hidden="true" c
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">53.7k</span>&nbsp;字
+                class="white-color">53.9k</span>&nbsp;字
             
             
             
