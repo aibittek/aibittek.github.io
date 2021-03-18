@@ -426,14 +426,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7k
+                    7.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    28 分
                 </div>
                 
 
@@ -447,6 +447,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -517,8 +520,8 @@
 <h3 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h3><p>系统是安装在TF卡中的。在安装系统之前，TF需要格式化。</p>
 <h4 id="SDFormatter-4-0格式化TF卡"><a href="#SDFormatter-4-0格式化TF卡" class="headerlink" title="SDFormatter 4.0格式化TF卡"></a>SDFormatter 4.0格式化TF卡</h4><p>这里使用SDFormatter 4.0格式化SD卡，操作很简单，打开界面，选择要格式化的盘，注意一定要看好了TF卡的盘符，不要格式化错了，数据无价，一定要小心操作哦。</p>
 <p>SDFormatter 4.0下载链接：</p>
-<pre><code>链接: https://pan.baidu.com/s/1Fk7brPQlCy-hUtCfJBxgEg 
-提取码: htfi</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">链接: https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1Fk7brPQlCy-hUtCfJBxgEg 
+提取码: htfi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>操作界面：</p>
 <p>插上TF卡到电脑，Drive显示盘符，确认盘符无误后，选择格式化即可。</p>
 <p>默认是快速格式化，也可以通过界面中的<strong>选项设置</strong>改变格式化选项。</p>
@@ -537,29 +540,31 @@
 <h3 id="无线网络开启"><a href="#无线网络开启" class="headerlink" title="无线网络开启"></a>无线网络开启</h3><p>虽然做网盘不赞成用网盘，因为速度不稳定。</p>
 <p>但是可能一开始在配置的时候，<strong>没有有线网络环境，因此可以通过以下方法在做完系统后开启无线网络，适合于暂时无显示器也没有有线网络的情况下。</strong></p>
 <p>这种方式适用于第一次刻录完系统，并且没有有线网络连接的情况下设置树莓派WiFi。方法如下：<br>在SD卡的boot分区种新建 wpa_supplicant.conf 文件，并且配置 WiFi 的 SSID 和密码，这样树莓派启动后会自行读取 wpa_supplicant.conf 配置文件连接 WiFi 设备。</p>
-<pre><code>ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-network=&#123;
-ssid=&quot;WiFi的SSID&quot;
-psk=&quot;WiFi密码&quot;
-&#125;</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">ctrl_interface&#x3D;DIR&#x3D;&#x2F;var&#x2F;run&#x2F;wpa_supplicant GROUP&#x3D;netdev
+update_config&#x3D;1
+network&#x3D;&#123;
+ssid&#x3D;&quot;WiFi的SSID&quot;
+psk&#x3D;&quot;WiFi密码&quot;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>树莓派开机，就会自动连接WiFi，可以查看路由器中分配的IP地址是多少，或者通过命令ping raspberrypi.local获取树莓派的IP地址，再通过SSH登录到树莓派进行命令行的控制。</p>
 <h2 id="做一个本地网盘"><a href="#做一个本地网盘" class="headerlink" title="做一个本地网盘"></a>做一个本地网盘</h2><p>树莓派安装了Linux的系统，一般使用samba服务把挂载的磁盘暴露给局域网内的其他主机，从而当作局域网网盘来使用。</p>
 <p><strong>完成本地网盘需要两个部分：磁盘挂载，配置samba服务。</strong></p>
 <h3 id="本地挂载"><a href="#本地挂载" class="headerlink" title="本地挂载"></a>本地挂载</h3><h4 id="查询磁盘"><a href="#查询磁盘" class="headerlink" title="查询磁盘"></a>查询磁盘</h4><p>插入购买的移动硬盘到USB3.0接口上之后，输入以下命令：</p>
-<pre class=" language-shell"><code class="language-shell">sudo fdisk -l</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo fdisk -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>找到对应的磁盘名称，一般是/dev/sda、/dev/sdb等，可根据容量判别</p>
-<pre class=" language-shell"><code class="language-shell">Disk /dev/sda: 1.8 TiB, 2000398931968 bytes, 3907029164 sectors
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Disk &#x2F;dev&#x2F;sda: 1.8 TiB, 2000398931968 bytes, 3907029164 sectors
 Disk model: EXTERNAL_USB    
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
+Units: sectors of 1 * 512 &#x3D; 512 bytes
+Sector size (logical&#x2F;physical): 512 bytes &#x2F; 512 bytes
+I&#x2F;O size (minimum&#x2F;optimal): 512 bytes &#x2F; 512 bytes
 Disklabel type: dos
-Disk identifier: 0x3fe8e79c</code></pre>
+Disk identifier: 0x3fe8e79c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 <h4 id="磁盘格式化"><a href="#磁盘格式化" class="headerlink" title="磁盘格式化"></a>磁盘格式化</h4><p>磁盘被使用前需要格式化，假设磁盘的名称是/dev/sda，则磁盘格式化命令为：</p>
-<pre class=" language-shell"><code class="language-shell">sudo fdisk /dev/sda</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo fdisk &#x2F;dev&#x2F;sda<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后进入格式化命令行，分别执行输入n、w，其他的默认即可，如下：</p>
-<pre class=" language-shell"><code class="language-shell">Command(m for help): n
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Command(m for help): n
 Command action
   e   extended
   p   primary partition (1-4)      ---指定分区类型  e为扩展分区  p为主分区
@@ -571,62 +576,66 @@ Using default value 2610            ---设定结束分区的位置
 Command (m for help): w             ---保存刚才的配置信息。
 The partition table has been altered!
 Calling ioctl() to re-read partition table.
-Syncing disks.</code></pre>
+Syncing disks.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过以上的命令设置成功后，现在已经创建出了一个主分区，再次通过sudo fdisk -l查看是否存在名称为/dev/sda1的分区，当然如果磁盘的名称是sdb，那么名称应该是/dev/sdb1</p>
-<pre class=" language-shell"><code class="language-shell">Device     Boot Start        End    Sectors  Size Id Type
-/dev/sda1        2048 3907029163 3907027116  1.8T 83 Linux</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Device     Boot Start        End    Sectors  Size Id Type
+&#x2F;dev&#x2F;sda1        2048 3907029163 3907027116  1.8T 83 Linux<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>可以看到/dev/sda1是一个2TB的分区，接下来再对磁盘进行格式化的操作。</p>
 <p>使用mkfs命令格式化/dev/sda1分区（根据自己的情况，可能你的板子不是sda1的名字哦）</p>
-<pre class=" language-shell"><code class="language-shell">sudo mkfs.ext4 /dev/sda1</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo mkfs.ext4 &#x2F;dev&#x2F;sda1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>注意这里面ext4是Linux下的磁盘文件类型，支持的很好，<strong>千万不要用NTFS之类的格式，不然发挥不了USB3.0的性能，测试的读写速度也是跑不满的</strong>。</p>
-<h4 id="磁盘手动挂载"><a href="#磁盘手动挂载" class="headerlink" title="磁盘手动挂载"></a>磁盘手动挂载</h4><pre class=" language-shell"><code class="language-shell">mount /dev/sda1 /mnt</code></pre>
+<h4 id="磁盘手动挂载"><a href="#磁盘手动挂载" class="headerlink" title="磁盘手动挂载"></a>磁盘手动挂载</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mount &#x2F;dev&#x2F;sda1 &#x2F;mnt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>以上的命令是把/dev/sda1这个磁盘挂载到了/mnt的目录下，以后读写mnt目录就相当于对/dev/sda1这个分区磁盘做读写了。</p>
 <h4 id="磁盘自动挂载"><a href="#磁盘自动挂载" class="headerlink" title="磁盘自动挂载"></a>磁盘自动挂载</h4><p>系统系统启动时候能够自动挂载，可以打开/etc/fstab文件</p>
-<pre class=" language-shell"><code class="language-shell">sudo nano /etc/fstab</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo nano &#x2F;etc&#x2F;fstab<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在最后一行写入如下的内容，<strong>一定要注意配置这个文件，编写错误会造成无法开机</strong></p>
-<pre class=" language-shell"><code class="language-shell">/dev/sda1       /mnt            ext4    defaults,noatime,nodiratime     0       0</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#x2F;dev&#x2F;sda1       &#x2F;mnt            ext4    defaults,noatime,nodiratime     0       0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后按ctrl+o进行保存，ctrl+x退出，sudo reboot后重新启动后输入df命令查看是否能看sda1对应到mnt的挂载目录，如果能看到，表示系统已经能够自启动挂载磁盘了。</p>
-<pre><code>Filesystem      1K-blocks     Used  Available Use% Mounted on
-/dev/root        14989012  7355960    6928572  52% /
-/dev/sda1      1921802516 15000880 1809109576   1% /mnt
-tmpfs              191132        0     191132   0% /run/user/1000</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">Filesystem      1K-blocks     Used  Available Use% Mounted on
+&#x2F;dev&#x2F;root        14989012  7355960    6928572  52% &#x2F;
+&#x2F;dev&#x2F;sda1      1921802516 15000880 1809109576   1% &#x2F;mnt
+tmpfs              191132        0     191132   0% &#x2F;run&#x2F;user&#x2F;1000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 <h3 id="samba服务"><a href="#samba服务" class="headerlink" title="samba服务"></a>samba服务</h3><h4 id="samba服务下载"><a href="#samba服务下载" class="headerlink" title="samba服务下载"></a>samba服务下载</h4><p>安装samba前，需要更新一下软件包的源，命令如下：</p>
-<pre><code>sudo apt-get update</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">sudo apt-get update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>安装</p>
-<pre class=" language-shell"><code class="language-shell">sudo apt-get install samba samba-common-bin</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install samba samba-common-bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="samba服务配置与自启动"><a href="#samba服务配置与自启动" class="headerlink" title="samba服务配置与自启动"></a>samba服务配置与自启动</h4><p>修改共享配置文件</p>
-<pre class=" language-shell"><code class="language-shell">sudo nano /etc/samba/smb.conf</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo nano &#x2F;etc&#x2F;samba&#x2F;smb.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在smb.conf文件末尾增加以下内容，path代表共享的目录，valid users代表允许的用户，browseable代表可浏览。</p>
-<pre><code>[box]
-   path=/mnt/
-   valid users=pi
-   write list=pi
-   browseable=yes
-   create mask=0777
-   public=no
-   guest ok = no</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">[box]
+   path&#x3D;&#x2F;mnt&#x2F;
+   valid users&#x3D;pi
+   write list&#x3D;pi
+   browseable&#x3D;yes
+   create mask&#x3D;0777
+   public&#x3D;no
+   guest ok &#x3D; no<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由于samba服务使用的账号密码和系统的不一致，因此需要配置samba的用户密码，如下：</p>
-<pre class=" language-shell"><code class="language-shell">sudo smbpasswd -a pi</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo smbpasswd -a pi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>使能pi用户</p>
-<pre class=" language-shell"><code class="language-shell">sudo smbpasswd -e pi</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo smbpasswd -e pi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>启动或重启samba服务</p>
-<pre class=" language-shell"><code class="language-shell">systemctl restart smbd</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">systemctl restart smbd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>需要自启动，可以使用systemctl命令：</p>
-<pre class=" language-shell"><code class="language-shell">systemctl enable smbd</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">systemctl enable smbd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 <h4 id="samba远程挂载"><a href="#samba远程挂载" class="headerlink" title="samba远程挂载"></a>samba远程挂载</h4><p>windows可以打开文件资源管理器窗口，找到映射网络驱动器，如下图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210218223155457.png" alt="windows samba磁盘映射"></p>
 <p>输入samba用户pi的账号密码即可访问到树莓派4b中的/mnt目录内容了，<strong>可以像本地磁盘一样进行文件的读写了</strong></p>
 <h4 id="磁盘读写性能测试"><a href="#磁盘读写性能测试" class="headerlink" title="磁盘读写性能测试"></a>磁盘读写性能测试</h4><p>本地磁盘速度测试</p>
 <p>写入测试，结果为<strong>128MB/s，满足千兆写入要求</strong></p>
-<pre class=" language-shell"><code class="language-shell">pi@raspberrypi:~ $ sudo dd if=/dev/sda1 of=/dev/null bs=8k count=200000
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pi@raspberrypi:~ $ sudo dd if&#x3D;&#x2F;dev&#x2F;sda1 of&#x3D;&#x2F;dev&#x2F;null bs&#x3D;8k count&#x3D;200000
 200000+0 records in
 200000+0 records out
-1638400000 bytes (1.6 GB, 1.5 GiB) copied, 13.2203 s, 128 MB/s</code></pre>
+1638400000 bytes (1.6 GB, 1.5 GiB) copied, 13.2203 s, 128 MB&#x2F;s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>读取测试，结果为<strong>123MB/s，也基本满足千兆读取要求</strong></p>
-<pre class=" language-shell"><code class="language-shell">pi@raspberrypi:~ $ sudo dd if=/dev/sda1 of=/dev/null bs=8k count=200000
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pi@raspberrypi:~ $ sudo dd if&#x3D;&#x2F;dev&#x2F;sda1 of&#x3D;&#x2F;dev&#x2F;null bs&#x3D;8k count&#x3D;200000
 200000+0 records in
 200000+0 records out
-1638400000 bytes (1.6 GB, 1.5 GiB) copied, 13.2891 s, 123 MB/s</code></pre>
+1638400000 bytes (1.6 GB, 1.5 GiB) copied, 13.2891 s, 123 MB&#x2F;s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>samba远程读写速度测试，找了一个2GB大小的单文件测试。</p>
 <p>写入速度</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210218224939184.png" alt="image-20210218224939184"></p>
@@ -651,47 +660,47 @@ tmpfs              191132        0     191132   0% /run/user/1000</code></pre>
 <p>下载地址：打开<a target="_blank" href="https://cloudreve.org/%EF%BC%8C%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD%E5%8D%B3%E5%8F%AF%EF%BC%8C%E6%B3%A8%E6%84%8F%E5%92%B1%E4%BB%AC%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%98%AFarm32%E7%9A%84%EF%BC%8C%E6%89%80%E4%BB%A5%E4%B8%8B%E8%BD%BD%E5%A6%82%E4%B8%8B%E7%9A%84arm" rel="external nofollow noreferrer noopener">https://cloudreve.org/，点击下载即可，注意咱们的系统是arm32的，所以下载如下的arm</a> 32位的版本：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210219111752145.png" alt="下载ARM32位版本的Cloudreve"></p>
 <p>进入目录后，直接在命令行运行即可：</p>
-<pre class=" language-shell"><code class="language-shell">./cloudreve</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">.&#x2F;cloudreve<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>显示信息如下，</p>
-<pre class=" language-shell"><code class="language-shell">   V3.2.1  Commit #3b22b4f  Pro=false
-================================================
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">   V3.2.1  Commit #3b22b4f  Pro&#x3D;false
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;
 
 [Info]    2021-02-19 03:21:39 初始化数据库连接
 [Info]    2021-02-19 03:21:39 数据库版本匹配，跳过数据库迁移
-[Info]    2021-02-19 03:21:39 初始化任务队列，WorkerNum = 10
+[Info]    2021-02-19 03:21:39 初始化任务队列，WorkerNum &#x3D; 10
 [Info]    2021-02-19 03:21:39 初始化定时任务...
 [Info]    2021-02-19 03:21:39 当前运行模式：Master
-[Info]    2021-02-19 03:21:39 开始监听 :5212</code></pre>
+[Info]    2021-02-19 03:21:39 开始监听 :5212<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>打开浏览器输入树莓派的IP地址:5212即可访问你的网盘啦（注意第一次登录在终端会提供系统账号和密码，以后运行不再提供，需要记一下哦）</p>
 <p>登录之后显示内容如下，可上传下载、分享、在线预览等网盘的一些VIP功能啦</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210219112838397.png" alt="一个基本的VIP网盘诞生啦"></p>
 <h3 id="服务自启动配置"><a href="#服务自启动配置" class="headerlink" title="服务自启动配置"></a>服务自启动配置</h3><p>打开自启动配置文件：</p>
-<pre class=" language-shell"><code class="language-shell">sudo nano /usr/lib/systemd/system/cloudreve.service</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo nano &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;cloudreve.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>输入以下内容，注意其中WorkingDirectory要改为你的cloudreve执行程序的绝对路径，ExecStart改为cloudreve的绝对执行路径名称，然后ctrl+o保存，再ctrl+x退出即可。</p>
-<pre><code>[Unit]
-    Description=Cloudreve
-    Documentation= =[查看链接](https://docs.cloudreve.org/)
-    After=network.target
-    Wants=network.target
+<pre class="line-numbers language-none"><code class="language-none">[Unit]
+    Description&#x3D;Cloudreve
+    Documentation&#x3D; &#x3D;[查看链接](https:&#x2F;&#x2F;docs.cloudreve.org&#x2F;)
+    After&#x3D;network.target
+    Wants&#x3D;network.target
 
 [Service]
-    WorkingDirectory=/mnt/Cloudreve
-    ExecStart=/mnt/Cloudreve/cloudreve
-    Restart=on-abnormal
-    RestartSec=5s
-    KillMode=mixed
-    StandardOutput=null
-    StandardError=syslog
+    WorkingDirectory&#x3D;&#x2F;mnt&#x2F;Cloudreve
+    ExecStart&#x3D;&#x2F;mnt&#x2F;Cloudreve&#x2F;cloudreve
+    Restart&#x3D;on-abnormal
+    RestartSec&#x3D;5s
+    KillMode&#x3D;mixed
+    StandardOutput&#x3D;null
+    StandardError&#x3D;syslog
 [Install]
-    WantedBy=multi-user.target</code></pre>
+    WantedBy&#x3D;multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="服务自启动"><a href="#服务自启动" class="headerlink" title="服务自启动"></a>服务自启动</h3><p>更新自启动配置</p>
-<pre class=" language-shell"><code class="language-shell">systemctl daemon-reload</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">systemctl daemon-reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>启动服务</p>
-<pre class=" language-shell"><code class="language-shell">systemctl start cloudreve</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">systemctl start cloudreve<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>开机自启动</p>
-<pre class=" language-shell"><code class="language-shell">systemctl enable cloudreve</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">systemctl enable cloudreve<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>平时也可以通过以下命令来管理cloudreve网盘服务：</p>
-<pre class=" language-shell"><code class="language-shell"># 启动服务
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 启动服务
 systemctl start cloudreve
 
 # 停止服务
@@ -701,7 +710,9 @@ systemctl stop cloudreve
 systemctl restart cloudreve
 
 # 查看状态，有启动的问题等也可以通过这里查看到
-systemctl status cloudreve</code></pre>
+systemctl status cloudreve<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
 <h3 id="网站优化"><a href="#网站优化" class="headerlink" title="网站优化"></a>网站优化</h3><p>点击右上角的头像，在弹出的菜单中选择管理面板</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210219114502409.png" alt="网盘管理面板如何进入"></p>
 <p>进入后，右侧有相关的设置选项，请根据自己的需求进行设置哦，也可以登录Github查看他们的<a target="_blank" href="https://github.com/cloudreve/Cloudreve" rel="external nofollow noreferrer noopener">使用文档</a>，注意其中的站点URL在确定外网访问地址后，要修改一下，否则分享出去的地址别人访问不了哦。</p>
@@ -717,49 +728,49 @@ systemctl status cloudreve</code></pre>
 <p>在<a target="_blank" href="https://console.dnspod.cn/account/token%E9%A1%B5%E9%9D%A2%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E9%92%A5%EF%BC%8C%E6%B3%A8%E6%84%8F%E4%B8%80%E5%AE%9A%E8%A6%81%E8%AE%B0%E4%BD%8F%E6%8F%90%E4%BE%9B%E7%9A%84Token%EF%BC%8C%E5%8F%AA%E4%BC%9A%E6%98%BE%E7%A4%BA%E4%B8%80%E6%AC%A1%EF%BC%8C%E5%90%8E%E9%9D%A2%E6%9C%89%E7%94%A8%E3%80%82" rel="external nofollow noreferrer noopener">https://console.dnspod.cn/account/token页面创建一个密钥，注意一定要记住提供的Token，只会显示一次，后面有用。</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210219220606791.png" alt="ddns密钥"></p>
 <p>在树莓派上下载动态更新脚本</p>
-<pre class=" language-shell"><code class="language-shell">git clone https://github.com/imki911/ArDNSPod.git</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https:&#x2F;&#x2F;github.com&#x2F;imki911&#x2F;ArDNSPod.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>讲DNSPOD上得到的ID和Token填写在dns.conf文件的arToken中，arDdnsCheck后面改成在DNSPAD上填写的一级和二级域名</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210219221026595.png" alt="ddns配置文件"></p>
 <p>在当前目录下创建一个守护程序ddns_daemon.sh，内容如下：</p>
-<pre class=" language-shell"><code class="language-shell">#!/bin/sh
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#!&#x2F;bin&#x2F;sh
 
 while [ 1 ]
 do
-    sh /mnt/DDNS/ArDNSPod/ddnspod.sh >/dev/null 2>&1
-    sleep 600
-done</code></pre>
+	sh &#x2F;mnt&#x2F;DDNS&#x2F;ArDNSPod&#x2F;ddnspod.sh &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1
+	sleep 600
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>注意，第5行sh后面的脚本路径需要按照自己的绝对路径修改，目的是执行到ddnspod.sh这个脚本即可。另外保存后执行chmod +x ddns_daemon.sh，使得这个文件有被执行的权限。</p>
 <p>增加系统自启动，打开/etc/rc.local，在exit 0之前增加一行：</p>
-<pre class=" language-shell"><code class="language-shell">/mnt/DDNS/ArDNSPod/ddns_daemon.sh &</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#x2F;mnt&#x2F;DDNS&#x2F;ArDNSPod&#x2F;ddns_daemon.sh &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>注意，ddns_daemon.sh也需要更改为你自己的绝对路径。</p>
 <p>大功告成，可以手动执行ddns_daemon.sh，观察DNSPOD的A记录值是否发生变化，并且是你家里的出口IP，是的话，DDNS解析就可以啦，可以通过你的<strong>二级域名:5212</strong>这个网址来访问你的VIP网盘啦，如果能够显示cloudreve登录界面，<strong>恭喜你的网盘支持外网访问啦。</strong></p>
 <h4 id="支持安全访问"><a href="#支持安全访问" class="headerlink" title="支持安全访问"></a>支持安全访问</h4><p>目前已经完成了公网访问网盘了，但是默认是HTTP访问的，这里我们希望访问通过HTTPS加密方式，因此需要HTTP访问时也跳转到HTTPS，因此目前需要解决两个问题：一是HTTPS访问支持，一是HTTP访问时跳转到HTTPS访问。</p>
 <p>这里使用简单的方式，使用Nginx反向代理来做，先下载Nginx</p>
 <p>安装Nginx</p>
-<pre class=" language-shell"><code class="language-shell">sudo apt-get install nginx</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>启动Nginx</p>
-<pre class=" language-shell"><code class="language-shell">sudo /etc/init.d/nginx start</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo &#x2F;etc&#x2F;init.d&#x2F;nginx start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>可以在内网浏览器访问树莓派的IP地址，查看Nginx是否安装成功，成功之后会显示一个Nginx的网页，否则无法展示网页信息。</p>
 <p>修改Nginx配置文件，sudo nano /etc/nginx/conf.d/aibittek.com.conf</p>
-<pre><code>server &#123;
+<pre class="line-numbers language-none"><code class="language-none">server &#123;
         listen 8000 ssl;
         server_name box.aibittek.com;
-        error_page 497 301 https://$server_name:8000$request_uri;
+        error_page 497 301 https:&#x2F;&#x2F;$server_name:8000$request_uri;
 
-        ssl_certificate  /mnt/crt/box.aibittek.com.crt;
-        ssl_certificate_key /mnt/crt/box.aibittek.com.key;
+        ssl_certificate  &#x2F;mnt&#x2F;crt&#x2F;box.aibittek.com.crt;
+        ssl_certificate_key &#x2F;mnt&#x2F;crt&#x2F;box.aibittek.com.key;
         ssl_session_timeout 5m;
         ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
         ssl_prefer_server_ciphers on;
-        location / &#123;
+        location &#x2F; &#123;
                 proxy_buffer_size  128k;
                 proxy_buffers   32 32k;
                 proxy_busy_buffers_size 128k;
-                proxy_pass http://127.0.0.1:5212;
+                proxy_pass http:&#x2F;&#x2F;127.0.0.1:5212;
                 client_max_body_size 0;
         &#125;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对以上的配置文件内容说明如下：</p>
 <p>listen 8000 ssl：表示监听8000端口，为什么不是默认的80或HTTPS的443？这个要问电信了，已经把入口的80和443端口给封了，否则你都没备案就可以自己在家造网页服务了，那不乱了套啦。所以访问我的网盘也变成了box.aibittek.com:8000才可以了，哎没办法，必须显性加端口号才能访问了；</p>
 <p>server_name：是代理的域名；</p>
@@ -768,24 +779,21 @@ done</code></pre>
 <p>proxy_pass是代理到的IP和端口，这里的<a href="http://127.0.0.1:5212是cloudreve；" rel="external nofollow noreferrer">http://127.0.0.1:5212是cloudreve；</a></p>
 <p>client_max_body_size是缓存大小，如果设置的太小，使用cloudreve下载上传数据时，会卡住；</p>
 <p>设置Nginx跟随系统自启动</p>
-<pre class=" language-shell"><code class="language-shell">systemctl enable nginx</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">systemctl enable nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>好啦，一切都大功告成了，验证一下是不是每次重启系统树莓派之后，浏览器输入自己定义的域名，都能访问到网盘页面了呢，并且都是使用HTTPS访问了呢？</p>
 <h2 id="给网盘插上翱翔的翅膀"><a href="#给网盘插上翱翔的翅膀" class="headerlink" title="给网盘插上翱翔的翅膀"></a>给网盘插上翱翔的翅膀</h2><p>以上已经完成了VIP网盘的全部内容，如果还想科学上网并离线下载，可以参考本章节的aria2离线下载和shadowsocksR的科学上网</p>
 <h3 id="aria2离线下载"><a href="#aria2离线下载" class="headerlink" title="aria2离线下载"></a>aria2离线下载</h3><p>aria2是一个下载神器，超越迅雷，只要资源好，BT磁力链下载速度贼快，下面我们来安装使用下。</p>
 <h4 id="aria2安装"><a href="#aria2安装" class="headerlink" title="aria2安装"></a>aria2安装</h4><p>专业人干专业事，已经有小伙伴做了一个一键安装和配置的<a target="_blank" href="https://github.com/P3TERX/aria2.sh" rel="external nofollow noreferrer noopener">脚本</a>，安装方法如下：</p>
 <ul>
 <li><p>下载基础组件</p>
-<pre class=" language-shell"><code class="language-shell">sudo apt install wget curl ca-certificates</code></pre>
-</li>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt install wget curl ca-certificates<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>下载脚本</p>
-<pre class=" language-shell"><code class="language-shell">wget -N git.io/aria2.sh && chmod +x aria2.sh</code></pre>
-</li>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">wget -N git.io&#x2F;aria2.sh &amp;&amp; chmod +x aria2.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>运行脚本</p>
-<pre class=" language-shell"><code class="language-shell">sudo ./aria2.sh</code></pre>
-</li>
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo .&#x2F;aria2.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>选择你要执行的选项</p>
-<pre class=" language-shell"><code class="language-shell">Aria2 一键安装管理脚本 增强版 [v2.7.4] by P3TERX.COM
-
+  <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Aria2 一键安装管理脚本 增强版 [v2.7.4] by P3TERX.COM
+ 
   0. 升级脚本
  ———————————————————————
   1. 安装 Aria2
@@ -809,7 +817,7 @@ done</code></pre>
 
  自动更新 BT-Tracker: 未开启
 
- 请输入数字 [0-12]:</code></pre>
+ 请输入数字 [0-12]:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>  输入1回车，等待安装完毕即可，成功之后的界面如下：</p>
 <p>  <img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210220140544763.png" alt="image-20210220140544763"></p>
 </li>
@@ -822,28 +830,28 @@ done</code></pre>
 <p>进入到主页点击离线下载，支持HTTP(s)/FTP/磁力链的下载，下载速度大概能到20MB/s，相当可观。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210220140933599.png" alt="image-20210220140933599"></p>
 <h4 id="aria2自启动"><a href="#aria2自启动" class="headerlink" title="aria2自启动"></a>aria2自启动</h4><p>创建systemd文件:<code>sudo vim /lib/systemd/system/aria2.service</code>为如下:</p>
-<pre class=" language-shell"><code class="language-shell">[Unit]
-Description=Aria2c download manager
-After=network.target
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">[Unit]
+Description&#x3D;Aria2c download manager
+After&#x3D;network.target
 
 [Service]
-Type=simple
-User=root
-ExecStart/usr/local/bin/aria2c --conf-path=/mnt/aria2/aria2.conf
+Type&#x3D;simple
+User&#x3D;root
+ExecStart&#x2F;usr&#x2F;local&#x2F;bin&#x2F;aria2c --conf-path&#x3D;&#x2F;mnt&#x2F;aria2&#x2F;aria2.conf
 
 [Install]
-WantedBy=multi-user.target</code></pre>
+WantedBy&#x3D;multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>启动:<code>sudo systemctl start aria2.service</code></p>
 <p>可以设置开机启动:<code>sudo systemctl enable aria2.service</code>,如果要关闭开机启动:<code>sudo systemctl disable aria2.service</code></p>
 <h3 id="shadowsocksR科学上网"><a href="#shadowsocksR科学上网" class="headerlink" title="shadowsocksR科学上网"></a>shadowsocksR科学上网</h3><p>在某些时候，可能需要科学上网，可以通过以下方式安装和使用。</p>
-<h4 id="安装ssr-helper"><a href="#安装ssr-helper" class="headerlink" title="安装ssr-helper"></a>安装ssr-helper</h4><pre class=" language-shell"><code class="language-shell">npm install -g ssr-helper</code></pre>
-<h4 id="安装配置脚本"><a href="#安装配置脚本" class="headerlink" title="安装配置脚本"></a>安装配置脚本</h4><pre class=" language-shell"><code class="language-shell">git clone -b manyuser https://github.com/shadowsocksr-backup/shadowsocksr.git</code></pre>
+<h4 id="安装ssr-helper"><a href="#安装ssr-helper" class="headerlink" title="安装ssr-helper"></a>安装ssr-helper</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install -g ssr-helper<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="安装配置脚本"><a href="#安装配置脚本" class="headerlink" title="安装配置脚本"></a>安装配置脚本</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone -b manyuser https:&#x2F;&#x2F;github.com&#x2F;shadowsocksr-backup&#x2F;shadowsocksr.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>配置以上工具的路径，假设以上的源代码被放在了/mnt/shadowsocksr，则：</p>
-<pre class=" language-shell"><code class="language-shell">ssr config /mnt/shadowsocksr</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssr config &#x2F;mnt&#x2F;shadowsocksr<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>使用ssr add命令添加服务器，根据自己SSR的情况一步步的填写即可。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210219214212116.png" alt="SSR服务器信息"></p>
-<h4 id="启动ssr服务器"><a href="#启动ssr服务器" class="headerlink" title="启动ssr服务器"></a>启动ssr服务器</h4><pre class=" language-shell"><code class="language-shell">ssr start</code></pre>
-<h4 id="设置开机自启动"><a href="#设置开机自启动" class="headerlink" title="设置开机自启动"></a>设置开机自启动</h4><pre class=" language-shell"><code class="language-shell">ssr startup</code></pre>
+<h4 id="启动ssr服务器"><a href="#启动ssr服务器" class="headerlink" title="启动ssr服务器"></a>启动ssr服务器</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssr start<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="设置开机自启动"><a href="#设置开机自启动" class="headerlink" title="设置开机自启动"></a>设置开机自启动</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ssr startup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="SwitchyOmega配置浏览器科学上网"><a href="#SwitchyOmega配置浏览器科学上网" class="headerlink" title="SwitchyOmega配置浏览器科学上网"></a>SwitchyOmega配置浏览器科学上网</h4><p>默认已经有了两个示例，一个 proxy 代理服务器、一个 auto switch 自动切换模块式，可直接修改，也可以点 + 新建情景模式。</p>
 <p>先建立一个代理服务器</p>
 <table>
@@ -889,21 +897,21 @@ WantedBy=multi-user.target</code></pre>
 <p>规则列表设置</p>
 <p>规则列表格式 SwitchyAu­to­Proxy<br>        规则列表网址 <a target="_blank" href="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt" rel="external nofollow noreferrer noopener">https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</a></p>
 <h4 id="使用全局代理"><a href="#使用全局代理" class="headerlink" title="使用全局代理"></a>使用全局代理</h4><p>安装Privoxy</p>
-<pre class=" language-shell"><code class="language-shell">sudo apt-get install -y privoxy</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo apt-get install -y privoxy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>修改配置文件</p>
-<pre class=" language-shell"><code class="language-shell">sudo vim /etc/privoxy/config</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo vim &#x2F;etc&#x2F;privoxy&#x2F;config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>增加行</p>
-<pre class=" language-shell"><code class="language-shell">forward-socks5t   /               127.0.0.1:1080 .</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">forward-socks5t   &#x2F;               127.0.0.1:1080 .<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>注意forward顶格写，1080后面又一个点。</p>
 <p>启动服务</p>
-<pre class=" language-shell"><code class="language-shell">systemctl start privoxy</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">systemctl start privoxy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>修改环境变量</p>
-<pre class=" language-shell"><code class="language-shell">export http_proxy=http://127.0.0.1:8118
-export https_proxy=http://127.0.0.1:8118
-export ftp_proxy=http://127.0.0.1:8118</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">export http_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:8118
+export https_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:8118
+export ftp_proxy&#x3D;http:&#x2F;&#x2F;127.0.0.1:8118<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>也可以把以上的3行环境变量增加到~/.bashrc的文件末尾，然后使用source ~/.bashrc使之生效。</p>
 <p>验证是否可以科学上网</p>
-<pre class=" language-shell"><code class="language-shell">curl www.google.com</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">curl www.google.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>查看以上是否有输出内容即代表可以科学上网啦。</p>
 
                 
@@ -1493,7 +1501,7 @@ export ftp_proxy=http://127.0.0.1:8118</code></pre>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">53.9k</span>&nbsp;字
+                class="white-color">55.9k</span>&nbsp;字
             
             
             
