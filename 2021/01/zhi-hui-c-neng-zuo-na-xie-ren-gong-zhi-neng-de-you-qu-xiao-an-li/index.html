@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="baidu-site-verification" content="code-wBoEgdV6ng" />
     <meta name="keywords" content="只会C能做哪些人工智能的有趣小案例, 比特人生的世界">
     <meta name="description" content="想做做有趣实用小东西的手艺人">
@@ -41,14 +41,13 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -587,7 +586,7 @@
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/easyAIoT%E7%B3%BB%E7%BB%9F%E5%88%86%E5%B1%82%E6%A1%86%E6%9E%B6%E5%9B%BE.png" alt="easyAIoT系统分层框架图"></p>
 <h2 id="3-2-AIUI模块功能说明"><a href="#3-2-AIUI模块功能说明" class="headerlink" title="3.2 AIUI模块功能说明"></a>3.2 AIUI模块功能说明</h2><p>此模块提供语音识别的能力，通过提供的语音识别成文字的过程。</p>
 <p><strong>接口说明：</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 获取自然语言处理的结果（使用讯飞AIUIWebAPI引擎）
  * @param  pszAppid         应用APPID
  * @param  pszKey           应用APPKey
@@ -597,9 +596,9 @@
  * @return cstring_t*       返回字符串结构体对象指针，错误返回NULL
  *&#x2F;
 cstring_t *getNlpResult(const char *pszAppid, const char *pszKey, const char *pszParam,
-                        void *pAudioData, int iAudioLen);</code></pre>
+                        void *pAudioData, int iAudioLen);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>实例代码：</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     &#x2F;&#x2F; 修改为自己的appid，key、secret和auth_id,网址https:&#x2F;&#x2F;aiui.xfyun.cn&#x2F;app&#x2F;&lt;替换自己的appid&gt;&#x2F;info
     const char *pszAppid &#x3D; &quot;xxxxxxxx&quot;;
@@ -626,22 +625,22 @@ cstring_t *getNlpResult(const char *pszAppid, const char *pszKey, const char *ps
     cstring_del(pAudioData);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上述代码中的param参数是json格式，说明如下：</p>
-<pre class="language-json" data-language="json"><code class="language-json">&#123;
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
 	&quot;result_level&quot;: &quot;plain&quot;, &#x2F;&#x2F;提供结果格式：简单文本格式
 	&quot;auth_id&quot;: &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;, &#x2F;&#x2F;请求的auth_id，平台配置界面中查询
 	&quot;data_type&quot;: &quot;audio&quot;, &#x2F;&#x2F; 请求的数据类型，这里是语音，也可以为文本
 	&quot;sample_rate&quot;: &quot;16000&quot;, &#x2F;&#x2F; 如果请求的是audio，sample_rate表示音频采样率
 	&quot;scene&quot;: &quot;main_box&quot; &#x2F;&#x2F; 请求场景，未发布版本，需要增加&quot;_box&quot;后缀
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果：</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201208122536071.png" alt="image-20201208122536071"></p>
 <p>可以看到，返回的结果也是一个json格式，识别出了请求的语音文本为”今天全国新增确诊病例”，服务端返回的结果为：”今天全国新冠肺炎新增确诊病例15例”。</p>
 <p><strong>注意</strong>，获得正确的返回结果，需要在应用中增加相关的技能，按照上例需要在应用中增加相关技能，并点击右上角的保存即可生效。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201208123453373.png" alt="image-20201208123453373"></p>
 <h2 id="3-3-TTS语音合成模块功能说明"><a href="#3-3-TTS语音合成模块功能说明" class="headerlink" title="3.3 TTS语音合成模块功能说明"></a>3.3 TTS语音合成模块功能说明</h2><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 文字转语音
  * @param  appid            讯飞appid
  * @param  key              讯飞api key
@@ -652,9 +651,9 @@ cstring_t *getNlpResult(const char *pszAppid, const char *pszKey, const char *ps
  * @return false            合成失败
  *&#x2F;
 bool getTTS(const char *appid, const char *key, const char *param, 
-    const char *text, const char *pathname);</code></pre>
+    const char *text, const char *pathname);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     &#x2F;&#x2F; 修改为自己应用的appid，key和secret
     const char *appid &#x3D; &quot;xxxxxxxx&quot;;
@@ -664,20 +663,20 @@ bool getTTS(const char *appid, const char *key, const char *param,
     getTTS(appid, key, secret, &quot;欢迎来到比特人生的世界&quot;, &quot;..&#x2F;Res&#x2F;tts.pcm&quot;);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>生成的语音文件放在了Res/tts.pcm中，可以打开音频软件AU，设置16000采样，16bit深的音频信息来听取声音内容和要转写的文字内容是否一致。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209165052710.png" alt="image-20201209165052710"></p>
 <h2 id="3-4-IAT语音转写功能说明"><a href="#3-4-IAT语音转写功能说明" class="headerlink" title="3.4 IAT语音转写功能说明"></a>3.4 IAT语音转写功能说明</h2><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 语音转写
  * @param  appid            应用appid
  * @param  key              应用apikey
  * @param  secret           应用secret
  *&#x2F;
-void iat(const char *appid, const char *key, const char *secret);</code></pre>
+void iat(const char *appid, const char *key, const char *secret);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     &#x2F;&#x2F; 修改为自己应用的appid，key和secret
     const char *appid &#x3D; &quot;xxxxxxxx&quot;;
@@ -688,12 +687,12 @@ void iat(const char *appid, const char *key, const char *secret);</code></pre>
     iat(appid, key, secret);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>程序运行后，可以一边说话，一边看返回结果。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201208213345015.png" alt="image-20201208213345015"></p>
 <h2 id="3-5人脸比对接口功能说明"><a href="#3-5人脸比对接口功能说明" class="headerlink" title="3.5人脸比对接口功能说明"></a>3.5人脸比对接口功能说明</h2><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 讯飞人脸对比功能
  * @param  pszAPPID         讯飞appid
  * @param  pszAPPSecret     讯飞api secret
@@ -704,9 +703,9 @@ void iat(const char *appid, const char *key, const char *secret);</code></pre>
  *&#x2F;
 double fFaceCompare(const char *pszAPPID, 
         const char *pszAPPSecret, const char *pszAPPKey,
-        const char *pszImagePath1, const char *pszImagePath2);</code></pre>
+        const char *pszImagePath1, const char *pszImagePath2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     &#x2F;&#x2F; 修改为自己应用的appid，key和secret
     const char *appid &#x3D; &quot;xxxxxxxx&quot;;
@@ -717,12 +716,12 @@ double fFaceCompare(const char *pszAPPID,
 	printf(&quot;face compare score:%.2f\n&quot;, fScore);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用的两张图片如下</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/1.jpg" alt="1"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/2-1607434767599.jpg" alt="2"></p>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">[EDEBUG][E:\Source\C\easyAIoT\APP\FaceCompare.c fFaceCompare line:144]body:&#123;&quot;header&quot;:&#123;&quot;code&quot;:0,&quot;message&quot;:&quot;success&quot;,&quot;sid&quot;:&quot;ase000d52ea@hu17642958dc90212882&quot;&#125;,&quot;payload&quot;:&#123;&quot;face_compare_result&quot;:&#123;&quot;compress&quot;:&quot;raw&quot;,&quot;encoding&quot;:&quot;utf8&quot;,&quot;format&quot;:&quot;json&quot;,&quot;text&quot;:&quot;ewoJInJldCIgOiAwLAoJInNjb3JlIiA6IDAuOTc1NTI1Nzk2NDEzNDIxNjMKfQo&#x3D;&quot;&#125;&#125;&#125;
+<pre class="line-numbers language-none"><code class="language-none">[EDEBUG][E:\Source\C\easyAIoT\APP\FaceCompare.c fFaceCompare line:144]body:&#123;&quot;header&quot;:&#123;&quot;code&quot;:0,&quot;message&quot;:&quot;success&quot;,&quot;sid&quot;:&quot;ase000d52ea@hu17642958dc90212882&quot;&#125;,&quot;payload&quot;:&#123;&quot;face_compare_result&quot;:&#123;&quot;compress&quot;:&quot;raw&quot;,&quot;encoding&quot;:&quot;utf8&quot;,&quot;format&quot;:&quot;json&quot;,&quot;text&quot;:&quot;ewoJInJldCIgOiAwLAoJInNjb3JlIiA6IDAuOTc1NTI1Nzk2NDEzNDIxNjMKfQo&#x3D;&quot;&#125;&#125;&#125;
 [EDEBUG][E:\Source\C\easyAIoT\APP\FaceCompare.c fGetScoreResult line:74]szResponse:&#123;&quot;header&quot;:&#123;&quot;code&quot;:0,&quot;message&quot;:&quot;success&quot;,&quot;sid&quot;:&quot;ase000d52ea@hu17642958dc90212882&quot;&#125;,&quot;payload&quot;:&#123;&quot;face_compare_result&quot;:&#123;&quot;compress&quot;:&quot;raw&quot;,&quot;encoding&quot;:&quot;utf8&quot;,&quot;format&quot;:&quot;json&quot;,&quot;text&quot;:&quot;ewoJInJldCIgOiAwLAoJInNjb3JlIiA6IDAuOTc1NTI1Nzk2NDEzNDIxNjMKfQo&#x3D;&quot;&#125;&#125;&#125;       
 [EDEBUG][E:\Source\C\easyAIoT\APP\FaceCompare.c fGetScoreResult line:90]score json:&#123;
         &quot;ret&quot; : 0,
@@ -730,10 +729,10 @@ double fFaceCompare(const char *pszAPPID,
 &#125;
 
 [EDEBUG][E:\Source\C\easyAIoT\APP\FaceCompare.c fGetScoreResult line:101]ret:0, score:0.98
-face compare score:0.98</code></pre>
+face compare score:0.98<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>以上两张图片的得分0.98，代表识别的两张图片非常像。</p>
 <h2 id="3-6-网络接口功能说明"><a href="#3-6-网络接口功能说明" class="headerlink" title="3.6 网络接口功能说明"></a>3.6 网络接口功能说明</h2><h3 id="3-6-1-tcp功能"><a href="#3-6-1-tcp功能" class="headerlink" title="3.6.1 tcp功能"></a>3.6.1 tcp功能</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 网络接收回调
  *&#x2F;
 typedef bool (*fnSockCallback)(struct SSockClient *pstClient, void *pvUserData, void *pvData, int iLen);
@@ -770,9 +769,9 @@ bool bSockInit(SSockClient_t *pstClient);
  * @return true             网络反初始化成功
  * @return false            网络反初始化成功
  *&#x2F;
-bool bSockUninit(SSockClient_t *pstClient);</code></pre>
+bool bSockUninit(SSockClient_t *pstClient);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 回调函数，当服务端有数据发送回来时执行这个回调
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 回调函数，当服务端有数据发送回来时执行这个回调
 bool bSockCallback(struct SSockClient *pstClient, void *pvUserData, void *pvData, int iLen)
 &#123;
     printf(&quot;bSockCallback called:%s\r\n&quot;, pvData);
@@ -810,11 +809,11 @@ int main(int argc, char *argv[])
     stSockClient.bEventLoop(&amp;stSockClient, bSockCallback, NULL, &amp;iLoop, 1000);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209105106375.png" alt="image-20201209105106375"></p>
 <h3 id="3-6-2-HTTP功能"><a href="#3-6-2-HTTP功能" class="headerlink" title="3.6.2 HTTP功能"></a>3.6.2 HTTP功能</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">
 &#x2F;**
  * @brief 连接http服务端
  * 
@@ -829,9 +828,9 @@ int main(int argc, char *argv[])
  * @note 注意返回结果在pstHttpInfo的stResponse成员中，并且调用完成后
  *       要通过bHttpClose来释放pstHttpInfo中的资源
  *&#x2F;
-bool bConnectHttpServer(SEIHttpInfo_t *pstHttpInfo, const char *pszUrl, const char *pszExtraHeader, void* pvBody, int iSize);</code></pre>
+bool bConnectHttpServer(SEIHttpInfo_t *pstHttpInfo, const char *pszUrl, const char *pszExtraHeader, void* pvBody, int iSize);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     SEIHttpInfo_t stHttpInfo;
     const char *pszUrl &#x3D; &quot;http:&#x2F;&#x2F;www.baidu.com&quot;;
@@ -844,21 +843,21 @@ bool bConnectHttpServer(SEIHttpInfo_t *pstHttpInfo, const char *pszUrl, const ch
     bHttpClose(&amp;stHttpInfo);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>status的返回值为http的状态码，200代表正常返回，body是服务端返回的内容，以上代码会返回网址的首页信息，因此会看到终端输出的是网页的内容信息。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209112031575.png" alt="image-20201209112031575"></p>
 <h3 id="3-6-3-Websocket功能"><a href="#3-6-3-Websocket功能" class="headerlink" title="3.6.3 Websocket功能"></a>3.6.3 Websocket功能</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 连接到websocket服务端
  * @param  c_pszUrl         websocket服务器的URL
  * @param  cb               websocket服务器的响应信息
  * @return true             连接成功
  * @return false            连接失败
  *&#x2F;
-bool bWebsocketConnect(const char *c_pszUrl, fnWebsocketCallback cb);</code></pre>
+bool bWebsocketConnect(const char *c_pszUrl, fnWebsocketCallback cb);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     const char *appid &#x3D; &quot;xxxxxxxx&quot;;
     const char *app_secret &#x3D; &quot;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&quot;;
@@ -867,12 +866,12 @@ bool bWebsocketConnect(const char *c_pszUrl, fnWebsocketCallback cb);</code></pr
     getTTS(appid, app_key, app_secret, &quot;欢迎来到比特人生的世界&quot;, &quot;.&#x2F;tts.pcm&quot;);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>合成的结果保存到了tts.pcm中，可以打开adobe auditiom软件，设置为16000K 16bit听声音是否和文本内容一致。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209145844006.png" alt="image-20201209145844006"></p>
 <h2 id="3-7-录音接口功能说明"><a href="#3-7-录音接口功能说明" class="headerlink" title="3.7 录音接口功能说明"></a>3.7 录音接口功能说明</h2><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">typedef void*   AudioHandle;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef void*   AudioHandle;
 &#x2F;**
  * @brief 录音回调
  * @param pvHandle      录音对象，AudioRecorder_t类型的指针
@@ -924,9 +923,9 @@ typedef struct AudioRecorder &#123;
 &#x2F;**
  * @brief 录音对象单例
  *&#x2F;
-extern AudioRecorder_t Recorder;</code></pre>
+extern AudioRecorder_t Recorder;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main()
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main()
 &#123;
 	&#x2F;&#x2F; 16000K采样，16bit采样深度，1是单声道，RecordCB是音频信息的回调函数，test.pcm是传递给回调的参数
     AudioConfig_t stAudioConfig &#x3D; &#123;16000, 16, 1, RecordCB, (void*)&quot;test.pcm&quot;&#125;;
@@ -938,10 +937,10 @@ extern AudioRecorder_t Recorder;</code></pre>
     Recorder.close();
     
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>程序运行成功后，可以通过编写回调函数，来获取音频数据，上面程序的回调函数可以通过以下的回调处理来保存录音数据</p>
-<pre class="language-c" data-language="c"><code class="language-c">static void RecordCB(void* pvHandle, int32_t iType, void* pvUserData, void* pvData, int32_t iLen)
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">static void RecordCB(void* pvHandle, int32_t iType, void* pvUserData, void* pvData, int32_t iLen)
 &#123;
     uint32_t bytesWritten &#x3D; 0;
     static uint32_t totalWriten &#x3D; 0;
@@ -965,10 +964,10 @@ extern AudioRecorder_t Recorder;</code></pre>
         fp &#x3D; NULL;
         Recorder.stop();
     &#125;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>pvUserData</strong>参数是通过stAudioConfig传递进来的”test.pcm”，可以在回调中使用这个参数，把录取的音频数据保存到test.pcm中。保存之后可以通过adobe audition软件打开听取声音是否正常。</p>
 <h2 id="3-8-多线程接口功能说明"><a href="#3-8-多线程接口功能说明" class="headerlink" title="3.8 多线程接口功能说明"></a>3.8 多线程接口功能说明</h2><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">typedef struct ThreadFun ThreadFun;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">typedef struct ThreadFun ThreadFun;
 struct ThreadFun&#123;
 	void* params;  &#x2F;&#x2F;线程函数的参数 
 #if defined(_WIN32)
@@ -983,9 +982,9 @@ struct ThreadFun&#123;
  * @param  iThreadNum       线程创建的个数
  * @param  funArray         线程处理函数组
  *&#x2F;
-void vStartThread(int iThreadNum, ThreadFun funArray[]);</code></pre>
+void vStartThread(int iThreadNum, ThreadFun funArray[]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">#include &lt;SimpleThread.h&gt;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;SimpleThread.h&gt;
 static void *doSomething(void *params)
 &#123;
     printf(&quot;doStomething thread:%s\r\n&quot;, (const char *)params);
@@ -1000,14 +999,14 @@ int main()
     vStartThread(1, funArr);
 	printf(&quot;main thread\n&quot;);
 	return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">main thread
-doStomething thread:easyAIot</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">main thread
+doStomething thread:easyAIot<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 <h2 id="3-9-加解密接口功能说明"><a href="#3-9-加解密接口功能说明" class="headerlink" title="3.9 加解密接口功能说明"></a>3.9 加解密接口功能说明</h2><h3 id="3-9-1-MD5加密"><a href="#3-9-1-MD5加密" class="headerlink" title="3.9.1 MD5加密"></a>3.9.1 MD5加密</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief md5加密
  * @param  initial_msg      加密消息串
  * @param  initial_len      加密消息串长度
@@ -1021,9 +1020,9 @@ void vMD5(const unsigned char *msg, unsigned int len, unsigned char *digest);
  * @param  initial_len      加密消息串长度
  * @param  digest           加密后的32字节小写字符串内容
  *&#x2F;
-void md5String(const unsigned char *msg, unsigned int len, unsigned char *digest);</code></pre>
+void md5String(const unsigned char *msg, unsigned int len, unsigned char *digest);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     const char *pszString &#x3D; &quot;easyAIoT&quot;;
     char szBuf[33] &#x3D; &#123;0&#125;;
@@ -1032,13 +1031,13 @@ void md5String(const unsigned char *msg, unsigned int len, unsigned char *digest
     printf(&quot;%s md5-&gt; %s\n&quot;, pszString, szBuf);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">easyAIoT md5-&gt; d1428978a06bcefed0e94ab70a5d1498</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">easyAIoT md5-&gt; d1428978a06bcefed0e94ab70a5d1498<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 <h3 id="3-9-2-Base64加解密"><a href="#3-9-2-Base64加解密" class="headerlink" title="3.9.2 Base64加解密"></a>3.9.2 Base64加解密</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief Base64编码
  * @param  pcData           需要编码的数据
  * @param  pcBase64         Base64编码后的数据
@@ -1053,9 +1052,9 @@ int iBase64Encode(const char *pcData, char *pcBase64, int pcDataLen);
  * @param  dedata           解码后的数据内容
  * @return int 解码后数据的长度
  *&#x2F;
-int iBase64Decode(const char *base64, unsigned char *dedata);</code></pre>
+int iBase64Decode(const char *base64, unsigned char *dedata);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">#include &lt;base64.h&gt;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;base64.h&gt;
 
 int main(int argc, char *argv[])
 &#123;
@@ -1070,14 +1069,14 @@ int main(int argc, char *argv[])
     printf(&quot;decode:%s, len:%d\n&quot;, szDecode, iDecodeLen);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">encode:ZWFzeUFJb1Q&#x3D;, len:12
-decode:easyAIoT, len:8</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">encode:ZWFzeUFJb1Q&#x3D;, len:12
+decode:easyAIoT, len:8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 <h3 id="3-9-3-Sha256加解密"><a href="#3-9-3-Sha256加解密" class="headerlink" title="3.9.3 Sha256加解密"></a>3.9.3 Sha256加解密</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief sha256加密
  * @param  input            加密源字符串
  * @param  ilen             加密源字符串大小
@@ -1094,9 +1093,9 @@ void sha256(const unsigned char *input, size_t ilen, unsigned char *out);
  * @param  out              加密内容，out长度大于等于65
  *&#x2F;
 void hamcSha256String(const unsigned char *data, size_t len, const unsigned char *key, int len_key, unsigned char *out);
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     const char *input &#x3D; &quot;easyAIoT&quot;;
     const char *key &#x3D; &quot;123456&quot;;
@@ -1110,14 +1109,14 @@ void hamcSha256String(const unsigned char *data, size_t len, const unsigned char
     printf(&quot;hamc_out:%s\n&quot;, hamc_out);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">out:72db9c2cd52e183d7f3a367c8f33a226090c2c73b049731908c8341093c87d77
-hamc_out:a46e68f86c13dbfb00a834f223cc68c516915f31c7736cdd5e1664ba69c32343</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">out:72db9c2cd52e183d7f3a367c8f33a226090c2c73b049731908c8341093c87d77
+hamc_out:a46e68f86c13dbfb00a834f223cc68c516915f31c7736cdd5e1664ba69c32343<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 <h3 id="3-9-4-URL加解密"><a href="#3-9-4-URL加解密" class="headerlink" title="3.9.4 URL加解密"></a>3.9.4 URL加解密</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief url网址编码，便于网络传输
  * @param  in               编码前网址
  * @param  out              编码后网址
@@ -1129,9 +1128,9 @@ void urlencode(char in[], char out[]);
  * @param  in               解码前网址
  * @param  out              解码后网址
  *&#x2F;
-void urldecode(char in[], char out[]);</code></pre>
+void urldecode(char in[], char out[]);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main(int argc, char *argv[])
 &#123;
     const char *in &#x3D; &quot;http:&#x2F;&#x2F;www.easyaiot.com&#x2F;index.html?param1&#x3D;1 2 3&amp;param2&#x3D;1:2&quot;;
     char enout[64], deout[64];
@@ -1144,15 +1143,15 @@ void urldecode(char in[], char out[]);</code></pre>
     printf(&quot;deout:%s\n&quot;, deout);
 
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">in:http:&#x2F;&#x2F;www.easyaiot.com&#x2F;index.html?param1&#x3D;1 2 3&amp;param2&#x3D;1:2
+<pre class="line-numbers language-none"><code class="language-none">in:http:&#x2F;&#x2F;www.easyaiot.com&#x2F;index.html?param1&#x3D;1 2 3&amp;param2&#x3D;1:2
 enout:http%3A&#x2F;&#x2F;www.easyaiot.com&#x2F;index.html?param1&#x3D;1+2+3&amp;param2&#x3D;1%3A2
-deout:http:&#x2F;&#x2F;www.easyaiot.com&#x2F;index.html?param1&#x3D;1 2 3&amp;param2&#x3D;1:2</code></pre>
+deout:http:&#x2F;&#x2F;www.easyaiot.com&#x2F;index.html?param1&#x3D;1 2 3&amp;param2&#x3D;1:2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 <h2 id="3-10-Json接口功能说明"><a href="#3-10-Json接口功能说明" class="headerlink" title="3.10 Json接口功能说明"></a>3.10 Json接口功能说明</h2><h3 id="3-10-1-Json序列化"><a href="#3-10-1-Json序列化" class="headerlink" title="3.10.1 Json序列化"></a>3.10.1 Json序列化</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 创建Json对象，序列化对象名：json_obj
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 创建Json对象，序列化对象名：json_obj
 #define JSON_SERIALIZE_CREATE_OBJECT_START(json_obj)
 &#x2F;&#x2F; 创建序列化数组（key, value）到json_obj对象中
 #define JSON_SERIALIZE_ADD_ARRAY_TO_OBJECT(json_obj, key, value)
@@ -1171,9 +1170,9 @@ deout:http:&#x2F;&#x2F;www.easyaiot.com&#x2F;index.html?param1&#x3D;1 2 3&amp;pa
 &#x2F;&#x2F; 创建Json结束符
 #define JSON_SERIALIZE_CREATE_END(json_obj)
 &#x2F;&#x2F; JSON序列化为字符串
-#define JSON_SERIALIZE_STRING(json_doc, str, len)</code></pre>
+#define JSON_SERIALIZE_STRING(json_doc, str, len)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">JSON_SERIALIZE_CREATE_OBJECT_START(json_common_obj);
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">JSON_SERIALIZE_CREATE_OBJECT_START(json_common_obj);
 JSON_SERIALIZE_ADD_STRING_TO_OBJECT(json_common_obj, &quot;app_id&quot;, &quot;123456&quot;);
 
 JSON_SERIALIZE_CREATE_OBJECT_START(json_business_obj);
@@ -1193,9 +1192,9 @@ JSON_SERIALIZE_ADD_OBJECT_TO_OBJECT(json_frame_obj, &quot;common&quot;, json_com
 JSON_SERIALIZE_ADD_OBJECT_TO_OBJECT(json_frame_obj, &quot;business&quot;, json_business_obj);
 JSON_SERIALIZE_ADD_OBJECT_TO_OBJECT(json_frame_obj, &quot;data&quot;, json_data_obj);
 JSON_SERIALIZE_STRING(json_frame_obj, pszRequest, iLen);
-JSON_SERIALIZE_CREATE_END(json_frame_obj);</code></pre>
+JSON_SERIALIZE_CREATE_END(json_frame_obj);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-json" data-language="json"><code class="language-json">&#123;
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
 	&quot;common&quot;: &#123;
 		&quot;app_id&quot;: &quot;123456&quot;
 	&#125;,
@@ -1210,11 +1209,11 @@ JSON_SERIALIZE_CREATE_END(json_frame_obj);</code></pre>
 		&quot;encoding&quot;: &quot;raw&quot;,
 		&quot;audio&quot;: &quot;exSI6ICJlbiIsCgkgICAgInBvc2l0aW9uIjogImZhbHNlIgoJf&quot;
 	&#125;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h3 id="3-10-2-Json反序列化"><a href="#3-10-2-Json反序列化" class="headerlink" title="3.10.2 Json反序列化"></a>3.10.2 Json反序列化</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 根据json字符串json_string创建json对象json_root
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 根据json字符串json_string创建json对象json_root
 #define JSON_DESERIALIZE_START(json_root, json_string, ret)
 
 &#x2F;&#x2F; 根据json对象json_doc，获取键值为key的整型变量放到value中，返回值放入ret中，jump为程序跳出方式
@@ -1242,28 +1241,28 @@ JSON_SERIALIZE_CREATE_END(json_frame_obj);</code></pre>
 #define JSON_DESERIALIZE_GET_OBJECT(json_doc, key, value, ret, jump)
 
 &#x2F;&#x2F; Json反序列结束标识
-#define JSON_DESERIALIZE_END(json_root, ret)</code></pre>
+#define JSON_DESERIALIZE_END(json_root, ret)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <p>反序列的Json字符串</p>
-<pre class="language-json" data-language="json"><code class="language-json">&#123;
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">&#123;
   &quot;payload&quot;: &#123;
     &quot;face_compare_result&quot;: &#123;
       &quot;text&quot;: &quot;ewoJInJldCIgOiAwLAoJInNjb3JlIiA6IDAuOTk2MTg2MDc3NTk0NzU3MDgKfQo&#x3D;&quot;
     &#125;
   &#125;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>反序列化代码</p>
-<pre class="language-none"><code class="language-none">
+<pre class="line-numbers language-none"><code class="language-none">
 JSON_DESERIALIZE_START(json_root, szResponse, iRet);
 	JSON_DESERIALIZE_GET_OBJECT(json_root, &quot;payload&quot;, payload_obj, iRet, JSON_CTRL_BREAK);
 	JSON_DESERIALIZE_GET_OBJECT(payload_obj, &quot;face_compare_result&quot;, result_obj, iRet, JSON_CTRL_BREAK);
 	JSON_DESERIALIZE_GET_STRING(result_obj, &quot;text&quot;, pText, iRet, JSON_CTRL_NULL);
 	if (pText) text-&gt;appendStr(text, pText, strlen(pText));
-JSON_DESERIALIZE_END(json_root, iRet);</code></pre>
+JSON_DESERIALIZE_END(json_root, iRet);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>运行结果是通过JSON_DESERIALIZE_GET_STRING把text的值存放到了pText中。</p>
 <h2 id="3-11-基础数据处理接口"><a href="#3-11-基础数据处理接口" class="headerlink" title="3.11  基础数据处理接口"></a>3.11  基础数据处理接口</h2><h3 id="3-11-1-string数据处理"><a href="#3-11-1-string数据处理" class="headerlink" title="3.11.1 string数据处理"></a>3.11.1 string数据处理</h3><p><strong>接口说明</strong></p>
-<pre class="language-none"><code class="language-none">&#x2F;&#x2F; 创建一个新的字符串对象cs
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 创建一个新的字符串对象cs
 cstring_new(cs);
 &#x2F;&#x2F; 创建一个新的字符串对象cstr， 长度为len
 cstring_new_len(cstr, len);
@@ -1291,9 +1290,9 @@ typedef struct cstring
     size_t (*length)(const struct cstring *cs);                             &#x2F;&#x2F; 求取字符串长度
     const char *(*peek)(const struct cstring *cs);                          &#x2F;&#x2F; 获取字符串首地址
     char *(*dump)(const struct cstring *cs, size_t *len);                   &#x2F;&#x2F; 获取字符串内容
-&#125; cstring_t;</code></pre>
+&#125; cstring_t;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">int main()
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">int main()
 &#123;
     cstring_new(cs);
     
@@ -1313,16 +1312,16 @@ typedef struct cstring
 
     cstring_del(cs);
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">123452
+<pre class="line-numbers language-none"><code class="language-none">123452
 789123452
 9123452
-91234</code></pre>
+91234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h3 id="3-11-2-map数据处理"><a href="#3-11-2-map数据处理" class="headerlink" title="3.11.2 map数据处理"></a>3.11.2 map数据处理</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">功能：
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">功能：
 所有的map都是通过宏定义实现的.
 
 &#x2F;&#x2F; 创建一个map结构体，T可以为自定义类型
@@ -1358,9 +1357,9 @@ map_iter_t iter &#x3D; map_iter(&amp;m);
 
 while ((key &#x3D; map_next(&amp;m, &amp;iter))) &#123;
   printf(&quot;%s -&gt; %d&quot;, key, *map_get(&amp;m, key));
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">map_int_t m;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">map_int_t m;
 map_init(&amp;m);
 
 map_set(&amp;m, &quot;testkey&quot;, 123);
@@ -1372,13 +1371,13 @@ if (val) &#123;
   printf(&quot;value not found\n&quot;);
 &#125;
 
-map_deinit(&amp;m);</code></pre>
+map_deinit(&amp;m);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">value: 123</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">value: 123<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 <h3 id="3-11-3-循环buffer数据处理"><a href="#3-11-3-循环buffer数据处理" class="headerlink" title="3.11.3 循环buffer数据处理"></a>3.11.3 循环buffer数据处理</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; ring buffer初始化
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; ring buffer初始化
 void ring_buffer_init(ring_buffer_t *buffer);
 &#x2F;&#x2F; 存入data字符数据到buffer中
 void ring_buffer_queue(ring_buffer_t *buffer, char data);
@@ -1401,9 +1400,9 @@ inline uint8_t ring_buffer_is_full(ring_buffer_t *buffer) &#123;
 &#x2F;&#x2F; 判断ring buffer剩余的内容大小，以字节大小返回
 inline ring_buffer_size_t ring_buffer_num_items(ring_buffer_t *buffer) &#123;
   return ((buffer-&gt;head_index - buffer-&gt;tail_index) &amp; RING_BUFFER_MASK);
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">#include &lt;ringbuffer.h&gt;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;ringbuffer.h&gt;
 
 int main(void) &#123;
   	int i, cnt;
@@ -1427,13 +1426,13 @@ int main(void) &#123;
     return 0;
   
   return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">ring buffer size:16, content:Hello, easyAIoT!</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">ring buffer size:16, content:Hello, easyAIoT!<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 <h2 id="3-12-其他接口"><a href="#3-12-其他接口" class="headerlink" title="3.12 其他接口"></a>3.12 其他接口</h2><h3 id="3-12-1-时间接口"><a href="#3-12-1-时间接口" class="headerlink" title="3.12.1 时间接口"></a>3.12.1 时间接口</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief dateime结构体，通过now获取当前时间，通过format对时间进行格式化输出，输出到pDate中
  *&#x2F;
 typedef struct DateTime &#123;
@@ -1444,22 +1443,22 @@ typedef struct DateTime &#123;
 &#x2F;**
  * @brief datetime对象
  *&#x2F;
-extern DateTime_t datetime;</code></pre>
+extern DateTime_t datetime;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 获取当前时间戳
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;&#x2F; 获取当前时间戳
 time_t time &#x3D; datetime.now();
 
 &#x2F;&#x2F;获取GMT时间
 char szDate[32];
 datetime.format(&quot;GMT&quot;, szDate, sizeof(szDate));
 
-printf(&quot;now:%d, time:%s\n&quot;, time, szDate);</code></pre>
+printf(&quot;now:%d, time:%s\n&quot;, time, szDate);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">now:1607614344, time:Thu, 10 Dec 2020 15:32:25 GMT</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">now:1607614344, time:Thu, 10 Dec 2020 15:32:25 GMT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 <h3 id="3-12-2-文件接口"><a href="#3-12-2-文件接口" class="headerlink" title="3.12.2 文件接口"></a>3.12.2 文件接口</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 读取文件内容
  * @param  pathname         需要读取的文件路径名称
  * @return cstring_t*       读取数据存放的字符串结构体指针，读取失败返回NULL
@@ -1473,17 +1472,17 @@ cstring_t * readFile(const char *pathname);
  * @param  len              写入数据的长度
  * @return size_t           真实写入的大小
  *&#x2F;
-size_t writeFile(const char *pathname, void *data, int len);</code></pre>
+size_t writeFile(const char *pathname, void *data, int len);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">writeFile(&quot;test.txt&quot;, &quot;easyAIoT&quot;, 8);
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">writeFile(&quot;test.txt&quot;, &quot;easyAIoT&quot;, 8);
 cstring_t * pContent &#x3D; readFile(&quot;test.txt&quot;);
-printf(&quot;file content:%s&quot;, pContent-&gt;str);</code></pre>
+printf(&quot;file content:%s&quot;, pContent-&gt;str);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">file content:easyAIoT</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">file content:easyAIoT<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 <h3 id="3-12-3-讯飞authorization接口"><a href="#3-12-3-讯飞authorization接口" class="headerlink" title="3.12.3 讯飞authorization接口"></a>3.12.3 讯飞authorization接口</h3><p><strong>接口说明</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">&#x2F;**
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">&#x2F;**
  * @brief 构造鉴权参数authorization字段，参考讯飞云相关文档
  * @param  pszAPIKey        用户的APPID
  * @param  pszBaseUrl       请求的URL基地址
@@ -1493,9 +1492,9 @@ printf(&quot;file content:%s&quot;, pContent-&gt;str);</code></pre>
  * @param  iLen             pAuthData参数的数组长度
  *&#x2F;
 void vGetAuth(const char *pszAPPKey, const char *pszAPPSecret, const char *pszBaseUrl, 
-        const char *pszReuqestLine, const char *pszGMTDate, char *pAuthData, int iLen);</code></pre>
+        const char *pszReuqestLine, const char *pszGMTDate, char *pAuthData, int iLen);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">#include &lt;iFlyAuth.h&gt;
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">#include &lt;iFlyAuth.h&gt;
 
 int main(int argc, char *argv[])
 &#123;
@@ -1511,18 +1510,18 @@ int main(int argc, char *argv[])
              szAuthData, sizeof(szAuthData));
     printf(&quot;auth:%s\n&quot;, szAuthData);
     return 0;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="language-none"><code class="language-none">auth:YXBpX2tleT0iYXBpa2V5IiwgYWxnb3JpdGhtPSJobWFjLXNoYTI1NiIsIGhlYWRlcnM9Imhvc3QgZGF0ZSByZXF1ZXN0LWxpbmUiLCBzaWduYXR1cmU9IkNXLzZzUWxobVZtQVVDRW5oOE9XV2FZak4zZ2MybXF1NXlDYmUrQzJBRUk9Ig&#x3D;&#x3D;</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">auth:YXBpX2tleT0iYXBpa2V5IiwgYWxnb3JpdGhtPSJobWFjLXNoYTI1NiIsIGhlYWRlcnM9Imhvc3QgZGF0ZSByZXF1ZXN0LWxpbmUiLCBzaWduYXR1cmU9IkNXLzZzUWxobVZtQVVDRW5oOE9XV2FZak4zZ2MybXF1NXlDYmUrQzJBRUk9Ig&#x3D;&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 <h1 id="四、环境搭建"><a href="#四、环境搭建" class="headerlink" title="四、环境搭建"></a>四、环境搭建</h1><h2 id="4-1-vscode环境搭建"><a href="#4-1-vscode环境搭建" class="headerlink" title="4.1 vscode环境搭建"></a>4.1 vscode环境搭建</h2><p>vscode是微软近几年推出的一款<a target="_blank" href="https://code.visualstudio.com/" rel="external nofollow noreferrer noopener">免费</a>、<a target="_blank" href="https://github.com/Microsoft/vscode" rel="external nofollow noreferrer noopener">开源</a>、<a target="_blank" href="https://www.electronjs.org/" rel="external nofollow noreferrer noopener">跨平台</a>、资源占用（较）少、架构优良、插件扩展丰富（不会像eclipse一样卡顿）的一款IDE代码编辑、编译、调试一体化的工具，是目前即全面又好用的IDE开发环境。</p>
 <p>可能以下的配置过程略显麻烦，我们也提供了一个完整的环境，方便大家直接使用开发代码的protable版本，适用于windows的32和64位的版本：</p>
-<pre class="language-none"><code class="language-none">32位下载链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1YRwBz-EsxpNGmm1yHk3CLw
+<pre class="line-numbers language-none"><code class="language-none">32位下载链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1YRwBz-EsxpNGmm1yHk3CLw
 提取码：1234
 
 64位下载链接：https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;11vZUjX_a_0YlQykP0w4bqw
-提取码：1234</code></pre>
+提取码：1234<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>以上只要把解压后的CMake/bin和mingw下的bin目录配置到系统的path中就可以直接使用了。</p>
 <h3 id="4-1-1-vscode软件下载"><a href="#4-1-1-vscode软件下载" class="headerlink" title="4.1.1 vscode软件下载"></a>4.1.1 vscode软件下载</h3><p>vscode支持windows平台的protable免安装版本，再也不用下载之后还要在系统上安装了，可怜的C盘终于不用塞那么多软件了，如果你喜欢，甚至可以把软件放在U盘里，插到电脑上来使用，更加便捷。</p>
 <p>由于是便捷版本，插件下载时必须设置相关目录才能被正常使用，接下来看看怎么使用这款神奇的软件吧。</p>
@@ -1534,16 +1533,16 @@ int main(int argc, char *argv[])
 <p>1、使能便携模式</p>
 <p>Window/Linux用户：</p>
 <p>解压zip压缩包，并创建data目录</p>
-<pre class="language-none"><code class="language-none">|- VSCode-win32-x64-1.50.1
+<pre class="line-numbers language-none"><code class="language-none">|- VSCode-win32-x64-1.50.1
 |   |- Code.exe (or code executable)
 |   |- data
-|   |- ...</code></pre>
+|   |- ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>macOS用户：</p>
 <p>解压后，创建code-portable-data目录</p>
-<pre class="language-none"><code class="language-none">|- Visual Studio Code.app
-|- code-portable-data</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">|- Visual Studio Code.app
+|- code-portable-data<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>如果处于隔离模式，需要输入以下信息：</p>
-<pre class="language-none"><code class="language-none">xattr -dr com.apple.quarantine Visual\ Studio\ Code.app</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">xattr -dr com.apple.quarantine Visual\ Studio\ Code.app<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>如果是Insiders（开发版）模式，创建的目录名称是<strong>code-insiders-portable-data</strong></p>
 <p><strong>设置完整的便携模式流程</strong></p>
 <ol>
@@ -1565,14 +1564,14 @@ int main(int argc, char *argv[])
 <li>  <strong>Linux</strong> <code>~/.vscode/extensions</code></li>
 </ul>
 <p>最终的目录结构大概是这样：</p>
-<pre class="language-none"><code class="language-none">|- VSCode-win32-x64-1.50.1
+<pre class="line-numbers language-none"><code class="language-none">|- VSCode-win32-x64-1.50.1
 |   |- Code.exe (or code executable)
 |   |- data
 |   |   |- user-data
 |   |   |   |- ...
 |   |   |- extensions
 |   |   |   |- ...
-|   |- ...</code></pre>
+|   |- ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>vscode在运行的过程中会产生一些临时文件，如果你想”收留”它们的话，可以在data目录下创建一个TMP目录用于存放vscode的一些临时数据内容。</p>
 <h3 id="4-1-2-插件下载"><a href="#4-1-2-插件下载" class="headerlink" title="4.1.2 插件下载"></a>4.1.2 插件下载</h3><p>工欲善其事必先利其器，vscode只是一个IDE环境，丰富的插件才是vscode的灵魂所在。本项目中必选的插件如下：</p>
 <ul>
@@ -1598,10 +1597,10 @@ int main(int argc, char *argv[])
 <p><a target="_blank" href="https://cmake.org/download/" rel="external nofollow noreferrer noopener">CMake的下载</a>：按照自己的平台下载对应的软件安装即可。</p>
 <p>提供额外的链接：<a target="_blank" href="https://pan.baidu.com/s/1XccI2MEFUouxZkQKzEhG3w" rel="external nofollow noreferrer noopener">https://pan.baidu.com/s/1XccI2MEFUouxZkQKzEhG3w</a><br>        提取码：1234</p>
 <p>安装完成后，打开cmd命令行输入”cmake  -version”验证cmake工具是否能够正常运行。</p>
-<pre class="language-none"><code class="language-none">C:\Users\AIBIT&gt;cmake -version
+<pre class="line-numbers language-none"><code class="language-none">C:\Users\AIBIT&gt;cmake -version
 cmake version 3.17.5
 
-CMake suite maintained and supported by Kitware (kitware.com&#x2F;cmake).</code></pre>
+CMake suite maintained and supported by Kitware (kitware.com&#x2F;cmake).<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>看到cmake版本的展示说明软件安装成功。</p>
 <h2 id="4-2-编译与调试"><a href="#4-2-编译与调试" class="headerlink" title="4.2 编译与调试"></a>4.2 编译与调试</h2><p>一个源代码工程可能由多个源文件组成，并且这些源文件可能由.c/.cpp或者其他语言的编译文件组成，这些源代码怎么编译呢？这就需要一个编译管理的工具，跨平台通用的管理工具叫做Make，我们只需要提供Makefile文件即可，这个文件中描述了我们要怎样编译源代码文件。</p>
 <p>接下来的问题是，Makefile本身维护也很复杂，特别在目录多了后。那么有没有一款可以跨平台的代码编译管理工具呢？CMake即是最好的选择，仅仅写一些简单的描述，就会生成编译需要的Makfile文件，从而通过Make编译生成需要的最终程序运行文件。</p>
@@ -1657,7 +1656,7 @@ CMake suite maintained and supported by Kitware (kitware.com&#x2F;cmake).</code>
 <p>人脸比对程序流程图</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201222162709968.png" alt="image-20201222162709968"></p>
 <h2 id="5-3-编码"><a href="#5-3-编码" class="headerlink" title="5.3 编码"></a>5.3 编码</h2><p>针对目标的时序和流程有了，流程涉及到的知识也掌握了，接下来就可以通过编码的方式应用这些技术点完成这个流程，从而完成需求的过程。</p>
-<pre class="language-c" data-language="c"><code class="language-c">double fFaceCompare(const char *pszAPPID,
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">double fFaceCompare(const char *pszAPPID,
                    const char *pszAPPSecret, const char *pszAPPKey,
                    const char *pszImagePath1, const char *pszImagePath2)
 &#123;
@@ -1705,7 +1704,7 @@ CMake suite maintained and supported by Kitware (kitware.com&#x2F;cmake).</code>
     cstring_del(pBody);
 
     return fScore;
-&#125;</code></pre>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 <h2 id="5-4-测试及结果"><a href="#5-4-测试及结果" class="headerlink" title="5.4 测试及结果"></a>5.4 测试及结果</h2><p>程序是否按照既定的流程走了呢？有没有可能在不同的的场景下会偏离流程，而出现不可预知的结果呢？测试在这里就起到了这样的作用：列举出用户使用的所有可能的场景，对场景的流程进行列举，再通过这些场景的流程去验证程序的流程正确性的过程。</p>
@@ -2294,7 +2293,7 @@ CMake suite maintained and supported by Kitware (kitware.com&#x2F;cmake).</code>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">55.9k</span>&nbsp;字
+                class="white-color">56k</span>&nbsp;字
             
             
             
@@ -2504,7 +2503,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </body>
