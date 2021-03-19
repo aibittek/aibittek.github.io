@@ -423,7 +423,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    20.5k
+                    20.4k
                 </div>
                 
 
@@ -2353,16 +2353,16 @@ list3 <span class="token operator">=</span> <span class="token punctuation">(</s
 <pre class="line-numbers language-python"><code class="language-python">s <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>输出结果</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'h', 'l', 'o', 'e'&amp;#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">{</span><span class="token string">'h'</span>, <span class="token string">'l'</span>, <span class="token string">'o'</span>, <span class="token string">'e'</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>需要注意的是，输出的结果每次并不相同，并且’l’字符只打印了一次。这也证明了set集合是一个无需不重复的元素序列。</p>
 <p><strong>集合的运算</strong></p>
 <pre class="line-numbers language-python"><code class="language-python">a <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token string">'abracadabra'</span><span class="token punctuation">)</span>
 b <span class="token operator">=</span> set<span class="token punctuation">(</span><span class="token string">'alacazam'</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>                <span class="token comment" spellcheck="true"># 输出&amp;#123;'a', 'r', 'b', 'c', 'd'&amp;#125;</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 集合a中包含而集合b中不包含的元素, 输出&amp;#123;'r', 'd', 'b'&amp;#125;</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">|</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 集合a或b中包含的所有元素, &amp;#123;'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'&amp;#125;</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">&amp;</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 集合a和b中都包含了的元素, &amp;#123;'a', 'c'&amp;#125;</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">^</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 不同时包含于a和b的元素, &amp;#123;'r', 'd', 'b', 'm', 'z', 'l'&amp;#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>                <span class="token comment" spellcheck="true"># 输出{'a', 'r', 'b', 'c', 'd'}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 集合a中包含而集合b中不包含的元素, 输出{'r', 'd', 'b'}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">|</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 集合a或b中包含的所有元素, {'a', 'c', 'r', 'd', 'b', 'm', 'z', 'l'}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">&amp;</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 集合a和b中都包含了的元素, {'a', 'c'}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a <span class="token operator">^</span> b<span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 不同时包含于a和b的元素, {'r', 'd', 'b', 'm', 'z', 'l'}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>集合的方法</strong></p>
 <table>
 <thead>
@@ -2460,7 +2460,7 @@ s<span class="token punctuation">.</span>remove<span class="token punctuation">(
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Python'</span> <span class="token keyword">in</span> s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>输出为True</p>
 <h4 id="Dictionary（字典）"><a href="#Dictionary（字典）" class="headerlink" title="Dictionary（字典）"></a>Dictionary（字典）</h4><p>字典是key和value的成对数据类型，可以理解为每一个值value都有一个名字key，使用方法如下：</p>
-<pre class="line-numbers language-python"><code class="language-python">d <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'name' : '黄飞鸿', '技能' : '无影脚', '武力值' : 99 &amp;#125;</span>
+<pre class="line-numbers language-python"><code class="language-python">d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'name'</span> <span class="token punctuation">:</span> <span class="token string">'黄飞鸿'</span><span class="token punctuation">,</span> <span class="token string">'技能'</span> <span class="token punctuation">:</span> <span class="token string">'无影脚'</span><span class="token punctuation">,</span> <span class="token string">'武力值'</span> <span class="token punctuation">:</span> <span class="token number">99</span> <span class="token punctuation">}</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>d是一个字典，使用{}，其中的元素以逗号作为分割，逗号分隔的就是key:value键值对，key必须是<strong>不重复的字符串类型</strong>，而值可以是Python支持的任意类型。</p>
 <p>也可以使用关键的key访问，比如访问name,可以写为d[‘name’]，得到的结果是’黄飞鸿’，尝试使用这种方法打印其他的值。</p>
@@ -2995,17 +2995,17 @@ r <span class="token operator">=</span> requests<span class="token punctuation">
 </tbody></table>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>如果import requests显示没有这个模块，可以使用以下的方式安装。</p>
 <pre><code>pip install requests</code></pre>
-<h4 id="header请求"><a href="#header请求" class="headerlink" title="header请求"></a>header请求</h4><pre class="line-numbers language-python"><code class="language-python">r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.douban.com/'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit'&amp;#125;)</span>
+<h4 id="header请求"><a href="#header请求" class="headerlink" title="header请求"></a>header请求</h4><pre class="line-numbers language-python"><code class="language-python">r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.douban.com/'</span><span class="token punctuation">,</span> headers<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 r<span class="token punctuation">.</span>text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h4 id="上传数据"><a href="#上传数据" class="headerlink" title="上传数据"></a>上传数据</h4><p>发送POST对比GET请求，需要增加data参数，例如：</p>
-<pre class="line-numbers language-python"><code class="language-python">r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">'https://search.douban.com/movie/subject_search'</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'search_text': '机器人总动员', 'cat': '1002'&amp;#125;)</span>
+<pre class="line-numbers language-python"><code class="language-python">r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string">'https://search.douban.com/movie/subject_search'</span><span class="token punctuation">,</span> data<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'search_text'</span><span class="token punctuation">:</span> <span class="token string">'机器人总动员'</span><span class="token punctuation">,</span> <span class="token string">'cat'</span><span class="token punctuation">:</span> <span class="token string">'1002'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 r<span class="token punctuation">.</span>url <span class="token comment" spellcheck="true">#实际请求的URL</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>通过以上提交data参数，获取到相关的搜索结果信息</p>
 <h4 id="上传json数据"><a href="#上传json数据" class="headerlink" title="上传json数据"></a>上传json数据</h4><p>使用json=params，内部会转化为json格式，例如：</p>
-<pre class="line-numbers language-python"><code class="language-python">params <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'key': 'value'&amp;#125;</span>
+<pre class="line-numbers language-python"><code class="language-python">params <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'key'</span><span class="token punctuation">:</span> <span class="token string">'value'</span><span class="token punctuation">}</span>
 r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> json<span class="token operator">=</span>params<span class="token punctuation">)</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h4 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h4><p>注意读取文件使用rb，否则获取的文件长度信息会不正确</p>
-<pre class="line-numbers language-python"><code class="language-python">upload_files <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;'file': open('report.xls', 'rb')&amp;#125;</span>
+<pre class="line-numbers language-python"><code class="language-python">upload_files <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'file'</span><span class="token punctuation">:</span> open<span class="token punctuation">(</span><span class="token string">'report.xls'</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
 r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> files<span class="token operator">=</span>upload_files<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><h4 id="查找和替换"><a href="#查找和替换" class="headerlink" title="查找和替换"></a>查找和替换</h4><p>通过以上的requests模块，获取到了网页的信息，当信息多的时候，就需要检索，平时用的比较多的是搜索和替换，例如：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/20210317101004.png" alt="image-20210317101004414"></p>
@@ -3881,7 +3881,7 @@ var <span class="token operator">=</span> <span class="token string">'aababaa \n
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">54k</span>&nbsp;字
+                class="white-color">53.1k</span>&nbsp;字
             
             
             

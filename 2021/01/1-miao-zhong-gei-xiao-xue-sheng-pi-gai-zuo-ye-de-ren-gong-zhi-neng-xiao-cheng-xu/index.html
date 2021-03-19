@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.7k
+                    9.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    41 分
+                    37 分
                 </div>
                 
 
@@ -682,18 +682,18 @@
 <p>我们可以看到在项目的根目录有一个 <code>app.json</code> 和 <code>project.config.json</code>，此外在 <code>pages/logs</code> 目录下还有一个 <code>logs.json</code>，我们依次来说明一下它们的用途。</p>
 <p><strong>小程序配置 app.json</strong></p>
 <p><code>app.json</code> 是当前小程序的全局配置，包括了小程序的所有页面路径、界面表现、网络超时时间、底部 tab 等。QuickStart 项目里边的 <code>app.json</code> 配置内容如下：</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"pages"</span><span class="token operator">:</span><span class="token punctuation">[</span>
     <span class="token string">"pages/index/index"</span><span class="token punctuation">,</span>
     <span class="token string">"pages/logs/logs"</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"window"</span><span class="token operator">:</span>&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token property">"window"</span><span class="token operator">:</span><span class="token punctuation">{</span>
     <span class="token property">"backgroundTextStyle"</span><span class="token operator">:</span><span class="token string">"light"</span><span class="token punctuation">,</span>
     <span class="token property">"navigationBarBackgroundColor"</span><span class="token operator">:</span> <span class="token string">"#fff"</span><span class="token punctuation">,</span>
     <span class="token property">"navigationBarTitleText"</span><span class="token operator">:</span> <span class="token string">"Weixin"</span><span class="token punctuation">,</span>
     <span class="token property">"navigationBarTextStyle"</span><span class="token operator">:</span><span class="token string">"black"</span>
-  &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们简单说一下这个配置各个项的含义:</p>
 <ol>
 <li> <code>pages</code>字段 —— 用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。</li>
@@ -725,14 +725,14 @@
 <p>同样道理，在小程序中也有同样的角色，其中 <code>WXML</code> 充当的就是类似 <code>HTML</code> 的角色。打开 <code>pages/index/index.wxml</code>，你会看到以下的内容:</p>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>userinfo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">wx:</span>if</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>&amp;#123;&amp;#123;!hasUserInfo &amp;&amp; canIUse&amp;#125;&amp;#125;<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> 获取头像昵称 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name"><span class="token namespace">wx:</span>if</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{!hasUserInfo &amp;&amp; canIUse}}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> 获取头像昵称 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>block</span> <span class="token attr-name"><span class="token namespace">wx:</span>else</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>image</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>&amp;#123;&amp;#123;userInfo.avatarUrl&amp;#125;&amp;#125;<span class="token punctuation">"</span></span> <span class="token attr-name">background-size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cover<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>image</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>text</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>userinfo-nickname<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&#123;">&amp;#123;</span><span class="token entity" title="&#123;">&amp;#123;</span>userInfo.nickName<span class="token entity" title="&#125;">&amp;#125;</span><span class="token entity" title="&#125;">&amp;#125;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>image</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{userInfo.avatarUrl}}<span class="token punctuation">"</span></span> <span class="token attr-name">background-size</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cover<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>image</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>text</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>userinfo-nickname<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{userInfo.nickName}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>block</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>usermotto<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>text</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user-motto<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token entity" title="&#123;">&amp;#123;</span><span class="token entity" title="&#123;">&amp;#123;</span>motto<span class="token entity" title="&#125;">&amp;#125;</span><span class="token entity" title="&#125;">&amp;#125;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>text</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user-motto<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>{{motto}}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>text</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>和 <code>HTML</code> 非常相似，<code>WXML</code> 由标签、属性等等构成。但是也有很多不一样的地方，我们来一一阐述一下：</p>
@@ -765,14 +765,14 @@ JS 只需要管理状态即可:
 </ol>
 <p>更详细的文档可以参考 <a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" rel="external nofollow noreferrer noopener">WXSS</a> 。</p>
 <h4 id="界面和代码结合"><a href="#界面和代码结合" class="headerlink" title="界面和代码结合"></a>界面和代码结合</h4><p>一个服务仅仅只有界面展示是不够的，还需要和用户做交互：响应用户的点击、获取用户的位置等等。在小程序里边，我们就通过编写 <code>JS</code> 脚本文件来处理用户的操作。</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">></span></span><span class="token entity" title="&#123;">&amp;#123;</span><span class="token entity" title="&#123;">&amp;#123;</span> msg <span class="token entity" title="&#125;">&amp;#125;</span><span class="token entity" title="&#125;">&amp;#125;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span><span class="token punctuation">></span></span>{{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">bindtap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clickMe<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击我<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>点击 <code>button</code> 按钮的时候，我们希望把界面上 <code>msg</code> 显示成 <code>&quot;Hello World&quot;</code>，于是我们在 <code>button</code> 上声明一个属性: <code>bindtap</code> ，在 JS 文件里边声明了 <code>clickMe</code> 方法来响应这次点击操作：</p>
-<pre class="line-numbers language-js"><code class="language-js"><span class="token function">Page</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  clickMe<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> msg<span class="token punctuation">:</span> <span class="token string">"Hello World"</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token function">Page</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  clickMe<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span> msg<span class="token punctuation">:</span> <span class="token string">"Hello World"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>响应用户的操作就是这么简单，更详细的事件可以参考文档 <a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html" rel="external nofollow noreferrer noopener">WXML - 事件</a> 。</p>
 <p>此外你还可以在 JS 中调用小程序提供的丰富的 API，利用这些 API 可以很方便的调起微信提供的能力，例如获取用户信息、本地存储、微信支付等。在前边的 QuickStart 例子中，在 <code>pages/index/index.js</code> 就调用了 <a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/user-info/wx.getUserInfo.html" rel="external nofollow noreferrer noopener">wx.getUserInfo</a> 获取微信用户的头像和昵称，最后通过 <code>setData</code> 把获取到的信息显示到界面上。更多 API 可以参考文档 <a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/api.html" rel="external nofollow noreferrer noopener">小程序的API</a> 。</p>
 <p>通过这个章节，你了解了小程序涉及到的文件类型以及对应的角色，在<a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/framework.html" rel="external nofollow noreferrer noopener">下个章节</a>中，我们把这一章所涉及到的文件通过 “小程序的框架” 给 “串” 起来，让他们都工作起来。</p>
@@ -791,7 +791,7 @@ JS 只需要管理状态即可:
 <p>显示效果如下，可以看到图片默认被布局到了最上面，并且是填充满的，我们的目标是布局到中间，因此可以通过index.wxss样式文件来修改</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210124134501857.png" alt="image-20210124134501857"></p>
 <p>修改index.wxss文件，让背景图片居中显示：</p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token number">.</span>bg &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.bg</span> </span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
 
@@ -801,7 +801,7 @@ JS 只需要管理状态即可:
   <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">10</span>rpx<span class="token punctuation">;</span>
 
   <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid green<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>显示效果如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210124140803618.png" alt="image-20210124140803618"></p>
 <h4 id="绘制两个按钮"><a href="#绘制两个按钮" class="headerlink" title="绘制两个按钮"></a>绘制两个按钮</h4><p>在index.wxml中增加以下内容</p>
@@ -819,7 +819,7 @@ JS 只需要管理状态即可:
 <p>显示效果：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210124161023708.png" alt="image-20210124161023708"></p>
 <p>使用CSS排版</p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token number">.</span>photo &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.photo</span> </span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">150</span>rpx<span class="token punctuation">;</span>
 
@@ -828,9 +828,9 @@ JS 只需要管理状态即可:
 
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#FFF</span><span class="token punctuation">;</span>
   <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span>px <span class="token number">0</span>px <span class="token number">50</span>px <span class="token hexcode">#000000</span><span class="token number">18</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>camera&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.camera</span></span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">150</span>rpx<span class="token punctuation">;</span>
 
@@ -839,17 +839,17 @@ JS 只需要管理状态即可:
 
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#FFF</span><span class="token punctuation">;</span>
   <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span>px <span class="token number">0</span>px <span class="token number">10</span>px <span class="token hexcode">#000000</span><span class="token number">18</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>photoImg &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.photoImg</span> </span><span class="token punctuation">{</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">20</span>rpx <span class="token number">0</span> <span class="token number">40</span>rpx<span class="token punctuation">;</span>
   <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">60</span>rpx<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>cameraImg &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.cameraImg</span> </span><span class="token punctuation">{</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">20</span>rpx <span class="token number">0</span> <span class="token number">40</span>rpx<span class="token punctuation">;</span>
   <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">60</span>rpx<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>效果：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210124161611025.png" alt="image-20210124161611025"></p>
 <p>增加Grid布局，让两个按钮按行的方式布局</p>
@@ -872,11 +872,11 @@ JS 只需要管理状态即可:
   &lt;/view&gt;
 &lt;/view&gt;</code></pre>
 <p>index.wxss样式文件：</p>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token number">.</span>operateButtons&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.operateButtons</span></span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
   <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">50%</span> - <span class="token number">10</span>rpx<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">50%</span> - <span class="token number">10</span>rpx<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">grid-column-gap</span><span class="token punctuation">:</span> <span class="token number">20</span>rpx<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>效果：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210124162127818.png" alt="image-20210124162127818"></p>
 <p>把两个按钮靠手机底部放置，让用户更加容易点击：</p>
@@ -912,11 +912,11 @@ JS 只需要管理状态即可:
 <p>index.wxss样式文件：</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/**index.wxss**/</span>
 
-page &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector">page </span><span class="token punctuation">{</span>
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#448AFF</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>bg &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.bg</span> </span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
   <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
@@ -926,34 +926,34 @@ page &amp;<span class="token hexcode">#123</span><span class="token punctuation"
   <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">10</span>rpx<span class="token punctuation">;</span>
 
   <span class="token comment" spellcheck="true">/* border: 1px solid green; */</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> </span><span class="token punctuation">{</span>
   <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>rpx<span class="token punctuation">;</span>
   <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">30</span>rpx<span class="token punctuation">;</span>
   <span class="token property">right</span><span class="token punctuation">:</span> <span class="token number">30</span>rpx<span class="token punctuation">;</span>
   <span class="token property">z-index</span><span class="token punctuation">:</span> <span class="token number">99</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">/* border: 1px solid green; */</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV <span class="token number">.</span>operateButtons&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> <span class="token class">.operateButtons</span></span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
   <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">50%</span> - <span class="token number">10</span>rpx<span class="token punctuation">)</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token number">100%</span> - <span class="token number">50%</span> - <span class="token number">10</span>rpx<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">grid-column-gap</span><span class="token punctuation">:</span> <span class="token number">20</span>rpx<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV <span class="token number">.</span>photoImg &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> <span class="token class">.photoImg</span> </span><span class="token punctuation">{</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">20</span>rpx <span class="token number">0</span> <span class="token number">40</span>rpx<span class="token punctuation">;</span>
   <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">60</span>rpx<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV <span class="token number">.</span>cameraImg &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> <span class="token class">.cameraImg</span> </span><span class="token punctuation">{</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">20</span>rpx <span class="token number">0</span> <span class="token number">40</span>rpx<span class="token punctuation">;</span>
   <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">60</span>rpx<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV <span class="token number">.</span>photo &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> <span class="token class">.photo</span> </span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">150</span>rpx<span class="token punctuation">;</span>
 
@@ -962,9 +962,9 @@ page &amp;<span class="token hexcode">#123</span><span class="token punctuation"
 
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#FFF</span><span class="token punctuation">;</span>
   <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span>px <span class="token number">0</span>px <span class="token number">10</span>px <span class="token hexcode">#000000</span><span class="token number">18</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV <span class="token number">.</span>camera&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> <span class="token class">.camera</span></span><span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">150</span>rpx<span class="token punctuation">;</span>
 
@@ -973,21 +973,21 @@ page &amp;<span class="token hexcode">#123</span><span class="token punctuation"
 
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token hexcode">#FFF</span><span class="token punctuation">;</span>
   <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token number">0</span>px <span class="token number">0</span>px <span class="token number">10</span>px <span class="token hexcode">#000000</span><span class="token number">18</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV <span class="token number">.</span>t<span class="token number">1</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> <span class="token class">.t1</span> </span><span class="token punctuation">{</span>
   <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">30</span>rpx<span class="token punctuation">;</span>
 
   <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#333</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>operationDIV <span class="token number">.</span>t<span class="token number">2</span> &amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.operationDIV</span> <span class="token class">.t2</span> </span><span class="token punctuation">{</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">28</span>rpx<span class="token punctuation">;</span>
   <span class="token property">color</span><span class="token punctuation">:</span> <span class="token hexcode">#999999</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token number">.</span>bccDIV&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<span class="token selector"><span class="token class">.bccDIV</span></span><span class="token punctuation">{</span>
   <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
 
   <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">200</span>rpx<span class="token punctuation">;</span>
@@ -997,7 +997,7 @@ page &amp;<span class="token hexcode">#123</span><span class="token punctuation"
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span><span class="token number">240</span>, <span class="token number">240</span>, <span class="token number">240</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token property">z-index</span><span class="token punctuation">:</span> <span class="token number">90</span><span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>最后的效果如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210124162601928.png" alt="image-20210124162601928"></p>
 <h4 id="让按钮可以触发事件"><a href="#让按钮可以触发事件" class="headerlink" title="让按钮可以触发事件"></a>让按钮可以触发事件</h4><p>使用bingtap属性给wxml中的view添加点击事件，语法如下：</p>
@@ -1005,12 +1005,12 @@ page &amp;<span class="token hexcode">#123</span><span class="token punctuation"
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>camera<span class="token punctuation">"</span></span> <span class="token attr-name">bindtap</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>camera<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>这样就赋予了class为photo和camera的view具备了点击的能力，当按钮被单击时，会去执行bingtap指定的photo和camera方法。</p>
 <p>在index.js中增加两个函数，当点击相册和相机按钮时，观察console中是否有相关的日志信息。</p>
-<pre class="line-numbers language-js"><code class="language-js"><span class="token function">photo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token function">photo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'photo'</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-<span class="token function">camera</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token function">camera</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'camera'</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>点击两个按钮，console显示的结果信息：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210124163213292.png" alt="image-20210124163213292"></p>
 <h2 id="软件框架与功能"><a href="#软件框架与功能" class="headerlink" title="软件框架与功能"></a>软件框架与功能</h2><h3 id="功能模块"><a href="#功能模块" class="headerlink" title="功能模块"></a>功能模块</h3><p>根据之前体验的内容，大致可以把用户的操作分为四个模块部分：</p>
@@ -1043,93 +1043,93 @@ bingtap表示按钮单击时，会触发的行为动作为click</code></pre>
 <p>如果对按钮在画面中的位置样式等有调整，可以在<a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" rel="external nofollow noreferrer noopener">wxss</a>中修改，并查看所有支持的内容。</p>
 <p>由于微信的wxss文件参考css文件格式，可以通过<a target="_blank" href="https://www.runoob.com/css/css-tutorial.html" rel="external nofollow noreferrer noopener">css教程</a>查看对应的内容。</p>
 <p>打开index.wxss文件，增加以下内容并Ctrl+s保存，观察界面的变化：</p>
-<pre class="line-numbers language-css"><code class="language-css">button&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">button</span><span class="token punctuation">{</span>
     <span class="token property">position</span><span class="token punctuation">:</span>absolute<span class="token punctuation">;</span>
     <span class="token property">left</span><span class="token punctuation">:</span><span class="token number">100</span>px<span class="token punctuation">;</span>
     <span class="token property">top</span><span class="token punctuation">:</span><span class="token number">150</span>px<span class="token punctuation">;</span>
-&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>给按钮绑定处理事件</strong></p>
 <p>打开index.js文件，增加click()方法</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The button is clicked'</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210122155507761.png" alt="image-20210122155507761"></p>
 <h3 id="图片处理技能"><a href="#图片处理技能" class="headerlink" title="图片处理技能"></a>图片处理技能</h3><h4 id="chooseImage"><a href="#chooseImage" class="headerlink" title="chooseImage"></a>chooseImage</h4><p><a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html" rel="external nofollow noreferrer noopener">原型</a>：从本地相册选择图片或使用相机拍照。</p>
 <pre><code>wx.chooseImage(Object object)</code></pre>
 <p>示例：count是最多可以选择的图片张数，最多9张，sizeType是所选的图片的尺寸，sourceType选择图片的来源。返回值res.tempFilePaths是图片的本地临时文件路径列表 (本地路径)</p>
-<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   count<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
   sizeType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'original'</span><span class="token punctuation">,</span> <span class="token string">'compressed'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   sourceType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'album'</span><span class="token punctuation">,</span> <span class="token string">'camera'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// tempFilePath可以作为img标签的src属性显示图片</span>
     <span class="token keyword">const</span> tempFilePaths <span class="token operator">=</span> res<span class="token punctuation">.</span>tempFilePaths
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="getImageInfo"><a href="#getImageInfo" class="headerlink" title="getImageInfo"></a>getImageInfo</h4><p><a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.getImageInfo.html" rel="external nofollow noreferrer noopener">原型</a>：获取图片信息。网络图片需先配置download域名才能生效。</p>
 <pre><code>wx.getImageInfo(Object object)</code></pre>
 <p>示例：src是图片的路径，支持网络路径、本地路径、代码包路径，返回值res.width是图片原始宽度，单位px，res.height是图片原始高度，单位px。</p>
-<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">getImageInfo</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">getImageInfo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   src<span class="token punctuation">:</span> <span class="token string">'images/a.jpg'</span><span class="token punctuation">,</span>
-  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>width<span class="token punctuation">)</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>height<span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    wx<span class="token punctuation">.</span><span class="token function">getImageInfo</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    wx<span class="token punctuation">.</span><span class="token function">getImageInfo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       src<span class="token punctuation">:</span> res<span class="token punctuation">.</span>tempFilePaths<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>width<span class="token punctuation">)</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>height<span class="token punctuation">)</span>
-      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><a target="_blank" href="https://developers.weixin.qq.com/s/Kd47Sbmr6yYu" rel="external nofollow noreferrer noopener">在开发者工具中预览效果</a></p>
 <h4 id="readFile"><a href="#readFile" class="headerlink" title="readFile"></a>readFile</h4><p><a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/file/FileSystemManager.readFile.html" rel="external nofollow noreferrer noopener">原型</a>：读取本地文件内容</p>
 <pre><code>FileSystemManager.readFile(Object object)</code></pre>
 <p>示例：其中filePath是要读取的文件的路径 (本地路径)，encoding指定读取文件的字符编码，如果不传 encoding，则以 ArrayBuffer 格式读取文件的二进制内容</p>
-<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     filePath<span class="token punctuation">:</span> photo<span class="token punctuation">,</span>
     encoding<span class="token punctuation">:</span> <span class="token string">'base64'</span><span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token function">fail</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">fail</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="saveImageToPhotosAlbum"><a href="#saveImageToPhotosAlbum" class="headerlink" title="saveImageToPhotosAlbum"></a>saveImageToPhotosAlbum</h4><p><a target="_blank" href="https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.saveImageToPhotosAlbum.html" rel="external nofollow noreferrer noopener">原型</a>：保存图片到系统相册</p>
 <p>示例：其中url必须是图片文件路径，可以是临时文件路径或永久文件路径 (本地路径) ，不支持网络路径</p>
-<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">saveImageToPhotosAlbum</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">saveImageToPhotosAlbum</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     filePath<span class="token punctuation">:</span> <span class="token string">'url'</span><span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        wx<span class="token punctuation">.</span><span class="token function">showModal</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        wx<span class="token punctuation">.</span><span class="token function">showModal</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
             content<span class="token punctuation">:</span> <span class="token string">'图片已保存到相册，去晒一下吧~'</span><span class="token punctuation">,</span>
             showCancel<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
             confirmText<span class="token punctuation">:</span> <span class="token string">'好哒'</span><span class="token punctuation">,</span>
             confirmColor<span class="token punctuation">:</span> <span class="token string">'#72B9C3'</span><span class="token punctuation">,</span>
-            success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>confirm<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>confirm<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'用户点击确定'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="小程序同步处理Promise和then"><a href="#小程序同步处理Promise和then" class="headerlink" title="小程序同步处理Promise和then"></a>小程序同步处理Promise和then</h3><p>Promise是JavaScript的内置对象，then属于Promise的方法，then：Promise.prototype.then()</p>
 <p>Promise如同它的本身含义，保证Promise内的代码执行完毕，才会执行then内的代码。也可以简单理解为then是Promise的回调函数，resolve表示成功的回调，reject表示失败的回调。</p>
 <p>示例代码：</p>
-<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">"Promise"</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"then result:"</span> <span class="token operator">+</span> result<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"then err:"</span> <span class="token operator">+</span> err<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>结果，调用reject会得到另一个结果：</p>
 <pre class="line-numbers language-js"><code class="language-js">then result<span class="token punctuation">:</span>Promise<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="加解密模块"><a href="#加解密模块" class="headerlink" title="加解密模块"></a>加解密模块</h3><p>加解密模块使用谷歌开源的CryptoJs模块，功能强大，包含很多的前端解密算法。</p>
@@ -1162,12 +1162,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>  中括号 <strong>[]</strong> 保存数组，数组可以包含多个对象</li>
 </ul>
 <p>一个简单的Json字符串例子：</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"tupaipai"</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>Json序列化和反序列化</strong></p>
 <p>序列化是把代码中的数据key : value转化为Json字符串的过程，反序列化相反，下面看一个例子：</p>
-<pre class="line-numbers language-json"><code class="language-json">var jsonData = '&amp;#<span class="token number">123</span><span class="token punctuation">;</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"tupaipai"</span> &amp;#<span class="token number">125</span><span class="token punctuation">;</span>'
+<pre class="line-numbers language-json"><code class="language-json">var jsonData = '<span class="token punctuation">{</span> <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"tupaipai"</span> <span class="token punctuation">}</span>'
 var jsonParse = JSON.parse(jsonData<span class="token punctuation">)</span>
 console.log(jsonParse.name<span class="token punctuation">)</span>
 
@@ -1175,36 +1175,36 @@ var jsonString = JSON.stringify(jsonParse<span class="token punctuation">)</span
 console.log(jsonString<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>打印结果：</p>
 <pre class="line-numbers language-json"><code class="language-json">tupaipai
-&amp;#<span class="token number">123</span><span class="token punctuation">;</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"tupaipai"</span>&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token punctuation">{</span><span class="token property">"name"</span><span class="token operator">:</span><span class="token string">"tupaipai"</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="网络模块"><a href="#网络模块" class="headerlink" title="网络模块"></a>网络模块</h3><p>原型：发起 HTTPS 网络请求。</p>
 <pre><code>wx.request(Object object)</code></pre>
 <p>示例：</p>
-<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   url<span class="token punctuation">:</span> <span class="token string">'https://www.baidu.com'</span><span class="token punctuation">,</span>
-  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  success <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>demo：访问百度网页，并得到网内容并展示</p>
-<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     url<span class="token punctuation">:</span> <span class="token string">'http://www.baidu.com'</span><span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            filePath<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`$&amp;#123;wx.env.USER_DATA_PATH&amp;#125;/index.html`</span></span><span class="token punctuation">,</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            filePath<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>wx<span class="token punctuation">.</span>env<span class="token punctuation">.</span>USER_DATA_PATH<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/index.html`</span></span><span class="token punctuation">,</span>
             data<span class="token punctuation">:</span> res<span class="token punctuation">.</span>data<span class="token punctuation">,</span>
-            <span class="token function">success</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`$&amp;#123;wx.env.USER_DATA_PATH&amp;#125;/index.html`</span></span><span class="token punctuation">)</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <span class="token function">success</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>wx<span class="token punctuation">.</span>env<span class="token punctuation">.</span>USER_DATA_PATH<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/index.html`</span></span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过console打印的信息栏里，点击打开<a target="_blank" href="http://usr/index.html%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%A6%82%E4%B8%8B%EF%BC%9A" rel="external nofollow noreferrer noopener">http://usr/index.html，显示如下：</a></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210122175426778.png" alt="image-20210122175426778"></p>
 <h3 id="其他模块"><a href="#其他模块" class="headerlink" title="其他模块"></a>其他模块</h3><h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><p>获取GMT时间</p>
 <pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUTCString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="canvas绘制"><a href="#canvas绘制" class="headerlink" title="canvas绘制"></a>canvas绘制</h3><p>wxml中需要增加一个canvas，以下定义一个canvas，宽度和高度由代码data数据中的width和height决定。</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>canv<span class="token punctuation">'</span></span> <span class="token attr-name">canvas-id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>shareImg<span class="token punctuation">'</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">='</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span>&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>width&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span>&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>&amp;<span class="token hexcode">#123</span><span class="token punctuation">;</span>height&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>&amp;<span class="token hexcode">#125</span><span class="token punctuation">;</span>px</span><span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>canv<span class="token punctuation">'</span></span> <span class="token attr-name">canvas-id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>shareImg<span class="token punctuation">'</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">='</span><span class="token attr-value"><span class="token selector">width:</span><span class="token punctuation">{</span><span class="token punctuation">{</span>width<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token selector">px; height:</span><span class="token punctuation">{</span><span class="token punctuation">{</span>height<span class="token punctuation">}</span><span class="token punctuation">}</span>px</span><span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>绘制图片。以下绘制的图片源时imagePath，从x=0,y=0像素开始绘制，绘制的宽和高时res.width和res.height</p>
 <pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">let</span> ctx <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">createCanvasContext</span><span class="token punctuation">(</span><span class="token string">'shareImg'</span><span class="token punctuation">)</span>
 ctx<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>imagePath<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span>width<span class="token punctuation">,</span> res<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -1235,17 +1235,17 @@ ctx<span class="token punctuation">.</span><span class="token function">draw</sp
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210123125057731.png" alt="image-20210123125057731"></p>
 <h3 id="程序开发流程图"><a href="#程序开发流程图" class="headerlink" title="程序开发流程图"></a>程序开发流程图</h3><p>根据用例图和<a target="_blank" href="https://www.xfyun.cn/doc/words/photo-calculate-recg/API.html" rel="external nofollow noreferrer noopener">讯飞的开发文档</a>分析得到以下的开发流程图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210123125412550.png" alt="image-20210123125412550"></p>
-<h3 id="分步骤编码"><a href="#分步骤编码" class="headerlink" title="分步骤编码"></a>分步骤编码</h3><h4 id="获取图片"><a href="#获取图片" class="headerlink" title="获取图片"></a>获取图片</h4><pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<h3 id="分步骤编码"><a href="#分步骤编码" class="headerlink" title="分步骤编码"></a>分步骤编码</h3><h4 id="获取图片"><a href="#获取图片" class="headerlink" title="获取图片"></a>获取图片</h4><pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     count<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
     sizeType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'compressed'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     sourceType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'album'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>tempFilePaths<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>errMsg<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过打印信息查看文件是否能够正常打开，然后继续下一步；</p>
 <h4 id="构造发送请求"><a href="#构造发送请求" class="headerlink" title="构造发送请求"></a>构造发送请求</h4><p>接下来是把图片发送给服务器，请求服务器要求如下：</p>
 <p><strong>请求head要求</strong></p>
@@ -1278,22 +1278,22 @@ digest: SHA-256=Base64(SHA256(请求body))</code></pre>
     &#125;
 &#125;</code></pre>
 <p>构造head和body的请求代码如下，<strong>注意替换以下的app_id和api_key为自己在讯飞开放平台注册的相关值。</strong></p>
-<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     filePath<span class="token punctuation">:</span> res<span class="token punctuation">.</span>tempFilePaths<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     encoding<span class="token punctuation">:</span> <span class="token string">'base64'</span><span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">var</span> body <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token string">"common"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> body <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">"common"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                 <span class="token string">"app_id"</span><span class="token punctuation">:</span> <span class="token string">"你的讯飞appid"</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-            <span class="token string">"business"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">"business"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                 <span class="token string">"ent"</span><span class="token punctuation">:</span> <span class="token string">"math-arith"</span><span class="token punctuation">,</span>
                 <span class="token string">"aue"</span><span class="token punctuation">:</span> <span class="token string">"raw"</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-            <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                 <span class="token string">"image"</span><span class="token punctuation">:</span> res<span class="token punctuation">.</span>data
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
         <span class="token comment" spellcheck="true">// 获取当前GMT时间</span>
         <span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUTCString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Date:"</span> <span class="token operator">+</span> date<span class="token punctuation">)</span>
@@ -1302,59 +1302,59 @@ digest: SHA-256=Base64(SHA256(请求body))</code></pre>
         <span class="token keyword">let</span> digest <span class="token operator">=</span> <span class="token string">'SHA-256='</span> <span class="token operator">+</span> CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Base64<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>CryptoJS<span class="token punctuation">.</span><span class="token function">SHA256</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>base64body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Digest:"</span> <span class="token operator">+</span> digest<span class="token punctuation">)</span>
         <span class="token comment" spellcheck="true">// 获取Authorization</span>
-        <span class="token keyword">let</span> signatureOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`host: rest-api.xfyun.cn\ndate: $&amp;#123;date&amp;#125;\nPOST /v2/itr HTTP/1.1\ndigest: $&amp;#123;digest&amp;#125;`</span></span>
+        <span class="token keyword">let</span> signatureOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`host: rest-api.xfyun.cn\ndate: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\nPOST /v2/itr HTTP/1.1\ndigest: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>digest<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
         <span class="token keyword">let</span> signatureSha <span class="token operator">=</span> CryptoJS<span class="token punctuation">.</span><span class="token function">HmacSHA256</span><span class="token punctuation">(</span>signatureOrigin<span class="token punctuation">,</span> <span class="token string">'4f49ab1f8b4c430f3536e54d111eb705'</span><span class="token punctuation">)</span>
         <span class="token keyword">let</span> signature <span class="token operator">=</span> CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Base64<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>signatureSha<span class="token punctuation">)</span>
-        <span class="token keyword">let</span> authorizationOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`api_key="你的讯飞应用apikey", algorithm="hmac-sha256", headers="host date request-line digest", signature="$&amp;#123;signature&amp;#125;"`</span></span>
+        <span class="token keyword">let</span> authorizationOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`api_key="你的讯飞应用apikey", algorithm="hmac-sha256", headers="host date request-line digest", signature="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>signature<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"`</span></span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"authorizationOrigin:"</span> <span class="token operator">+</span> authorizationOrigin<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="发送服务器"><a href="#发送服务器" class="headerlink" title="发送服务器"></a>发送服务器</h4><pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="发送服务器"><a href="#发送服务器" class="headerlink" title="发送服务器"></a>发送服务器</h4><pre class="line-numbers language-js"><code class="language-js">wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     url<span class="token punctuation">:</span> <span class="token string">'https://rest-api.xfyun.cn/v2/itr'</span><span class="token punctuation">,</span>
     method<span class="token punctuation">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
     data<span class="token punctuation">:</span> body<span class="token punctuation">,</span>
-    header<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
         <span class="token string">"Date"</span><span class="token punctuation">:</span> date<span class="token punctuation">,</span>
         <span class="token string">"Digest"</span><span class="token punctuation">:</span> digest<span class="token punctuation">,</span>
         <span class="token string">"Authorization"</span><span class="token punctuation">:</span> authorizationOrigin<span class="token punctuation">,</span>
         <span class="token string">"Content-Type"</span><span class="token punctuation">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span>
         <span class="token string">"Accept"</span><span class="token punctuation">:</span> <span class="token string">"application/json,version=1.0"</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">var</span> jsonString <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>errMsg<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="图片速算完整代码"><a href="#图片速算完整代码" class="headerlink" title="图片速算完整代码"></a>图片速算完整代码</h3><p>注意替换以下的app_id和api_key为自己在讯飞开放平台注册的相关值。</p>
 <pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">let</span> than <span class="token operator">=</span> <span class="token keyword">this</span>
-wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+wx<span class="token punctuation">.</span><span class="token function">chooseImage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     count<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
     sizeType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'compressed'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     sourceType<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'album'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>tempFilePaths<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        wx<span class="token punctuation">.</span><span class="token function">getFileSystemManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
             filePath<span class="token punctuation">:</span> res<span class="token punctuation">.</span>tempFilePaths<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
             encoding<span class="token punctuation">:</span> <span class="token string">'base64'</span><span class="token punctuation">,</span>
-            <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                <span class="token keyword">var</span> body <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token string">"common"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">var</span> body <span class="token operator">=</span> <span class="token punctuation">{</span>
+                    <span class="token string">"common"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                         <span class="token string">"app_id"</span><span class="token punctuation">:</span> <span class="token string">"xxxxxxxx"</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-                    <span class="token string">"business"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token string">"business"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                         <span class="token string">"ent"</span><span class="token punctuation">:</span> <span class="token string">"math-arith"</span><span class="token punctuation">,</span>
                         <span class="token string">"aue"</span><span class="token punctuation">:</span> <span class="token string">"raw"</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-                    <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                         <span class="token string">"image"</span><span class="token punctuation">:</span> res<span class="token punctuation">.</span>data
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
                 <span class="token comment" spellcheck="true">// 获取当前GMT时间</span>
                 <span class="token keyword">let</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUTCString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Date:"</span> <span class="token operator">+</span> date<span class="token punctuation">)</span>
@@ -1363,143 +1363,143 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                 <span class="token keyword">let</span> digest <span class="token operator">=</span> <span class="token string">'SHA-256='</span> <span class="token operator">+</span> CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Base64<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>CryptoJS<span class="token punctuation">.</span><span class="token function">SHA256</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>base64body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Digest:"</span> <span class="token operator">+</span> digest<span class="token punctuation">)</span>
                 <span class="token comment" spellcheck="true">// 获取Authorization</span>
-                <span class="token keyword">let</span> signatureOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`host: rest-api.xfyun.cn\ndate: $&amp;#123;date&amp;#125;\nPOST /v2/itr HTTP/1.1\ndigest: $&amp;#123;digest&amp;#125;`</span></span>
+                <span class="token keyword">let</span> signatureOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`host: rest-api.xfyun.cn\ndate: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\nPOST /v2/itr HTTP/1.1\ndigest: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>digest<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
                 <span class="token keyword">let</span> signatureSha <span class="token operator">=</span> CryptoJS<span class="token punctuation">.</span><span class="token function">HmacSHA256</span><span class="token punctuation">(</span>signatureOrigin<span class="token punctuation">,</span> <span class="token string">'4f49ab1f8b4c430f3536e54d111eb705'</span><span class="token punctuation">)</span>
                 <span class="token keyword">let</span> signature <span class="token operator">=</span> CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Base64<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>signatureSha<span class="token punctuation">)</span>
-                <span class="token keyword">let</span> authorizationOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`api_key="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", algorithm="hmac-sha256", headers="host date request-line digest", signature="$&amp;#123;signature&amp;#125;"`</span></span>
+                <span class="token keyword">let</span> authorizationOrigin <span class="token operator">=</span> <span class="token template-string"><span class="token string">`api_key="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", algorithm="hmac-sha256", headers="host date request-line digest", signature="</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>signature<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"`</span></span>
                 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"authorizationOrigin:"</span> <span class="token operator">+</span> authorizationOrigin<span class="token punctuation">)</span>
-                wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                wx<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
                     url<span class="token punctuation">:</span> <span class="token string">'https://rest-api.xfyun.cn/v2/itr'</span><span class="token punctuation">,</span>
                     method<span class="token punctuation">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
                     data<span class="token punctuation">:</span> body<span class="token punctuation">,</span>
-                    header<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    header<span class="token punctuation">:</span> <span class="token punctuation">{</span>
                         <span class="token string">"Date"</span><span class="token punctuation">:</span> date<span class="token punctuation">,</span>
                         <span class="token string">"Digest"</span><span class="token punctuation">:</span> digest<span class="token punctuation">,</span>
                         <span class="token string">"Authorization"</span><span class="token punctuation">:</span> authorizationOrigin<span class="token punctuation">,</span>
                         <span class="token string">"Content-Type"</span><span class="token punctuation">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span>
                         <span class="token string">"Accept"</span><span class="token punctuation">:</span> <span class="token string">"application/json,version=1.0"</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-                    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                         <span class="token keyword">var</span> jsonString <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
                         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-                    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>errMsg<span class="token punctuation">)</span>
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-            <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">.</span>errMsg<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h4><p>返回的内容是识别出的算术信息，以json格式给出，内容如下</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"code"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-    <span class="token property">"data"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token property">"ITRResult"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"ITRResult"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
             <span class="token property">"attr_exception"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
             <span class="token property">"category"</span><span class="token operator">:</span> <span class="token string">"math_phfw_arith"</span><span class="token punctuation">,</span>
-            <span class="token property">"multi_line_info"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                <span class="token property">"imp_line_info"</span><span class="token operator">:</span> <span class="token punctuation">[</span>&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token property">"multi_line_info"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"imp_line_info"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">87</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">303</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">361</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">410</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">1</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">533</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">340</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">950</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">434</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">0</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">96</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">457</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">367</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">575</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">1</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">579</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">464</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">956</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">550</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">1</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">80</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">631</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">410</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">741</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">0</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">772</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">318</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">890</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">1</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">547</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">810</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">856</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">903</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">1</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">101</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">934</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">333</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">1096</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">0</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+                    <span class="token property">"imp_line_rect"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
                         <span class="token property">"left_up_point_x"</span><span class="token operator">:</span> <span class="token number">497</span><span class="token punctuation">,</span>
                         <span class="token property">"left_up_point_y"</span><span class="token operator">:</span> <span class="token number">937</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_x"</span><span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
                         <span class="token property">"right_down_point_y"</span><span class="token operator">:</span> <span class="token number">1041</span>
-                    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
                     <span class="token property">"rec_rejection"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"strict_score"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                     <span class="token property">"total_score"</span><span class="token operator">:</span> <span class="token number">0</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">]</span>
-            &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-            <span class="token property">"recog_result"</span><span class="token operator">:</span> <span class="token punctuation">[</span>&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token property">"recog_result"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
                 <span class="token property">"line_char_result"</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
-                <span class="token property">"line_word_result"</span><span class="token operator">:</span> <span class="token punctuation">[</span>&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token property">"line_word_result"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1508,7 +1508,7 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">105</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"2 + 3 = 5"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.9977216124534607</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1517,7 +1517,7 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">92</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"2 元 3 ( m ) = ( 2 . 3 ) 元"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.684288740158081</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1526,7 +1526,7 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">115</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"7 \\times 9 = 6 3"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.9932141900062561</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1535,7 +1535,7 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">84</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"9 0 + = ( 5 4 0 ) 分"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.8401721715927124</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1544,16 +1544,16 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">108</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"1 5 + 1 5 = 2 0"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.9966763257980347</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"end_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">192</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"end_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">192</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">115</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                    <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"3 ^ &amp;#123; 2 &amp;#125; = 9"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"3 ^ { 2 } = 9"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.9976226687431335</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1562,16 +1562,16 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">90</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"5 - 2 &lt; 4"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.9145566821098328</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"end_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">230</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"end_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">230</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">159</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                    <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"\\frac &amp;#123; 7 &amp;#125; &amp;#123; 9 &amp;#125; &lt; \\frac &amp;#123; 5 &amp;#125; &amp;#123; 9 &amp;#125;"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"\\frac { 7 } { 9 } &lt; \\frac { 5 } { 9 }"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.9983761310577393</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
                     <span class="token property">"beg_pos"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_x"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"beg_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -1580,14 +1580,14 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
                     <span class="token property">"end_pos_y"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">102</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_content"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"3 8 分 米 = ( 3 8 0 0 ) 厘 米"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                     <span class="token property">"word_gwpp"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0.9828618764877319</span><span class="token punctuation">]</span>
-                &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">]</span>
-            &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"3.7.0.1032"</span>
-        &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token property">"message"</span><span class="token operator">:</span> <span class="token string">"success"</span><span class="token punctuation">,</span>
     <span class="token property">"sid"</span><span class="token operator">:</span> <span class="token string">"itr00084e6a@gz1772ddd0576460a902"</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="拍照速算完整功能"><a href="#拍照速算完整功能" class="headerlink" title="拍照速算完整功能"></a>拍照速算完整功能</h2><p>此阶段完成的功能相当于是把界面设计和图片速算的结合，用户流程如下：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20210123142023133.png" alt="image-20210123142023133"></p>
 <p>即用户选择照片后，调用上一章节的代码完成速算，得到文字结果（上一章节的内容），</p>
@@ -1645,30 +1645,30 @@ wx<span class="token punctuation">.</span><span class="token function">chooseIma
 <pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>data<span class="token punctuation">.</span>ITRResult<span class="token punctuation">.</span>multi_line_info<span class="token punctuation">.</span>imp_line_info
 <span class="token keyword">var</span> jsonString <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span>
-wx<span class="token punctuation">.</span><span class="token function">getImageInfo</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取图片信息</span>
+wx<span class="token punctuation">.</span><span class="token function">getImageInfo</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//获取图片信息</span>
     src<span class="token punctuation">:</span> imagePath<span class="token punctuation">,</span>
-    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         than<span class="token punctuation">.</span>width <span class="token operator">=</span> res<span class="token punctuation">.</span>width
         than<span class="token punctuation">.</span>height <span class="token operator">=</span> res<span class="token punctuation">.</span>height
         <span class="token keyword">let</span> ctx <span class="token operator">=</span> wx<span class="token punctuation">.</span><span class="token function">createCanvasContext</span><span class="token punctuation">(</span><span class="token string">'shareImg'</span><span class="token punctuation">)</span>
-        than<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        than<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
             width<span class="token punctuation">:</span> res<span class="token punctuation">.</span>width<span class="token punctuation">,</span>
             height<span class="token punctuation">:</span> res<span class="token punctuation">.</span>height<span class="token punctuation">,</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
         ctx<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>imagePath<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> res<span class="token punctuation">.</span>width<span class="token punctuation">,</span> res<span class="token punctuation">.</span>height<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> obj<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>total_score<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> obj<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>total_score<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 ctx<span class="token punctuation">.</span><span class="token function">setStrokeStyle</span><span class="token punctuation">(</span><span class="token string">'red'</span><span class="token punctuation">)</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
                 ctx<span class="token punctuation">.</span><span class="token function">setStrokeStyle</span><span class="token punctuation">(</span><span class="token string">'green'</span><span class="token punctuation">)</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
             ctx<span class="token punctuation">.</span><span class="token function">strokeRect</span><span class="token punctuation">(</span>obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>imp_line_rect<span class="token punctuation">.</span>left_up_point_x<span class="token punctuation">,</span>
                            obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>imp_line_rect<span class="token punctuation">.</span>left_up_point_y<span class="token punctuation">,</span>
                            obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>imp_line_rect<span class="token punctuation">.</span>right_down_point_x <span class="token operator">-</span> obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>imp_line_rect<span class="token punctuation">.</span>left_up_point_x<span class="token punctuation">,</span>
                            obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>imp_line_rect<span class="token punctuation">.</span>right_down_point_y <span class="token operator">-</span> obj<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>imp_line_rect<span class="token punctuation">.</span>left_up_point_y<span class="token punctuation">)</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        ctx<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            wx<span class="token punctuation">.</span><span class="token function">canvasToTempFilePath</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        ctx<span class="token punctuation">.</span><span class="token function">draw</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            wx<span class="token punctuation">.</span><span class="token function">canvasToTempFilePath</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
                 x<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                 y<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
                 width<span class="token punctuation">:</span> res<span class="token punctuation">.</span>width<span class="token punctuation">,</span>
@@ -1677,22 +1677,22 @@ wx<span class="token punctuation">.</span><span class="token function">getImageI
                 destHeight<span class="token punctuation">:</span> app<span class="token punctuation">.</span>globalData<span class="token punctuation">.</span>height<span class="token punctuation">,</span>
                 fileType<span class="token punctuation">:</span> <span class="token string">'jpg'</span><span class="token punctuation">,</span>
                 canvasId<span class="token punctuation">:</span> <span class="token string">'shareImg'</span><span class="token punctuation">,</span>
-                <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>tempFilePath<span class="token punctuation">)</span>
-                    than<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    than<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
                         imageUrl<span class="token punctuation">:</span> res<span class="token punctuation">.</span>tempFilePath
-                    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-                <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token function">fail</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"图片绘制失败:"</span> <span class="token operator">+</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    fail<span class="token punctuation">:</span> err <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    fail<span class="token punctuation">:</span> err <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"获取图片信息失败:"</span> <span class="token operator">+</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -2277,7 +2277,7 @@ wx<span class="token punctuation">.</span><span class="token function">getImageI
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">54k</span>&nbsp;字
+                class="white-color">53.1k</span>&nbsp;字
             
             
             

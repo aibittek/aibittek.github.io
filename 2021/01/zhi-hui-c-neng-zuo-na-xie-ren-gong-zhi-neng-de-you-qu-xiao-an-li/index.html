@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.3k
+                    10.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    44 分
+                    43 分
                 </div>
                 
 
@@ -597,41 +597,41 @@ cstring_t <span class="token operator">*</span><span class="token function">getN
                         <span class="token keyword">void</span> <span class="token operator">*</span>pAudioData<span class="token punctuation">,</span> <span class="token keyword">int</span> iAudioLen<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>实例代码：</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 修改为自己的appid，key、secret和auth_id,网址https://aiui.xfyun.cn/app/&lt;替换自己的appid>/info</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszAppid <span class="token operator">=</span> <span class="token string">"xxxxxxxx"</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszKey <span class="token operator">=</span> <span class="token string">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszParam <span class="token operator">=</span> <span class="token string">"&amp;#123;\"result_level\":\"plain\",\"auth_id\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"data_type\":\"audio\",\"sample_rate\":\"16000\",\"scene\":\"main_box\"&amp;#125;"</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszParam <span class="token operator">=</span> <span class="token string">"{\"result_level\":\"plain\",\"auth_id\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"data_type\":\"audio\",\"sample_rate\":\"16000\",\"scene\":\"main_box\"}"</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 1.读取语音文件</span>
     cstring_t <span class="token operator">*</span>pAudioData <span class="token operator">=</span> <span class="token function">readFile</span><span class="token punctuation">(</span><span class="token string">"../Res/test.pcm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pAudioData<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">{</span>
         <span class="token function">LOG</span><span class="token punctuation">(</span>EERROR<span class="token punctuation">,</span> <span class="token string">"read audio file error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token function">LOG</span><span class="token punctuation">(</span>EDEBUG<span class="token punctuation">,</span> <span class="token string">"pcm len:%d"</span><span class="token punctuation">,</span> pAudioData<span class="token operator">-></span><span class="token function">length</span><span class="token punctuation">(</span>pAudioData<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 2.提供信息进行语音识别成文本</span>
     cstring_t <span class="token operator">*</span>pResult <span class="token operator">=</span> <span class="token function">getNlpResult</span><span class="token punctuation">(</span>pszAppid<span class="token punctuation">,</span> pszKey<span class="token punctuation">,</span> pszParam<span class="token punctuation">,</span> pAudioData<span class="token operator">-></span>str<span class="token punctuation">,</span> pAudioData<span class="token operator">-></span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>pResult<span class="token punctuation">)</span>
-    <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">{</span>
         <span class="token function">LOG</span><span class="token punctuation">(</span>EDEBUG<span class="token punctuation">,</span> <span class="token string">"识别结果：%s"</span><span class="token punctuation">,</span> pResult<span class="token operator">-></span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">cstring_del</span><span class="token punctuation">(</span>pResult<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
     <span class="token function">cstring_del</span><span class="token punctuation">(</span>pAudioData<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上述代码中的param参数是json格式，说明如下：</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"result_level"</span><span class="token operator">:</span> <span class="token string">"plain"</span><span class="token punctuation">,</span> //提供结果格式：简单文本格式
     <span class="token property">"auth_id"</span><span class="token operator">:</span> <span class="token string">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="token punctuation">,</span> //请求的auth_id，平台配置界面中查询
     <span class="token property">"data_type"</span><span class="token operator">:</span> <span class="token string">"audio"</span><span class="token punctuation">,</span> // 请求的数据类型，这里是语音，也可以为文本
     <span class="token property">"sample_rate"</span><span class="token operator">:</span> <span class="token string">"16000"</span><span class="token punctuation">,</span> // 如果请求的是audio，sample_rate表示音频采样率
     <span class="token property">"scene"</span><span class="token operator">:</span> <span class="token string">"main_box"</span> // 请求场景，未发布版本，需要增加<span class="token string">"_box"</span>后缀
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果：</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201208122536071.png" alt="image-20201208122536071"></p>
 <p>可以看到，返回的结果也是一个json格式，识别出了请求的语音文本为”今天全国新增确诊病例”，服务端返回的结果为：”今天全国新冠肺炎新增确诊病例15例”。</p>
@@ -652,7 +652,7 @@ bool <span class="token function">getTTS</span><span class="token punctuation">(
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>text<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pathname<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 修改为自己应用的appid，key和secret</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>appid <span class="token operator">=</span> <span class="token string">"xxxxxxxx"</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token string">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="token punctuation">;</span>
@@ -661,7 +661,7 @@ bool <span class="token function">getTTS</span><span class="token punctuation">(
     <span class="token function">getTTS</span><span class="token punctuation">(</span>appid<span class="token punctuation">,</span> key<span class="token punctuation">,</span> secret<span class="token punctuation">,</span> <span class="token string">"欢迎来到比特人生的世界"</span><span class="token punctuation">,</span> <span class="token string">"../Res/tts.pcm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>生成的语音文件放在了Res/tts.pcm中，可以打开音频软件AU，设置16000采样，16bit深的音频信息来听取声音内容和要转写的文字内容是否一致。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209165052710.png" alt="image-20201209165052710"></p>
@@ -675,7 +675,7 @@ bool <span class="token function">getTTS</span><span class="token punctuation">(
 <span class="token keyword">void</span> <span class="token function">iat</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>appid<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>key<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>secret<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 修改为自己应用的appid，key和secret</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>appid <span class="token operator">=</span> <span class="token string">"xxxxxxxx"</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token string">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="token punctuation">;</span>
@@ -685,7 +685,7 @@ bool <span class="token function">getTTS</span><span class="token punctuation">(
     <span class="token function">iat</span><span class="token punctuation">(</span>appid<span class="token punctuation">,</span> key<span class="token punctuation">,</span> secret<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>程序运行后，可以一边说话，一边看返回结果。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201208213345015.png" alt="image-20201208213345015"></p>
@@ -704,7 +704,7 @@ bool <span class="token function">getTTS</span><span class="token punctuation">(
         <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszImagePath1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszImagePath2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 修改为自己应用的appid，key和secret</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>appid <span class="token operator">=</span> <span class="token string">"xxxxxxxx"</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token string">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="token punctuation">;</span>
@@ -714,7 +714,7 @@ bool <span class="token function">getTTS</span><span class="token punctuation">(
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"face compare score:%.2f\n"</span><span class="token punctuation">,</span> fScore<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用的两张图片如下</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/1.jpg" alt="1"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/2-1607434767599.jpg" alt="2"></p>
@@ -738,7 +738,7 @@ face compare score:0.98</code></pre>
 <span class="token comment" spellcheck="true">/**
  * @brief 网络通信结构体，包含创建网络、连接网络、关闭网络，发送数据和网络通信事件循环
  */</span>
-<span class="token keyword">typedef</span> <span class="token keyword">struct</span> SSockClient <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> SSockClient <span class="token punctuation">{</span>
     sock_t          iSocket<span class="token punctuation">;</span>
     <span class="token keyword">int</span>             iRecvBufferSize<span class="token punctuation">;</span>
     <span class="token keyword">int</span>             iSendBufferSize<span class="token punctuation">;</span>
@@ -751,7 +751,7 @@ face compare score:0.98</code></pre>
     <span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>vClose<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">struct</span> SSockClient <span class="token operator">*</span>pstClient<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>iSend<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">struct</span> SSockClient <span class="token operator">*</span>pstClient<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>pvData<span class="token punctuation">,</span> <span class="token keyword">int</span> iLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">bool</span> <span class="token punctuation">(</span><span class="token operator">*</span>bEventLoop<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">struct</span> SSockClient <span class="token operator">*</span>pstClient<span class="token punctuation">,</span> fnSockCallback cb<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>pvUserData<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>piLoop<span class="token punctuation">,</span> <span class="token keyword">int</span> iTimeOut<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>SSockClient_t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>SSockClient_t<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
  * @brief 网络功能初始化
@@ -771,22 +771,22 @@ bool <span class="token function">bSockUninit</span><span class="token punctuati
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 回调函数，当服务端有数据发送回来时执行这个回调</span>
 bool <span class="token function">bSockCallback</span><span class="token punctuation">(</span><span class="token keyword">struct</span> SSockClient <span class="token operator">*</span>pstClient<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>pvUserData<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>pvData<span class="token punctuation">,</span> <span class="token keyword">int</span> iLen<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"bSockCallback called:%s\r\n"</span><span class="token punctuation">,</span> pvData<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> true<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token keyword">int</span> iLoop <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 请求头信息</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> header<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span>
-        <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+        <span class="token punctuation">{</span>
             <span class="token string">"GET / HTTP/1.1\r\n"</span>
             <span class="token string">"Host: www.baidu.com\r\n"</span>
             <span class="token string">"Connection: keep-alive\r\n"</span>
-            <span class="token string">"Accept: */*\r\n\r\n"</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+            <span class="token string">"Accept: */*\r\n\r\n"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 声明网络结构体变量</span>
     SSockClient_t stSockClient<span class="token punctuation">;</span>
@@ -807,7 +807,7 @@ bool <span class="token function">bSockCallback</span><span class="token punctua
     stSockClient<span class="token punctuation">.</span><span class="token function">bEventLoop</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>stSockClient<span class="token punctuation">,</span> bSockCallback<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>iLoop<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209105106375.png" alt="image-20201209105106375"></p>
 <h3 id="3-6-2-HTTP功能"><a href="#3-6-2-HTTP功能" class="headerlink" title="3.6.2 HTTP功能"></a>3.6.2 HTTP功能</h3><p><strong>接口说明</strong></p>
@@ -829,7 +829,7 @@ bool <span class="token function">bSockCallback</span><span class="token punctua
 bool <span class="token function">bConnectHttpServer</span><span class="token punctuation">(</span>SEIHttpInfo_t <span class="token operator">*</span>pstHttpInfo<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszUrl<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszExtraHeader<span class="token punctuation">,</span> <span class="token keyword">void</span><span class="token operator">*</span> pvBody<span class="token punctuation">,</span> <span class="token keyword">int</span> iSize<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     SEIHttpInfo_t stHttpInfo<span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszUrl <span class="token operator">=</span> <span class="token string">"http://www.baidu.com"</span><span class="token punctuation">;</span>
 
@@ -841,7 +841,7 @@ bool <span class="token function">bConnectHttpServer</span><span class="token pu
     <span class="token function">bHttpClose</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>stHttpInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>status的返回值为http的状态码，200代表正常返回，body是服务端返回的内容，以上代码会返回网址的首页信息，因此会看到终端输出的是网页的内容信息。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209112031575.png" alt="image-20201209112031575"></p>
@@ -856,7 +856,7 @@ bool <span class="token function">bConnectHttpServer</span><span class="token pu
 bool <span class="token function">bWebsocketConnect</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>c_pszUrl<span class="token punctuation">,</span> fnWebsocketCallback cb<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>appid <span class="token operator">=</span> <span class="token string">"xxxxxxxx"</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>app_secret <span class="token operator">=</span> <span class="token string">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>app_key <span class="token operator">=</span> <span class="token string">"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="token punctuation">;</span>
@@ -864,7 +864,7 @@ bool <span class="token function">bWebsocketConnect</span><span class="token pun
     <span class="token function">getTTS</span><span class="token punctuation">(</span>appid<span class="token punctuation">,</span> app_key<span class="token punctuation">,</span> app_secret<span class="token punctuation">,</span> <span class="token string">"欢迎来到比特人生的世界"</span><span class="token punctuation">,</span> <span class="token string">"./tts.pcm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>合成的结果保存到了tts.pcm中，可以打开adobe auditiom软件，设置为16000K 16bit听声音是否和文本内容一致。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/aibittek/ImageHost/img/image-20201209145844006.png" alt="image-20201209145844006"></p>
@@ -883,18 +883,18 @@ bool <span class="token function">bWebsocketConnect</span><span class="token pun
 <span class="token comment" spellcheck="true">/**
  * @brief 录音配置结构体
  */</span>
-<span class="token keyword">typedef</span> <span class="token keyword">struct</span> AudioConfig <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> AudioConfig <span class="token punctuation">{</span>
     uint32_t                iSampleRate<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">/* 每秒采样次数 */</span>
     uint8_t                 byBitsPerSample<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* 每次采样深度 */</span>
     uint8_t                 byChannels<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">/* 采样通道 */</span>
     RecordCallback          pfCallback<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">/* 获取音频数据的回调 */</span>
     <span class="token keyword">void</span><span class="token operator">*</span>                   pvUserData<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">/* 传递给回调的参数 */</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>AudioConfig_t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>AudioConfig_t<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
  * @brief 录音功能结构体
  */</span>
-<span class="token keyword">typedef</span> <span class="token keyword">struct</span> AudioRecorder <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> AudioRecorder <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">/**
      * @brief 打开录音设备
      * @param   pAudioConfig    录音配置信息     
@@ -916,7 +916,7 @@ bool <span class="token function">bWebsocketConnect</span><span class="token pun
     AudioHandle             pvAudioHandle<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">/* 音频设备的句柄 */</span>
     AudioConfig_t           stAudioConfig<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">/* 音频设备的配置 */</span>
     bool                    bRecording<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">/* 是否正在录音 */</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>AudioRecorder_t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>AudioRecorder_t<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
  * @brief 录音对象单例
@@ -924,9 +924,9 @@ bool <span class="token function">bWebsocketConnect</span><span class="token pun
 <span class="token keyword">extern</span> AudioRecorder_t Recorder<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 16000K采样，16bit采样深度，1是单声道，RecordCB是音频信息的回调函数，test.pcm是传递给回调的参数</span>
-    AudioConfig_t stAudioConfig <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">16000</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> RecordCB<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token string">"test.pcm"</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    AudioConfig_t stAudioConfig <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">16000</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> RecordCB<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token string">"test.pcm"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 打开音频设备</span>
     Recorder<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>stAudioConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 开始录音，阻塞函数，需要关闭录音在其他地方调用Recorder.close()</span>
@@ -935,45 +935,45 @@ bool <span class="token function">bWebsocketConnect</span><span class="token pun
     Recorder<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <p>程序运行成功后，可以通过编写回调函数，来获取音频数据，上面程序的回调函数可以通过以下的回调处理来保存录音数据</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">RecordCB</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token operator">*</span> pvHandle<span class="token punctuation">,</span> int32_t iType<span class="token punctuation">,</span> <span class="token keyword">void</span><span class="token operator">*</span> pvUserData<span class="token punctuation">,</span> <span class="token keyword">void</span><span class="token operator">*</span> pvData<span class="token punctuation">,</span> int32_t iLen<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     uint32_t bytesWritten <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">static</span> uint32_t totalWriten <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pathname <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>pvUserData<span class="token punctuation">;</span>
     <span class="token keyword">static</span> FILE<span class="token operator">*</span> fp <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fp<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>fp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         fp <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span>pathname<span class="token punctuation">,</span> <span class="token string">"wb+"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>AUDIO_DATA <span class="token operator">==</span> iType<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>AUDIO_DATA <span class="token operator">==</span> iType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             bytesWritten <span class="token operator">=</span> <span class="token function">fwrite</span><span class="token punctuation">(</span>pvData<span class="token punctuation">,</span> iLen<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
             totalWriten <span class="token operator">+</span><span class="token operator">=</span> bytesWritten<span class="token operator">*</span>iLen<span class="token punctuation">;</span>
             <span class="token function">LOG</span><span class="token punctuation">(</span>EDEBUG<span class="token punctuation">,</span> <span class="token string">"totalWriten:%d, iLen:%d"</span><span class="token punctuation">,</span> totalWriten<span class="token punctuation">,</span> iLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>totalWriten <span class="token operator">></span> <span class="token number">32000</span><span class="token operator">*</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>totalWriten <span class="token operator">></span> <span class="token number">32000</span><span class="token operator">*</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 Recorder<span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>AUDIO_CLOSE <span class="token operator">==</span> iType<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>AUDIO_CLOSE <span class="token operator">==</span> iType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>fp<span class="token punctuation">)</span> <span class="token function">fclose</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">;</span>
         fp <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
         Recorder<span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>pvUserData</strong>参数是通过stAudioConfig传递进来的”test.pcm”，可以在回调中使用这个参数，把录取的音频数据保存到test.pcm中。保存之后可以通过adobe audition软件打开听取声音是否正常。</p>
 <h2 id="3-8-多线程接口功能说明"><a href="#3-8-多线程接口功能说明" class="headerlink" title="3.8 多线程接口功能说明"></a>3.8 多线程接口功能说明</h2><p><strong>接口说明</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> ThreadFun ThreadFun<span class="token punctuation">;</span>
-<span class="token keyword">struct</span> ThreadFun<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> ThreadFun<span class="token punctuation">{</span>
     <span class="token keyword">void</span><span class="token operator">*</span> params<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//线程函数的参数 </span>
 <span class="token macro property">#<span class="token directive keyword">if</span> defined(_WIN32)</span>
     <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>fun<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//线程函数指针 </span>
 <span class="token macro property">#<span class="token directive keyword">else</span></span>
     <span class="token keyword">void</span><span class="token operator">*</span> <span class="token punctuation">(</span><span class="token operator">*</span>fun<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//线程函数指针 </span>
 <span class="token macro property">#<span class="token directive keyword">endif</span></span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
  * @brief 线程创建
@@ -984,20 +984,20 @@ bool <span class="token function">bWebsocketConnect</span><span class="token pun
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;SimpleThread.h></span></span>
 <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token operator">*</span><span class="token function">doSomething</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span>params<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"doStomething thread:%s\r\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>params<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     ThreadFun funArr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     funArr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>fun <span class="token operator">=</span> doSomething<span class="token punctuation">;</span>
     funArr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>params <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token string">"easyAIot"</span><span class="token punctuation">;</span>
     <span class="token function">vStartThread</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> funArr<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"main thread\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>main thread
 doStomething thread:easyAIot</code></pre>
@@ -1019,15 +1019,15 @@ doStomething thread:easyAIot</code></pre>
 <span class="token keyword">void</span> <span class="token function">md5String</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>msg<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> len<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>digest<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszString <span class="token operator">=</span> <span class="token string">"easyAIoT"</span><span class="token punctuation">;</span>
-    <span class="token keyword">char</span> szBuf<span class="token punctuation">[</span><span class="token number">33</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> szBuf<span class="token punctuation">[</span><span class="token number">33</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
     <span class="token function">md5String</span><span class="token punctuation">(</span><span class="token punctuation">(</span>uint8_t <span class="token operator">*</span><span class="token punctuation">)</span>pszString<span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span>pszString<span class="token punctuation">)</span><span class="token punctuation">,</span> szBuf<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s md5-> %s\n"</span><span class="token punctuation">,</span> pszString<span class="token punctuation">,</span> szBuf<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>easyAIoT md5-&gt; d1428978a06bcefed0e94ab70a5d1498</code></pre>
 <h3 id="3-9-2-Base64加解密"><a href="#3-9-2-Base64加解密" class="headerlink" title="3.9.2 Base64加解密"></a>3.9.2 Base64加解密</h3><p><strong>接口说明</strong></p>
@@ -1051,10 +1051,10 @@ doStomething thread:easyAIot</code></pre>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;base64.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pcPlain <span class="token operator">=</span> <span class="token string">"easyAIoT"</span><span class="token punctuation">;</span>
-    <span class="token keyword">char</span> szEncode<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
-    <span class="token keyword">char</span> szDecode<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> szEncode<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> szDecode<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
     <span class="token keyword">int</span> iEncodeLen <span class="token operator">=</span> <span class="token function">iBase64Encode</span><span class="token punctuation">(</span>pcPlain<span class="token punctuation">,</span> szEncode<span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span>pcPlain<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> iDecodeLen <span class="token operator">=</span> <span class="token function">iBase64Decode</span><span class="token punctuation">(</span>szEncode<span class="token punctuation">,</span> szDecode<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1063,7 +1063,7 @@ doStomething thread:easyAIot</code></pre>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"decode:%s, len:%d\n"</span><span class="token punctuation">,</span> szDecode<span class="token punctuation">,</span> iDecodeLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>encode:ZWFzeUFJb1Q=, len:12
 decode:easyAIoT, len:8</code></pre>
@@ -1088,11 +1088,11 @@ decode:easyAIoT, len:8</code></pre>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>input <span class="token operator">=</span> <span class="token string">"easyAIoT"</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>key <span class="token operator">=</span> <span class="token string">"123456"</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> out<span class="token punctuation">[</span><span class="token number">65</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token keyword">char</span> hamc_out<span class="token punctuation">[</span><span class="token number">65</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> hamc_out<span class="token punctuation">[</span><span class="token number">65</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
     <span class="token function">sha256</span><span class="token punctuation">(</span>input<span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">,</span> out<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"out:%s\n"</span><span class="token punctuation">,</span> out<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1101,7 +1101,7 @@ decode:easyAIoT, len:8</code></pre>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hamc_out:%s\n"</span><span class="token punctuation">,</span> hamc_out<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>out:72db9c2cd52e183d7f3a367c8f33a226090c2c73b049731908c8341093c87d77
 hamc_out:a46e68f86c13dbfb00a834f223cc68c516915f31c7736cdd5e1664ba69c32343</code></pre>
@@ -1121,7 +1121,7 @@ hamc_out:a46e68f86c13dbfb00a834f223cc68c516915f31c7736cdd5e1664ba69c32343</code>
 <span class="token keyword">void</span> <span class="token function">urldecode</span><span class="token punctuation">(</span><span class="token keyword">char</span> in<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">char</span> out<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>in <span class="token operator">=</span> <span class="token string">"http://www.easyaiot.com/index.html?param1=1 2 3&amp;param2=1:2"</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> enout<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">,</span> deout<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
@@ -1133,7 +1133,7 @@ hamc_out:a46e68f86c13dbfb00a834f223cc68c516915f31c7736cdd5e1664ba69c32343</code>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"deout:%s\n"</span><span class="token punctuation">,</span> deout<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>in:http://www.easyaiot.com/index.html?param1=1 2 3&amp;param2=1:2
 enout:http%3A//www.easyaiot.com/index.html?param1=1+2+3&amp;param2=1%3A2
@@ -1182,22 +1182,22 @@ deout:http://www.easyaiot.com/index.html?param1=1 2 3&amp;param2=1:2</code></pre
 <span class="token function">JSON_SERIALIZE_STRING</span><span class="token punctuation">(</span>json_frame_obj<span class="token punctuation">,</span> pszRequest<span class="token punctuation">,</span> iLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">JSON_SERIALIZE_CREATE_END</span><span class="token punctuation">(</span>json_frame_obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token property">"common"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"common"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"app_id"</span><span class="token operator">:</span> <span class="token string">"123456"</span>
-    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token property">"business"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"business"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"language"</span><span class="token operator">:</span> <span class="token string">"zh_cn"</span><span class="token punctuation">,</span>
         <span class="token property">"domain"</span><span class="token operator">:</span> <span class="token string">"iat"</span><span class="token punctuation">,</span>
         <span class="token property">"accent"</span><span class="token operator">:</span> <span class="token string">"mandarin"</span>
-    &amp;#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>
-    <span class="token property">"data"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"status"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
         <span class="token property">"format"</span><span class="token operator">:</span> <span class="token string">"audio/L16;rate=16000"</span><span class="token punctuation">,</span>
         <span class="token property">"encoding"</span><span class="token operator">:</span> <span class="token string">"raw"</span><span class="token punctuation">,</span>
         <span class="token property">"audio"</span><span class="token operator">:</span> <span class="token string">"exSI6ICJlbiIsCgkgICAgInBvc2l0aW9uIjogImZhbHNlIgoJf"</span>
-    &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="3-10-2-Json反序列化"><a href="#3-10-2-Json反序列化" class="headerlink" title="3.10.2 Json反序列化"></a>3.10.2 Json反序列化</h3><p><strong>接口说明</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 根据json字符串json_string创建json对象json_root</span>
 <span class="token macro property">#<span class="token directive keyword">define</span> JSON_DESERIALIZE_START(json_root, json_string, ret)</span>
@@ -1230,13 +1230,13 @@ deout:http://www.easyaiot.com/index.html?param1=1 2 3&amp;param2=1:2</code></pre
 <span class="token macro property">#<span class="token directive keyword">define</span> JSON_DESERIALIZE_END(json_root, ret)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <p>反序列的Json字符串</p>
-<pre class="line-numbers language-json"><code class="language-json">&amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-  <span class="token property">"payload"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token property">"face_compare_result"</span><span class="token operator">:</span> &amp;#<span class="token number">123</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"payload"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"face_compare_result"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"ewoJInJldCIgOiAwLAoJInNjb3JlIiA6IDAuOTk2MTg2MDc3NTk0NzU3MDgKfQo="</span>
-    &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-  &amp;#<span class="token number">125</span><span class="token punctuation">;</span>
-&amp;#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>反序列化代码</p>
 <pre><code>
 JSON_DESERIALIZE_START(json_root, szResponse, iRet);
@@ -1279,7 +1279,7 @@ typedef struct cstring
 &#125; cstring_t;</code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token function">cstring_new</span><span class="token punctuation">(</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     cs<span class="token operator">-></span><span class="token function">appendStr</span><span class="token punctuation">(</span>cs<span class="token punctuation">,</span> <span class="token string">"123"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1298,7 +1298,7 @@ typedef struct cstring
 
     <span class="token function">cstring_del</span><span class="token punctuation">(</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>123452
 789123452
@@ -1339,9 +1339,9 @@ Uses the map_iter_t returned by <span class="token function">map_iter</span><spa
 <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>key<span class="token punctuation">;</span>
 map_iter_t iter <span class="token operator">=</span> <span class="token function">map_iter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token function">map_next</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span> <span class="token operator">&amp;</span>iter<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token function">map_next</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span> <span class="token operator">&amp;</span>iter<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s -> %d"</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token function">map_get</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c">map_int_t m<span class="token punctuation">;</span>
 <span class="token function">map_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1349,11 +1349,11 @@ map_iter_t iter <span class="token operator">=</span> <span class="token functio
 <span class="token function">map_set</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span> <span class="token string">"testkey"</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">int</span> <span class="token operator">*</span>val <span class="token operator">=</span> <span class="token function">map_get</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">,</span> <span class="token string">"testkey"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"value: %d\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token keyword">else</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"value not found\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
 <span class="token function">map_deinit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
@@ -1372,21 +1372,21 @@ ring_buffer_size_t <span class="token function">ring_buffer_dequeue_arr</span><s
 <span class="token comment" spellcheck="true">// 从ring buffer中index索引处获取一个字符到data中，这个操作并不会影响ring buffer的内容</span>
 uint8_t <span class="token function">ring_buffer_peek</span><span class="token punctuation">(</span>ring_buffer_t <span class="token operator">*</span>buffer<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>data<span class="token punctuation">,</span> ring_buffer_size_t index<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// 判断ring buffer是否为空</span>
-<span class="token keyword">inline</span> uint8_t <span class="token function">ring_buffer_is_empty</span><span class="token punctuation">(</span>ring_buffer_t <span class="token operator">*</span>buffer<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">inline</span> uint8_t <span class="token function">ring_buffer_is_empty</span><span class="token punctuation">(</span>ring_buffer_t <span class="token operator">*</span>buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>buffer<span class="token operator">-></span>head_index <span class="token operator">==</span> buffer<span class="token operator">-></span>tail_index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// 判断ring buffer内容是否已经满了</span>
-<span class="token keyword">inline</span> uint8_t <span class="token function">ring_buffer_is_full</span><span class="token punctuation">(</span>ring_buffer_t <span class="token operator">*</span>buffer<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">inline</span> uint8_t <span class="token function">ring_buffer_is_full</span><span class="token punctuation">(</span>ring_buffer_t <span class="token operator">*</span>buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>buffer<span class="token operator">-></span>head_index <span class="token operator">-</span> buffer<span class="token operator">-></span>tail_index<span class="token punctuation">)</span> <span class="token operator">&amp;</span> RING_BUFFER_MASK<span class="token punctuation">)</span> <span class="token operator">==</span> RING_BUFFER_MASK<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// 判断ring buffer剩余的内容大小，以字节大小返回</span>
-<span class="token keyword">inline</span> ring_buffer_size_t <span class="token function">ring_buffer_num_items</span><span class="token punctuation">(</span>ring_buffer_t <span class="token operator">*</span>buffer<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">inline</span> ring_buffer_size_t <span class="token function">ring_buffer_num_items</span><span class="token punctuation">(</span>ring_buffer_t <span class="token operator">*</span>buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>buffer<span class="token operator">-></span>head_index <span class="token operator">-</span> buffer<span class="token operator">-></span>tail_index<span class="token punctuation">)</span> <span class="token operator">&amp;</span> RING_BUFFER_MASK<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>示例代码</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;ringbuffer.h></span></span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">int</span> i<span class="token punctuation">,</span> cnt<span class="token punctuation">;</span>
     <span class="token keyword">char</span> buf<span class="token punctuation">[</span><span class="token number">50</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
@@ -1408,17 +1408,17 @@ uint8_t <span class="token function">ring_buffer_peek</span><span class="token p
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>ring buffer size:16, content:Hello, easyAIoT!</code></pre>
 <h2 id="3-12-其他接口"><a href="#3-12-其他接口" class="headerlink" title="3.12 其他接口"></a>3.12 其他接口</h2><h3 id="3-12-1-时间接口"><a href="#3-12-1-时间接口" class="headerlink" title="3.12.1 时间接口"></a>3.12.1 时间接口</h3><p><strong>接口说明</strong></p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/**
  * @brief dateime结构体，通过now获取当前时间，通过format对时间进行格式化输出，输出到pDate中
  */</span>
-<span class="token keyword">typedef</span> <span class="token keyword">struct</span> DateTime <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> DateTime <span class="token punctuation">{</span>
     <span class="token function">time_t</span> <span class="token punctuation">(</span><span class="token operator">*</span>now<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">bool</span> <span class="token punctuation">(</span><span class="token operator">*</span>format<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>fmt<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>pDate<span class="token punctuation">,</span> <span class="token keyword">int</span> iLen<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>DateTime_t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>DateTime_t<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
  * @brief datetime对象
@@ -1473,9 +1473,9 @@ cstring_t <span class="token operator">*</span> pContent <span class="token oper
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iFlyAuth.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">char</span> szDate<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
-    <span class="token keyword">char</span> szAuthData<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token number">0</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> szDate<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> szAuthData<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 获取GMT时间戳</span>
     datetime<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"GMT"</span><span class="token punctuation">,</span> szDate<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>szDate<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1486,7 +1486,7 @@ cstring_t <span class="token operator">*</span> pContent <span class="token oper
              szAuthData<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>szAuthData<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"auth:%s\n"</span><span class="token punctuation">,</span> szAuthData<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>程序运行结果</strong></p>
 <pre><code>auth:YXBpX2tleT0iYXBpa2V5IiwgYWxnb3JpdGhtPSJobWFjLXNoYTI1NiIsIGhlYWRlcnM9Imhvc3QgZGF0ZSByZXF1ZXN0LWxpbmUiLCBzaWduYXR1cmU9IkNXLzZzUWxobVZtQVVDRW5oOE9XV2FZak4zZ2MybXF1NXlDYmUrQzJBRUk9Ig==</code></pre>
 <h1 id="四、环境搭建"><a href="#四、环境搭建" class="headerlink" title="四、环境搭建"></a>四、环境搭建</h1><h2 id="4-1-vscode环境搭建"><a href="#4-1-vscode环境搭建" class="headerlink" title="4.1 vscode环境搭建"></a>4.1 vscode环境搭建</h2><p>vscode是微软近几年推出的一款<a target="_blank" href="https://code.visualstudio.com/" rel="external nofollow noreferrer noopener">免费</a>、<a target="_blank" href="https://github.com/Microsoft/vscode" rel="external nofollow noreferrer noopener">开源</a>、<a target="_blank" href="https://www.electronjs.org/" rel="external nofollow noreferrer noopener">跨平台</a>、资源占用（较）少、架构优良、插件扩展丰富（不会像eclipse一样卡顿）的一款IDE代码编辑、编译、调试一体化的工具，是目前即全面又好用的IDE开发环境。</p>
@@ -1633,7 +1633,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).</code></pre
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fFaceCompare</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszAPPID<span class="token punctuation">,</span>
                    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszAPPSecret<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszAPPKey<span class="token punctuation">,</span>
                    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszImagePath1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pszImagePath2<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
     <span class="token keyword">double</span> fScore <span class="token operator">=</span> <span class="token number">0.0f</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> szDate<span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token keyword">char</span> szAuthData<span class="token punctuation">[</span><span class="token number">512</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -1652,16 +1652,16 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).</code></pre
 
     <span class="token comment" spellcheck="true">// 构造body数据</span>
     cstring_t <span class="token operator">*</span>pBody <span class="token operator">=</span> <span class="token function">pstGenBody</span><span class="token punctuation">(</span>pszAPPID<span class="token punctuation">,</span> pszImagePath1<span class="token punctuation">,</span> pszImagePath2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pBody<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>pBody<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">LOG</span><span class="token punctuation">(</span>EERROR<span class="token punctuation">,</span> <span class="token string">"empty body error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token punctuation">.</span><span class="token number">0f</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
     <span class="token comment" spellcheck="true">// LOG(EDEBUG, "body:#%s#", pBody->str);</span>
 
     <span class="token comment" spellcheck="true">// 构造需要的额外HTTP头</span>
-    <span class="token keyword">const</span> <span class="token keyword">char</span> szHeader<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span> szHeader<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
         <span class="token string">"content-type: application/json\r\n"</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 发起HTTP Post语音识别的请求</span>
     SEIHttpInfo_t stHttpInfo<span class="token punctuation">;</span>
@@ -1678,7 +1678,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).</code></pre
     <span class="token function">cstring_del</span><span class="token punctuation">(</span>pBody<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> fScore<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="5-4-测试及结果"><a href="#5-4-测试及结果" class="headerlink" title="5.4 测试及结果"></a>5.4 测试及结果</h2><p>程序是否按照既定的流程走了呢？有没有可能在不同的的场景下会偏离流程，而出现不可预知的结果呢？测试在这里就起到了这样的作用：列举出用户使用的所有可能的场景，对场景的流程进行列举，再通过这些场景的流程去验证程序的流程正确性的过程。</p>
 <p>测试过程可以选择</p>
 <ol>
@@ -2265,7 +2265,7 @@ CMake suite maintained and supported by Kitware (kitware.com/cmake).</code></pre
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">54k</span>&nbsp;字
+                class="white-color">53.1k</span>&nbsp;字
             
             
             
