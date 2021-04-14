@@ -4,7 +4,7 @@
   <url>
     <loc>https://kui.ge/2021/04/snowboy-hotword-detect/</loc>
     
-    <lastmod>2021-04-11</lastmod>
+    <lastmod>2021-04-14</lastmod>
     
   </url>
   
@@ -109,6 +109,20 @@
 
   
   <url>
+    <loc>https://kui.ge/tags/WALLE/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kui.ge/tags/WALL-E/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://kui.ge/tags/%E6%AF%94%E7%89%B9%E4%BA%BA%E7%94%9F%E7%9A%84%E4%B8%96%E7%95%8C/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
@@ -137,56 +151,14 @@
   </url>
   
   <url>
-    <loc>https://kui.ge/tags/hotword/</loc>
+    <loc>https://kui.ge/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://kui.ge/tags/%E5%94%A4%E9%86%92%E8%AF%8D/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kui.ge/tags/WALLE/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kui.ge/tags/WALL-E/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kui.ge/tags/GitHub-pages/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kui.ge/tags/Hexo/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kui.ge/tags/Typora/</loc>
-    <lastmod>2021-04-14</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kui.ge/tags/PicGo/</loc>
+    <loc>https://kui.ge/tags/%E8%AF%AD%E9%9F%B3%E5%94%A4%E9%86%92/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -215,6 +187,34 @@
   
   <url>
     <loc>https://kui.ge/tags/NAS/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kui.ge/tags/GitHub-pages/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kui.ge/tags/Hexo/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kui.ge/tags/Typora/</loc>
+    <lastmod>2021-04-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kui.ge/tags/PicGo/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -286,14 +286,14 @@
 
   
   <url>
-    <loc>https://kui.ge/categories/MarsRescue/</loc>
+    <loc>https://kui.ge/categories/MarsPlan/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://kui.ge/categories/MarsPlan/</loc>
+    <loc>https://kui.ge/categories/MarsRescue/</loc>
     <lastmod>2021-04-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
