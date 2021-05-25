@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    54.4k
+                    54.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    226 分
+                    225 分
                 </div>
                 
 
@@ -4299,9 +4299,9 @@ f <span class="token operator">=</span> open<span class="token punctuation">(</s
 <p>在代码示例中，我们打开<code>numbers.csv</code>进行读取并读取其内容。</p>
 <pre class="line-numbers language-python"><code class="language-python">reader <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>我们得到<code>reader</code>对象。</p>
-<pre class="line-numbers language-py"><code class="language-py">for row in reader:
-    for e in row:
-        print(e)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">for</span> row <span class="token keyword">in</span> reader<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> e <span class="token keyword">in</span> row<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>通过两个 for 循环，我们遍历数据。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">$ ./read_csv.py 
 16
@@ -5046,39 +5046,54 @@ pool <span class="token operator">=</span> redis<span class="token punctuation">
 r <span class="token operator">=</span> redis<span class="token punctuation">.</span>Redis<span class="token punctuation">(</span>connection_pool<span class="token operator">=</span>pool<span class="token punctuation">)</span>
 r<span class="token punctuation">.</span>set<span class="token punctuation">(</span><span class="token string">'gender'</span><span class="token punctuation">,</span> <span class="token string">'male'</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># key是"gender" value是"male" 将键值对存入redis缓存</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'gender'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true"># gender 取出键male对应的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="3-5-3-redis基本命令-String"><a href="#3-5-3-redis基本命令-String" class="headerlink" title="3.5.3 redis基本命令 String"></a>3.5.3 redis基本命令 String</h4><p>set(name, value, ex=None, px=None, nx=False, xx=False)</p>
-<p>在Redis中设置值，默认，不存在则创建，存在则修改<br> 参数：</p>
+<h4 id="3-5-3-redis基本命令-String"><a href="#3-5-3-redis基本命令-String" class="headerlink" title="3.5.3 redis基本命令 String"></a>3.5.3 redis基本命令 String</h4><p>在Redis中设置值，默认，不存在则创建，存在则修改</p>
+<pre class="line-numbers language-python"><code class="language-python">set<span class="token punctuation">(</span>name<span class="token punctuation">,</span> value<span class="token punctuation">,</span> ex<span class="token operator">=</span>None<span class="token punctuation">,</span> px<span class="token operator">=</span>None<span class="token punctuation">,</span> nx<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> xx<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>参数：</p>
 <pre><code>ex，过期时间（秒）
 px，过期时间（毫秒）
 nx，如果设置为True，则只有name不存在时，当前set操作才执行
 xx，如果设置为True，则只有name存在时，当前set操作才执行</code></pre>
-<p>1.ex，过期时间（秒） 这里过期时间是3秒，3秒后p，键food的值就变成None</p>
+<ol>
+<li>ex，过期时间（秒） 这里过期时间是3秒，3秒后p，键food的值就变成None</li>
+</ol>
 <pre class="line-numbers language-dart"><code class="language-dart"><span class="token keyword">import</span> redis
 
 pool <span class="token operator">=</span> redis<span class="token punctuation">.</span><span class="token function">ConnectionPool</span><span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'localhost'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">6379</span><span class="token punctuation">,</span> decode_responses<span class="token operator">=</span>True<span class="token punctuation">)</span>
 r <span class="token operator">=</span> redis<span class="token punctuation">.</span><span class="token function">Redis</span><span class="token punctuation">(</span>connection_pool<span class="token operator">=</span>pool<span class="token punctuation">)</span>
 r<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'food'</span><span class="token punctuation">,</span> <span class="token string">'mutton'</span><span class="token punctuation">,</span> ex<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>    # key是<span class="token string">"food"</span> value是<span class="token string">"mutton"</span> 将键值对存入redis缓存
 <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'food'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  # mutton 取出键food对应的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>2.px，过期时间（豪秒） 这里过期时间是3豪秒，3毫秒后，键foo的值就变成None</p>
+<ol start="2">
+<li>px，过期时间（豪秒） 这里过期时间是3豪秒，3毫秒后，键foo的值就变成None</li>
+</ol>
 <pre class="line-numbers language-dart"><code class="language-dart"><span class="token keyword">import</span> redis
 
 pool <span class="token operator">=</span> redis<span class="token punctuation">.</span><span class="token function">ConnectionPool</span><span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'localhost'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">6379</span><span class="token punctuation">,</span> decode_responses<span class="token operator">=</span>True<span class="token punctuation">)</span>
 r <span class="token operator">=</span> redis<span class="token punctuation">.</span><span class="token function">Redis</span><span class="token punctuation">(</span>connection_pool<span class="token operator">=</span>pool<span class="token punctuation">)</span>
 r<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'food'</span><span class="token punctuation">,</span> <span class="token string">'beef'</span><span class="token punctuation">,</span> px<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'food'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>3.nx，如果设置为True，则只有name不存在时，当前set操作才执行 （新建）</p>
+<ol start="3">
+<li>nx，如果设置为True，则只有name不存在时，当前set操作才执行 （新建）</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> redis
 
 pool <span class="token operator">=</span> redis<span class="token punctuation">.</span>ConnectionPool<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'localhost'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">6379</span><span class="token punctuation">,</span> decode_responses<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 r <span class="token operator">=</span> redis<span class="token punctuation">.</span>Redis<span class="token punctuation">(</span>connection_pool<span class="token operator">=</span>pool<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>set<span class="token punctuation">(</span><span class="token string">'fruit'</span><span class="token punctuation">,</span> <span class="token string">'watermelon'</span><span class="token punctuation">,</span> nx<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># True--不存在</span>
 <span class="token comment" spellcheck="true"># 如果键fruit不存在，那么输出是True；如果键fruit已经存在，输出是None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>4.xx，如果设置为True，则只有name存在时，当前set操作才执行 （修改）</p>
+<ol start="4">
+<li>xx，如果设置为True，则只有name存在时，当前set操作才执行 （修改）</li>
+</ol>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'fruit'</span><span class="token punctuation">,</span> <span class="token string">'watermelon'</span><span class="token punctuation">,</span> xx<span class="token operator">=</span>True<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token shell-comment comment"># True--已经存在</span>
 <span class="token shell-comment comment"># 如果键fruit已经存在，那么输出是True；如果键fruit不存在，输出是None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>5.setnx(name, value)<br> 设置值，只有name不存在时，执行设置操作（添加）</p>
+<ol start="5">
+<li><p>setnx(name, value)</p>
+<p> 设置值，只有name不存在时，执行设置操作（添加）</p>
+</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.setnx<span class="token punctuation">(</span><span class="token string">'fruit1'</span>, <span class="token string">'banana'</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># fruit1不存在，输出为True</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>6.setex(name, time, value)<br> 设置值<br> 参数：<br> time，过期时间（数字秒 或 timedelta对象）</p>
+<ol start="6">
+<li>setex(name, time, value)<br>  设置值，参数：<br>  time，过期时间（数字秒 或 timedelta对象）</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> redis
 <span class="token keyword">import</span> time
 
@@ -5087,32 +5102,48 @@ r <span class="token operator">=</span> redis<span class="token punctuation">.</
 r<span class="token punctuation">.</span>setex<span class="token punctuation">(</span><span class="token string">"fruit2"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"orange"</span><span class="token punctuation">)</span>
 time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'fruit2'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 5秒后，取值就从orange变成None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>7.psetex(name, time_ms, value)<br> 设置值<br> 参数：<br> time_ms，过期时间（数字毫秒 或 timedelta对象）</p>
+<ol start="7">
+<li>psetex(name, time_ms, value)<br>  设置值，参数：<br>  time_ms，过期时间（数字毫秒 或 timedelta对象）</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.psetex<span class="token punctuation">(</span><span class="token string">"fruit3"</span>, 5000, <span class="token string">"apple"</span><span class="token punctuation">)</span>
 time.sleep<span class="token punctuation">(</span>5<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.get<span class="token punctuation">(</span><span class="token string">'fruit3'</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 5000毫秒后，取值就从apple变成None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>8.mset(*args, **kwargs)<br> 批量设置值<br> 如：</p>
+<ol start="8">
+<li>mset(*args, **kwargs)<br>  批量设置值，如：</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.mget<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'k1'</span><span class="token keyword">:</span> <span class="token string">'v1'</span>, <span class="token string">'k2'</span><span class="token keyword">:</span> <span class="token string">'v2'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 r.mset<span class="token punctuation">(</span>k1<span class="token operator">=</span><span class="token string">"v1"</span>, k2<span class="token operator">=</span><span class="token string">"v2"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 这里k1 和k2 不能带引号 一次设置对个键值对</span>
 print<span class="token punctuation">(</span>r.mget<span class="token punctuation">(</span><span class="token string">"k1"</span>, <span class="token string">"k2"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 一次取出多个键对应的值</span>
 print<span class="token punctuation">(</span>r.mget<span class="token punctuation">(</span><span class="token string">"k1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>9.mget(keys, *args)<br> 批量获取<br> 如：</p>
+<ol start="9">
+<li>mget(keys, *args)<br>  批量获取，如：</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.mget<span class="token punctuation">(</span><span class="token string">'k1'</span>, <span class="token string">'k2'</span><span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.mget<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'k1'</span>, <span class="token string">'k2'</span><span class="token punctuation">]</span><span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.mget<span class="token punctuation">(</span><span class="token string">"fruit"</span>, <span class="token string">"fruit1"</span>, <span class="token string">"fruit2"</span>, <span class="token string">"k1"</span>, <span class="token string">"k2"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 将目前redis缓存中的键对应的值批量取出来</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>10.getset(name, value)<br> 设置新值并获取原来的值</p>
+<ol start="10">
+<li><p>getset(name, value)</p>
+<p>设置新值并获取原来的值</p>
+</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.getset<span class="token punctuation">(</span><span class="token string">"food"</span>, <span class="token string">"barbecue"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 设置的新值是barbecue 设置前的值是beef</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>11.getrange(key, start, end)<br> 获取子序列（根据字节获取，非字符）<br> 参数：<br> name，Redis 的 name<br> start，起始位置（字节）<br> end，结束位置（字节）<br> 如： “君惜大大” ，0-3表示 “君”</p>
+<ol start="11">
+<li>getrange(key, start, end)<br> 获取子序列（根据字节获取，非字符）<br> 参数：<br> name，Redis 的 name<br> start，起始位置（字节）<br> end，结束位置（字节）<br> 如： “君惜大大” ，0-3表示 “君”</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.set<span class="token punctuation">(</span><span class="token string">"cn_name"</span>, <span class="token string">"君惜大大"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 汉字</span>
 print<span class="token punctuation">(</span>r.getrange<span class="token punctuation">(</span><span class="token string">"cn_name"</span>, 0, 2<span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 取索引号是0-2 前3位的字节 君 切片操作 （一个汉字3个字节 1个字母一个字节 每个字节8bit）</span>
 print<span class="token punctuation">(</span>r.getrange<span class="token punctuation">(</span><span class="token string">"cn_name"</span>, 0, -1<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 取所有的字节 君惜大大 切片操作</span>
 r.set<span class="token punctuation">(</span><span class="token string">"en_name"</span>,<span class="token string">"junxi"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 字母</span>
 print<span class="token punctuation">(</span>r.getrange<span class="token punctuation">(</span><span class="token string">"en_name"</span>, 0, 2<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 取索引号是0-2 前3位的字节 jun 切片操作 （一个汉字3个字节 1个字母一个字节 每个字节8bit）</span>
 print<span class="token punctuation">(</span>r.getrange<span class="token punctuation">(</span><span class="token string">"en_name"</span>, 0, -1<span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 取所有的字节 junxi 切片操作</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>12.setrange(name, offset, value)<br> 修改字符串内容，从指定字符串索引开始向后替换（新值太长时，则向后添加）<br> 参数：<br> offset，字符串的索引，字节（一个汉字三个字节）<br> value，要设置的值</p>
+<ol start="12">
+<li>setrange(name, offset, value)<br> 修改字符串内容，从指定字符串索引开始向后替换（新值太长时，则向后添加）<br> 参数：<br> offset，字符串的索引，字节（一个汉字三个字节）<br> value，要设置的值</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.setrange<span class="token punctuation">(</span><span class="token string">"en_name"</span>, 1, <span class="token string">"ccc"</span><span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.get<span class="token punctuation">(</span><span class="token string">"en_name"</span><span class="token punctuation">))</span>    <span class="token comment" spellcheck="true"># jccci 原始值是junxi 从索引号是1开始替换成ccc 变成 jccci</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>13.setbit(name, offset, value)<br> 对name对应值的二进制表示的位进行操作<br> 参数：<br> name，redis的name<br> offset，位的索引（将值变换成二进制后再进行索引）<br> value，值只能是 1 或 0</p>
+<ol start="13">
+<li>setbit(name, offset, value)<br> 对name对应值的二进制表示的位进行操作<br> 参数：<br> name，redis的name<br> offset，位的索引（将值变换成二进制后再进行索引）<br> value，值只能是 1 或 0</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">注：如果在Redis中有一个对应： n1 <span class="token operator">=</span> <span class="token string">"foo"</span>，
 那么字符串foo的二进制表示为：01100110 01101111 01101111
 所以，如果执行 setbit<span class="token punctuation">(</span><span class="token string">'n1'</span>, 7, 1<span class="token punctuation">)</span>，则就会将第7位设置为1，
@@ -5128,13 +5159,20 @@ print bin<span class="token punctuation">(</span>num<span class="token punctuati
 答：对于utf-8，每一个汉字占 3 个字节，那么 <span class="token string">"陈思维"</span> 则有 9个字节
 对于汉字，for循环时候会按照 字节 迭代，那么在迭代时，将每一个字节转换 十进制数，然后再将十进制数转换成二进制
 11100110 10101101 10100110 11100110 10110010 10011011 11101001 10111101 10010000<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>14.getbit(name, offset)<br> 获取name对应的值的二进制表示中的某位的值 （0或1）</p>
+<ol start="14">
+<li>getbit(name, offset)<br> 获取name对应的值的二进制表示中的某位的值 （0或1）</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.getbit<span class="token punctuation">(</span><span class="token string">"foo1"</span>, 0<span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 0 foo1 对应的二进制 4个字节 32位 第0位是0还是1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>15.bitcount(key, start=None, end=None)<br> 获取name对应的值的二进制表示中 1 的个数<br> 参数：<br> key，Redis的name<br> start 字节起始位置<br> end，字节结束位置</p>
+<ol start="15">
+<li>bitcount(key, start=None, end=None)<br> 获取name对应的值的二进制表示中 1 的个数<br> 参数：<br> key，Redis的name<br> start 字节起始位置<br> end，字节结束位置</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.get<span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># goo1 01100111</span>
 print<span class="token punctuation">(</span>r.bitcount<span class="token punctuation">(</span><span class="token string">"foo"</span>,0,1<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 11 表示前2个字节中，1出现的个数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>16.bitop(operation, dest, *keys)<br> 获取多个值，并将值做位运算，将最后的结果保存至新的name对应的值</p>
+<ol start="16">
+<li><p>bitop(operation, dest, *keys)<br> 获取多个值，并将值做位运算，将最后的结果保存至新的name对应的值</p>
 <p>参数：<br> operation,AND（并） 、 OR（或） 、 NOT（非） 、 XOR（异或）<br> dest, 新的Redis的name<br> *keys,要查找的Redis的name</p>
+</li>
+</ol>
 <p>如：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">bitop<span class="token punctuation">(</span><span class="token string">"AND"</span>, <span class="token string">'new_name'</span>, <span class="token string">'n1'</span>, <span class="token string">'n2'</span>, <span class="token string">'n3'</span><span class="token punctuation">)</span>
 获取Redis中n1,n2,n3对应的值，然后讲所有的值做位运算（求并集），然后将结果保存 new_name 对应的值中
@@ -5150,9 +5188,13 @@ num <span class="token operator">=</span> ord<span class="token punctuation">(</
 print<span class="token punctuation">(</span>num<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 打印每个字母字符或者汉字字符对应的ascii码值 f-102-0b100111-01100111</span>
 print<span class="token punctuation">(</span>bin<span class="token punctuation">(</span>num<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 打印每个10进制ascii码值转换成二进制的值 0b1100110（0b表示二进制）</span>
 print bin<span class="token punctuation">(</span>num<span class="token punctuation">)</span>.replace<span class="token punctuation">(</span><span class="token string">'b'</span>,<span class="token string">''</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 将二进制0b1100110替换成01100110</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>17.strlen(name)<br> 返回name对应值的字节长度（一个汉字3个字节）</p>
+<ol start="17">
+<li>strlen(name)<br> 返回name对应值的字节长度（一个汉字3个字节）</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.strlen<span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 4 'goo1'的长度是4</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>18.incr(self, name, amount=1)<br> 自增 name对应的值，当name不存在时，则创建name＝amount，否则，则自增。<br> 参数：<br> name,Redis的name<br> amount,自增数（必须是整数）<br> 注：同incrby</p>
+<ol start="18">
+<li>incr(self, name, amount=1)<br> 自增 name对应的值，当name不存在时，则创建name＝amount，否则，则自增。<br> 参数：<br> name,Redis的name<br> amount,自增数（必须是整数）<br> 注：同incrby</li>
+</ol>
 <pre class="line-numbers language-dart"><code class="language-dart">r<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">mget</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token string">"foo1"</span><span class="token punctuation">,</span> <span class="token string">"foo2"</span><span class="token punctuation">,</span> <span class="token string">"k1"</span><span class="token punctuation">,</span> <span class="token string">"k2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 r<span class="token punctuation">.</span><span class="token function">incr</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> amount<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -5165,21 +5207,29 @@ r<span class="token punctuation">.</span><span class="token function">incr</span
 r<span class="token number">.</span><span class="token function">incr</span><span class="token punctuation">(</span><span class="token string">"visit:12306:totals"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>页面载入的时候则可直接获取这个值</p>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token function">print</span><span class="token punctuation">(</span>r<span class="token number">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"visit:12306:totals"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>19.incrbyfloat(self, name, amount=1.0)<br> 自增 name对应的值，当name不存在时，则创建name＝amount，否则，则自增。<br> 参数：<br> name,Redis的name<br> amount,自增数（浮点型）</p>
+<ol start="19">
+<li>incrbyfloat(self, name, amount=1.0)<br> 自增 name对应的值，当name不存在时，则创建name＝amount，否则，则自增。<br> 参数：<br> name,Redis的name<br> amount,自增数（浮点型）</li>
+</ol>
 <pre class="line-numbers language-dart"><code class="language-dart">r<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"foo1"</span><span class="token punctuation">,</span> <span class="token string">"123.0"</span><span class="token punctuation">)</span>
 r<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"foo2"</span><span class="token punctuation">,</span> <span class="token string">"221.0"</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">mget</span><span class="token punctuation">(</span><span class="token string">"foo1"</span><span class="token punctuation">,</span> <span class="token string">"foo2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 r<span class="token punctuation">.</span><span class="token function">incrbyfloat</span><span class="token punctuation">(</span><span class="token string">"foo1"</span><span class="token punctuation">,</span> amount<span class="token operator">=</span><span class="token number">2.0</span><span class="token punctuation">)</span>
 r<span class="token punctuation">.</span><span class="token function">incrbyfloat</span><span class="token punctuation">(</span><span class="token string">"foo2"</span><span class="token punctuation">,</span> amount<span class="token operator">=</span><span class="token number">3.0</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">mget</span><span class="token punctuation">(</span><span class="token string">"foo1"</span><span class="token punctuation">,</span> <span class="token string">"foo2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>20.decr(self, name, amount=1)<br> 自减 name对应的值，当name不存在时，则创建name＝amount，否则，则自减。<br> 参数：<br> name,Redis的name<br> amount,自减数（整数)</p>
+<ol start="20">
+<li>decr(self, name, amount=1)<br> 自减 name对应的值，当name不存在时，则创建name＝amount，否则，则自减。<br> 参数：<br> name,Redis的name<br> amount,自减数（整数)</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.decr<span class="token punctuation">(</span><span class="token string">"foo4"</span>, amount<span class="token operator">=</span>3<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 递减3</span>
 r.decr<span class="token punctuation">(</span><span class="token string">"foo1"</span>, amount<span class="token operator">=</span>1<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 递减1</span>
 print<span class="token punctuation">(</span>r.mget<span class="token punctuation">(</span><span class="token string">"foo1"</span>, <span class="token string">"foo4"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>21.append(key, value)<br> 在redis name对应的值后面追加内容<br> 参数：<br> key, redis的name<br> value, 要追加的字符串</p>
+<ol start="21">
+<li>append(key, value)<br> 在redis name对应的值后面追加内容<br> 参数：<br> key, redis的name<br> value, 要追加的字符串</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.append<span class="token punctuation">(</span><span class="token string">"name"</span>, <span class="token string">"haha"</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 在name对应的值junxi后面追加字符串haha</span>
 print<span class="token punctuation">(</span>r.mget<span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="3-5-4-redis基本命令-hash"><a href="#3-5-4-redis基本命令-hash" class="headerlink" title="3.5.4 redis基本命令 hash"></a>3.5.4 redis基本命令 hash</h4><p>1.单个增加–修改(单个取出)–没有就新增，有的话就修改<br> hset(name, key, value)<br> name对应的hash中设置一个键值对（不存在，则创建；否则，修改）<br> 参数：<br> name，redis的name<br> key，name对应的hash中的key<br> value，name对应的hash中的value<br> 注：<br> hsetnx(name, key, value),当name对应的hash中不存在当前key时则创建（相当于添加）</p>
+<h4 id="3-5-4-redis基本命令-hash"><a href="#3-5-4-redis基本命令-hash" class="headerlink" title="3.5.4 redis基本命令 hash"></a>3.5.4 redis基本命令 hash</h4><ol>
+<li>单个增加–修改(单个取出)–没有就新增，有的话就修改<br>  hset(name, key, value)<br>  name对应的hash中设置一个键值对（不存在，则创建；否则，修改）<br>  参数：<br>  name，redis的name<br>  key，name对应的hash中的key<br>  value，name对应的hash中的value<br>  注：<br>  hsetnx(name, key, value),当name对应的hash中不存在当前key时则创建（相当于添加）</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> redis
 <span class="token keyword">import</span> time
 
@@ -5193,48 +5243,76 @@ r<span class="token punctuation">.</span>hset<span class="token punctuation">(</
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>hmget<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span> <span class="token string">"k1"</span><span class="token punctuation">,</span> <span class="token string">"k2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 多个取hash的key对应的值</span>
 r<span class="token punctuation">.</span>hsetnx<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span> <span class="token string">"k2"</span><span class="token punctuation">,</span> <span class="token string">"v3"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 只能新建</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>hget<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">,</span> <span class="token string">"k2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>2 批量增加（取出）<br> hmset(name, mapping)<br> 在name对应的hash中批量设置键值对<br> 参数：<br> name，redis的name<br> mapping，字典，如：{‘k1’:’v1’, ‘k2’: ‘v2’}<br> 如：</p>
+<ol start="2">
+<li>批量增加（取出）<br>  hmset(name, mapping)<br>  在name对应的hash中批量设置键值对<br>  参数：<br>  name，redis的name<br>  mapping，字典，如：{‘k1’:’v1’, ‘k2’: ‘v2’}<br>  如：</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.hmset<span class="token punctuation">(</span><span class="token string">"hash2"</span>, <span class="token punctuation">{</span><span class="token string">"k2"</span><span class="token keyword">:</span> <span class="token string">"v2"</span>, <span class="token string">"k3"</span><span class="token keyword">:</span> <span class="token string">"v3"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>hget(name,key)<br> 在name对应的hash中获取根据key获取value<br> hmget(name, keys, *args)<br> 在name对应的hash中获取多个key的值<br> 参数：<br> name，reids对应的name<br> keys，要获取key集合，如：[‘k1’, ‘k2’, ‘k3’]<br> *args，要获取的key，如：k1,k2,k3<br> 如：</p>
+<ol start="3">
+<li><p>获取结果</p>
+<p> hget(name,key)<br>  在name对应的hash中获取根据key获取value<br>  hmget(name, keys, *args)<br>  在name对应的hash中获取多个key的值<br>  参数：<br>  name，reids对应的name<br>  keys，要获取key集合，如：[‘k1’, ‘k2’, ‘k3’]<br>  *args，要获取的key，如：k1,k2,k3<br>  如：</p>
+</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hget<span class="token punctuation">(</span><span class="token string">"hash2"</span>, <span class="token string">"k2"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 单个取出"hash2"的key-k2对应的value</span>
 print<span class="token punctuation">(</span>r.hmget<span class="token punctuation">(</span><span class="token string">"hash2"</span>, <span class="token string">"k2"</span>, <span class="token string">"k3"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 批量取出"hash2"的key-k2 k3对应的value --方式1</span>
 print<span class="token punctuation">(</span>r.hmget<span class="token punctuation">(</span><span class="token string">"hash2"</span>, <span class="token punctuation">[</span><span class="token string">"k2"</span>, <span class="token string">"k3"</span><span class="token punctuation">]</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 批量取出"hash2"的key-k2 k3对应的value --方式2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>3.取出所有的键值对<br> hgetall(name)<br> 获取name对应hash的所有键值</p>
+<ol start="4">
+<li>取出所有的键值对<br>  hgetall(name)<br>  获取name对应hash的所有键值</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>4.得到所有键值对的格式 hash长度<br> hlen(name)<br> 获取name对应的hash中键值对的个数</p>
+<ol start="5">
+<li>得到所有键值对的格式 hash长度<br>  hlen(name)<br>  获取name对应的hash中键值对的个数</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hlen<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>5.得到所有的keys（类似字典的取所有keys）<br> hkeys(name)<br> 获取name对应的hash中所有的key的值</p>
+<ol start="6">
+<li>得到所有的keys（类似字典的取所有keys）<br>  hkeys(name)<br>  获取name对应的hash中所有的key的值</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hkeys<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>6.得到所有的value（类似字典的取所有value）<br> hvals(name)<br> 获取name对应的hash中所有的value的值</p>
+<ol start="7">
+<li>得到所有的value（类似字典的取所有value）<br>  hvals(name)<br>  获取name对应的hash中所有的value的值</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hvals<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>7.判断成员是否存在（类似字典的in）<br> hexists(name, key)<br> 检查name对应的hash是否存在当前传入的key</p>
+<ol start="8">
+<li>判断成员是否存在（类似字典的in）<br>  hexists(name, key)<br>  检查name对应的hash是否存在当前传入的key</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hexists<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k4"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># False 不存在</span>
 print<span class="token punctuation">(</span>r.hexists<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k1"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># True 存在</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>8.删除键值对<br> hdel(name,*keys)<br> 将name对应的hash中指定key的键值对删除</p>
+<ol start="9">
+<li>删除键值对<br>  hdel(name,*keys)<br>  将name对应的hash中指定key的键值对删除</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span>
 r.hset<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k2"</span>, <span class="token string">"v222"</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 修改已有的key k2</span>
 r.hset<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k11"</span>, <span class="token string">"v1"</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 新增键值对 k11</span>
 r.hdel<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k1"</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 删除一个键值对</span>
 print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>9.自增自减整数(将key对应的value–整数 自增1或者2，或者别的整数 负数就是自减)<br> hincrby(name, key, amount=1)<br> 自增name对应的hash中的指定key的值，不存在则创建key=amount<br> 参数：<br> name，redis中的name<br> key， hash对应的key<br> amount，自增数（整数）</p>
+<ol start="10">
+<li>自增自减整数(将key对应的value–整数 自增1或者2，或者别的整数 负数就是自减)<br> hincrby(name, key, amount=1)<br> 自增name对应的hash中的指定key的值，不存在则创建key=amount<br> 参数：<br> name，redis中的name<br> key， hash对应的key<br> amount，自增数（整数）</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.hset<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k3"</span>, 123<span class="token punctuation">)</span>
 r.hincrby<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k3"</span>, amount<span class="token operator">=</span>-1<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span>
 r.hincrby<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k4"</span>, amount<span class="token operator">=</span>1<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 不存在的话，value默认就是1</span>
 print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>10.自增自减浮点数(将key对应的value–浮点数 自增1.0或者2.0，或者别的浮点数 负数就是自减)<br> hincrbyfloat(name, key, amount=1.0)<br> 自增name对应的hash中的指定key的值，不存在则创建key=amount<br> 参数：<br> name，redis中的name<br> key， hash对应的key<br> amount，自增数（浮点数）<br> 自增name对应的hash中的指定key的值，不存在则创建key=amount</p>
+<ol start="11">
+<li>自增自减浮点数(将key对应的value–浮点数 自增1.0或者2.0，或者别的浮点数 负数就是自减)<br> hincrbyfloat(name, key, amount=1.0)<br> 自增name对应的hash中的指定key的值，不存在则创建key=amount<br> 参数：<br> name，redis中的name<br> key， hash对应的key<br> amount，自增数（浮点数）<br> 自增name对应的hash中的指定key的值，不存在则创建key=amount</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.hset<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k5"</span>, <span class="token string">"1.0"</span><span class="token punctuation">)</span>
 r.hincrbyfloat<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k5"</span>, amount<span class="token operator">=</span>-1.0<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 已经存在，递减-1.0</span>
 print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span>
 r.hincrbyfloat<span class="token punctuation">(</span><span class="token string">"hash1"</span>, <span class="token string">"k6"</span>, amount<span class="token operator">=</span>-1.0<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 不存在，value初始值是-1.0 每次递减1.0</span>
 print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>11.取值查看–分片读取<br> hscan(name, cursor=0, match=None, count=None)<br> 增量式迭代获取，对于数据大的数据非常有用，hscan可以实现分片的获取数据，并非一次性将数据全部获取完，从而放置内存被撑爆<br> 参数：<br> name，redis的name<br> cursor，游标（基于游标分批取获取数据）<br> match，匹配指定key，默认None 表示所有的key<br> count，每次分片最少获取个数，默认None表示采用Redis的默认分片个数<br> 如：<br> 第一次：cursor1, data1 = r.hscan(‘xx’, cursor=0, match=None, count=None)<br> 第二次：cursor2, data1 = r.hscan(‘xx’, cursor=cursor1, match=None, count=None)<br> …<br> 直到返回值cursor的值为0时，表示数据已经通过分片获取完毕</p>
+<ol start="12">
+<li>取值查看–分片读取<br> hscan(name, cursor=0, match=None, count=None)<br> 增量式迭代获取，对于数据大的数据非常有用，hscan可以实现分片的获取数据，并非一次性将数据全部获取完，从而放置内存被撑爆<br> 参数：<br> name，redis的name<br> cursor，游标（基于游标分批取获取数据）<br> match，匹配指定key，默认None 表示所有的key<br> count，每次分片最少获取个数，默认None表示采用Redis的默认分片个数<br> 如：<br> 第一次：cursor1, data1 = r.hscan(‘xx’, cursor=0, match=None, count=None)<br> 第二次：cursor2, data1 = r.hscan(‘xx’, cursor=cursor1, match=None, count=None)<br> …<br> 直到返回值cursor的值为0时，表示数据已经通过分片获取完毕</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hscan<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>12.hscan_iter(name, match=None, count=None)<br> 利用yield封装hscan创建生成器，实现分批去redis中获取数据<br> 参数：<br> match，匹配指定key，默认None 表示所有的key<br> count，每次分片最少获取个数，默认None表示采用Redis的默认分片个数<br> 如：</p>
+<ol start="13">
+<li>hscan_iter(name, match=None, count=None)<br> 利用yield封装hscan创建生成器，实现分批去redis中获取数据<br> 参数：<br> match，匹配指定key，默认None 表示所有的key<br> count，每次分片最少获取个数，默认None表示采用Redis的默认分片个数<br> 如：</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">for</span> item <span class="token keyword">in</span> r.hscan_iter<span class="token punctuation">(</span><span class="token string">'hash1'</span><span class="token punctuation">)</span>:
     print<span class="token punctuation">(</span>item<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.hscan_iter<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span>    <span class="token comment" spellcheck="true"># 生成器内存地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="3-5-5-redis基本命令-list"><a href="#3-5-5-redis基本命令-list" class="headerlink" title="3.5.5 redis基本命令 list"></a>3.5.5 redis基本命令 list</h4><p>1.增加（类似于list的append，只是这里是从左边新增加）–没有就新建<br> lpush(name,values)<br> 在name对应的list中添加元素，每个新的元素都添加到列表的最左边<br> 如：</p>
+<h4 id="3-5-5-redis基本命令-list"><a href="#3-5-5-redis基本命令-list" class="headerlink" title="3.5.5 redis基本命令 list"></a>3.5.5 redis基本命令 list</h4><ol>
+<li>增加（类似于list的append，只是这里是从左边新增加）–没有就新建<br>  lpush(name,values)<br>  在name对应的list中添加元素，每个新的元素都添加到列表的最左边<br>  如：</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> redis
 <span class="token keyword">import</span> time
 
@@ -5248,60 +5326,87 @@ r<span class="token punctuation">.</span>lpush<span class="token punctuation">(<
 <pre class="line-numbers language-bash"><code class="language-bash">r.rpush<span class="token punctuation">(</span><span class="token string">"list2"</span>, 11, 22, 33<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 表示从右向左操作</span>
 print<span class="token punctuation">(</span>r.llen<span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 列表长度</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, 3<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 切片取出值，范围是索引号0-3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>2.增加（从右边增加）–没有就新建</p>
+<ol start="2">
+<li>增加（从右边增加）–没有就新建</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.rpush<span class="token punctuation">(</span><span class="token string">"list2"</span>, 44, 55, 66<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 在列表的右边，依次添加44,55,66</span>
 print<span class="token punctuation">(</span>r.llen<span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 列表长度</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 切片取出值，范围是索引号0到-1(最后一个元素)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>3.往已经有的name的列表的左边添加元素，没有的话无法创建<br> lpushx(name,value)<br> 在name对应的list中添加元素，只有name已经存在时，值添加到列表的最左边<br> 更多：</p>
+<ol start="3">
+<li>往已经有的name的列表的左边添加元素，没有的话无法创建<br>  lpushx(name,value)<br>  在name对应的list中添加元素，只有name已经存在时，值添加到列表的最左边<br>  更多：</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.lpushx<span class="token punctuation">(</span><span class="token string">"list10"</span>, 10<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 这里list10不存在</span>
 print<span class="token punctuation">(</span>r.llen<span class="token punctuation">(</span><span class="token string">"list10"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 0</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list10"</span>, 0, -1<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># []</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash">r.lpushx<span class="token punctuation">(</span><span class="token string">"list2"</span>, 77<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 这里"list2"之前已经存在，往列表最左边添加一个元素，一次只能添加一个</span>
 print<span class="token punctuation">(</span>r.llen<span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 列表长度</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 切片取出值，范围是索引号0到-1(最后一个元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>4.往已经有的name的列表的右边添加元素，没有的话无法创建</p>
+<ol start="4">
+<li>往已经有的name的列表的右边添加元素，没有的话无法创建</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.rpushx<span class="token punctuation">(</span><span class="token string">"list2"</span>, 99<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 这里"foo_list1"之前已经存在，往列表最右边添加一个元素，一次只能添加一个</span>
 print<span class="token punctuation">(</span>r.llen<span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 列表长度</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 切片取出值，范围是索引号0到-1(最后一个元素)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>5.新增（固定索引号位置插入元素）<br> linsert(name, where, refvalue, value))<br> 在name对应的列表的某一个值前或后插入一个新值<br> 参数：<br> name，redis的name<br> where，BEFORE或AFTER<br> refvalue，标杆值，即：在它前后插入数据<br> value，要插入的数据</p>
+<ol start="5">
+<li>新增（固定索引号位置插入元素）<br>  linsert(name, where, refvalue, value))<br>  在name对应的列表的某一个值前或后插入一个新值<br>  参数：<br>  name，redis的name<br>  where，BEFORE或AFTER<br>  refvalue，标杆值，即：在它前后插入数据<br>  value，要插入的数据</li>
+</ol>
 <pre class="line-numbers language-objectivec"><code class="language-objectivec">r<span class="token punctuation">.</span><span class="token function">linsert</span><span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">,</span> <span class="token string">"before"</span><span class="token punctuation">,</span> <span class="token string">"11"</span><span class="token punctuation">,</span> <span class="token string">"00"</span><span class="token punctuation">)</span>   # 往列表中左边第一个出现的元素<span class="token string">"11"</span>前插入元素<span class="token string">"00"</span>
 <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">lrange</span><span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   # 切片取出值，范围是索引号<span class="token number">0</span><span class="token operator">-</span>最后一个元素<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>6.修改（指定索引号进行修改）<br> r.lset(name, index, value)<br> 对name对应的list中的某一个索引位置重新赋值<br> 参数：<br> name，redis的name<br> index，list的索引位置<br> value，要设置的值</p>
+<ol start="6">
+<li>修改（指定索引号进行修改）<br>  r.lset(name, index, value)<br>  对name对应的list中的某一个索引位置重新赋值<br>  参数：<br>  name，redis的name<br>  index，list的索引位置<br>  value，要设置的值</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.lset<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -11<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 把索引号是0的元素修改成-11</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>7.删除（指定值进行删除）<br> r.lrem(name, value, num)<br> 在name对应的list中删除指定的值<br> 参数：<br> name，redis的name<br> value，要删除的值<br> num， num=0，删除列表中所有的指定值；<br> num=2,从前到后，删除2个； num=1,从前到后，删除左边第1个<br> num=-2,从后向前，删除2个</p>
+<ol start="7">
+<li>删除（指定值进行删除）<br>  r.lrem(name, value, num)<br>  在name对应的list中删除指定的值<br>  参数：<br>  name，redis的name<br>  value，要删除的值<br>  num， num=0，删除列表中所有的指定值；<br>  num=2,从前到后，删除2个； num=1,从前到后，删除左边第1个<br>  num=-2,从后向前，删除2个</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.lrem<span class="token punctuation">(</span><span class="token string">"list2"</span>, <span class="token string">"11"</span>, 1<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 将列表中左边第一次出现的"11"删除</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span>
 r.lrem<span class="token punctuation">(</span><span class="token string">"list2"</span>, <span class="token string">"99"</span>, -1<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 将列表中右边第一次出现的"99"删除</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span>
 r.lrem<span class="token punctuation">(</span><span class="token string">"list2"</span>, <span class="token string">"22"</span>, 0<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 将列表中所有的"22"删除</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>8.删除并返回<br> lpop(name)<br> 在name对应的列表的左侧获取第一个元素并在列表中移除，返回值则是第一个元素<br> 更多：<br> rpop(name) 表示从右向左操作</p>
+<ol start="8">
+<li>删除并返回<br>  lpop(name)<br>  在name对应的列表的左侧获取第一个元素并在列表中移除，返回值则是第一个元素<br>  更多：<br>  rpop(name) 表示从右向左操作</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.lpop<span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 删除列表最左边的元素，并且返回删除的元素</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span>
 r.rpop<span class="token punctuation">(</span><span class="token string">"list2"</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 删除列表最右边的元素，并且返回删除的元素</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>9.删除索引之外的值<br> ltrim(name, start, end)<br> 在name对应的列表中移除没有在start-end索引之间的值<br> 参数：<br> name，redis的name<br> start，索引的起始位置<br> end，索引结束位置</p>
+<ol start="9">
+<li>删除索引之外的值<br>  ltrim(name, start, end)<br>  在name对应的列表中移除没有在start-end索引之间的值<br>  参数：<br>  name，redis的name<br>  start，索引的起始位置<br>  end，索引结束位置</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.ltrim<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, 2<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 删除索引号是0-2之外的元素，值保留索引号是0-2的元素</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>10.取值（根据索引号取值）<br> lindex(name, index)<br> 在name对应的列表中根据索引获取列表元素</p>
+<ol start="10">
+<li>取值（根据索引号取值）<br> lindex(name, index)<br> 在name对应的列表中根据索引获取列表元素</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.lindex<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 取出索引号是0的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>11.移动  元素从一个列表移动到另外一个列表<br> rpoplpush(src, dst)<br> 从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边<br> 参数：<br> src，要取数据的列表的name<br> dst，要添加数据的列表的name</p>
+<ol start="11">
+<li>移动  元素从一个列表移动到另外一个列表<br> rpoplpush(src, dst)<br> 从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边<br> 参数：<br> src，要取数据的列表的name<br> dst，要添加数据的列表的name</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.rpoplpush<span class="token punctuation">(</span><span class="token string">"list1"</span>, <span class="token string">"list2"</span><span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>12.移动  元素从一个列表移动到另外一个列表 可以设置超时<br> brpoplpush(src, dst, timeout=0)<br> 从一个列表的右侧移除一个元素并将其添加到另一个列表的左侧<br> 参数：<br> src，取出并要移除元素的列表对应的name<br> dst，要插入元素的列表对应的name<br> timeout，当src对应的列表中没有数据时，阻塞等待其有数据的超时时间（秒），0 表示永远阻塞</p>
+<ol start="12">
+<li>移动  元素从一个列表移动到另外一个列表 可以设置超时<br> brpoplpush(src, dst, timeout=0)<br> 从一个列表的右侧移除一个元素并将其添加到另一个列表的左侧<br> 参数：<br> src，取出并要移除元素的列表对应的name<br> dst，要插入元素的列表对应的name<br> timeout，当src对应的列表中没有数据时，阻塞等待其有数据的超时时间（秒），0 表示永远阻塞</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.brpoplpush<span class="token punctuation">(</span><span class="token string">"list1"</span>, <span class="token string">"list2"</span>, timeout<span class="token operator">=</span>2<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list2"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>13.一次移除多个列表<br> blpop(keys, timeout)<br> 将多个列表排列，按照从左到右去pop对应列表的元素<br> 参数：<br> keys，redis的name的集合<br> timeout，超时时间，当元素所有列表的元素获取完之后，阻塞等待列表内有数据的时间（秒）, 0 表示永远阻塞<br> 更多：<br> r.brpop(keys, timeout)  同blpop，将多个列表排列,按照从右像左去移除各个列表内的元素</p>
+<ol start="13">
+<li>一次移除多个列表<br> blpop(keys, timeout)<br> 将多个列表排列，按照从左到右去pop对应列表的元素<br> 参数：<br> keys，redis的name的集合<br> timeout，超时时间，当元素所有列表的元素获取完之后，阻塞等待列表内有数据的时间（秒）, 0 表示永远阻塞<br> 更多：<br> r.brpop(keys, timeout)  同blpop，将多个列表排列,按照从右像左去移除各个列表内的元素</li>
+</ol>
 <pre class="line-numbers language-php"><code class="language-php">r<span class="token punctuation">.</span><span class="token function">lpush</span><span class="token punctuation">(</span><span class="token string">"list10"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
 r<span class="token punctuation">.</span><span class="token function">lpush</span><span class="token punctuation">(</span><span class="token string">"list11"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
 <span class="token keyword">while</span> True<span class="token punctuation">:</span>
     r<span class="token punctuation">.</span><span class="token function">blpop</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"list10"</span><span class="token punctuation">,</span> <span class="token string">"list11"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">lrange</span><span class="token punctuation">(</span><span class="token string">"list10"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token punctuation">.</span><span class="token function">lrange</span><span class="token punctuation">(</span><span class="token string">"list11"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>14.自定义增量迭代<br> 由于redis类库中没有提供对列表元素的增量迭代，如果想要循环name对应的列表的所有元素，那么就需要：</p>
-<ol>
-<li>获取name对应的所有列表</li>
-<li>循环列表</li>
+<ol start="14">
+<li><p>自定义增量迭代<br> 由于redis类库中没有提供对列表元素的增量迭代，如果想要循环name对应的列表的所有元素，那么就需要：</p>
+</li>
+<li><p>获取name对应的所有列表</p>
+</li>
+<li><p>循环列表</p>
+</li>
 </ol>
 <p>但是，如果列表非常大，那么就有可能在第一步时就将程序的内容撑爆，所有有必要自定义一个增量迭代的功能：</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">list_iter</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -5317,19 +5422,25 @@ r<span class="token punctuation">.</span><span class="token function">lpush</spa
 <span class="token comment" spellcheck="true"># 使用</span>
 <span class="token keyword">for</span> item <span class="token keyword">in</span> list_iter<span class="token punctuation">(</span><span class="token string">'list2'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 遍历这个列表</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="3-5-6-redis基本命令-set"><a href="#3-5-6-redis基本命令-set" class="headerlink" title="3.5.6 redis基本命令 set"></a>3.5.6 redis基本命令 set</h4><p>1.sadd方法：新增一个集合的功能</p>
+<h4 id="3-5-6-redis基本命令-set"><a href="#3-5-6-redis基本命令-set" class="headerlink" title="3.5.6 redis基本命令 set"></a>3.5.6 redis基本命令 set</h4><ol>
+<li>sadd方法：新增一个集合的功能</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># name对应的集合中添加元素</span>
 sadd<span class="token punctuation">(</span>name<span class="token punctuation">,</span>values<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>示例：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">r.sadd<span class="token punctuation">(</span><span class="token string">"set1"</span>, 33, 44, 55, 66<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 往集合中添加元素</span>
 print<span class="token punctuation">(</span>r.scard<span class="token punctuation">(</span><span class="token string">"set1"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 集合的长度是4</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set1"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 获取集合中所有的成员</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>2.scard方法：获取元素个数，类似于len</p>
+<ol start="2">
+<li>scard方法：获取元素个数，类似于len</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 获取name对应的集合中元素个数</span>
 scard<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p> 示例：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.scard<span class="token punctuation">(</span><span class="token string">"set1"</span><span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 集合的长度是4</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>3.smembers：获取集合中所有的成员</p>
+<ol start="3">
+<li>smembers：获取集合中所有的成员</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python">获取name对应的集合的所有成员
 smembers<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p> 示例：</p>
@@ -5342,18 +5453,26 @@ sscan<span class="token punctuation">(</span>name<span class="token punctuation"
 <p> 同字符串的操作，用于增量迭代分批获取元素，避免内存消耗太大</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">for</span> i <span class="token keyword">in</span> r.sscan_iter<span class="token punctuation">(</span><span class="token string">"set1"</span><span class="token punctuation">)</span>:
     print<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>4.差集<br> sdiff(keys, *args)<br> 在第一个name对应的集合中且不在其他name对应的集合的元素集合</p>
+<ol start="4">
+<li>差集<br>  sdiff(keys, *args)<br>  在第一个name对应的集合中且不在其他name对应的集合的元素集合</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.sadd<span class="token punctuation">(</span><span class="token string">"set2"</span>, 11, 22, 33<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set1"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 获取集合中所有的成员</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set2"</span><span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.sdiff<span class="token punctuation">(</span><span class="token string">"set1"</span>, <span class="token string">"set2"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 在集合set1但是不在集合set2中</span>
 print<span class="token punctuation">(</span>r.sdiff<span class="token punctuation">(</span><span class="token string">"set2"</span>, <span class="token string">"set1"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 在集合set2但是不在集合set1中</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>5.差集–差集存在一个新的集合中<br> sdiffstore(dest, keys, *args)<br> 获取第一个name对应的集合中且不在其他name对应的集合，再将其新加入到dest对应的集合中</p>
+<ol start="5">
+<li>差集–差集存在一个新的集合中<br>  sdiffstore(dest, keys, *args)<br>  获取第一个name对应的集合中且不在其他name对应的集合，再将其新加入到dest对应的集合中</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.sdiffstore<span class="token punctuation">(</span><span class="token string">"set3"</span>, <span class="token string">"set1"</span>, <span class="token string">"set2"</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 在集合set1但是不在集合set2中</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set3"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 获取集合3中所有的成员</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>6.交集<br> sinter(keys, *args)<br> 获取多一个name对应集合的交集</p>
+<ol start="6">
+<li>交集<br>  sinter(keys, *args)<br>  获取多一个name对应集合的交集</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.sinter<span class="token punctuation">(</span><span class="token string">"set1"</span>, <span class="token string">"set2"</span><span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 取2个集合的交集</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>7.交集–交集存在一个新的集合中<br> sinterstore(dest, keys, *args)<br> 获取多一个name对应集合的并集，再将其加入到dest对应的集合中</p>
+<ol start="7">
+<li>交集–交集存在一个新的集合中<br>  sinterstore(dest, keys, *args)<br>  获取多一个name对应集合的并集，再将其加入到dest对应的集合中</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.sinterstore<span class="token punctuation">(</span><span class="token string">"set3"</span>, <span class="token string">"set1"</span>, <span class="token string">"set2"</span><span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 取2个集合的交集</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set3"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>并集<br> sunion(keys, *args)<br> 获取多个name对应的集合的并集</p>
@@ -5361,21 +5480,31 @@ print<span class="token punctuation">(</span>r.smembers<span class="token punctu
 <p>并集–并集存在一个新的集合<br> sunionstore(dest,keys, *args)<br> 获取多一个name对应的集合的并集，并将结果保存到dest对应的集合中</p>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.sunionstore<span class="token punctuation">(</span><span class="token string">"set3"</span>, <span class="token string">"set1"</span>, <span class="token string">"set2"</span><span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 取2个集合的并集</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set3"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>8.判断是否是集合的成员 类似in<br> sismember(name, value)<br> 检查value是否是name对应的集合的成员，结果为True和False</p>
+<ol start="8">
+<li>判断是否是集合的成员 类似in<br>  sismember(name, value)<br>  检查value是否是name对应的集合的成员，结果为True和False</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.sismember<span class="token punctuation">(</span><span class="token string">"set1"</span>, 33<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 33是集合的成员</span>
 print<span class="token punctuation">(</span>r.sismember<span class="token punctuation">(</span><span class="token string">"set1"</span>, 23<span class="token punctuation">))</span>  <span class="token comment" spellcheck="true"># 23不是集合的成员</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>9.移动<br> smove(src, dst, value)<br> 将某个成员从一个集合中移动到另外一个集合</p>
+<ol start="9">
+<li>移动<br>  smove(src, dst, value)<br>  将某个成员从一个集合中移动到另外一个集合</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.smove<span class="token punctuation">(</span><span class="token string">"set1"</span>, <span class="token string">"set2"</span>, 44<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set1"</span><span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set2"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>10.删除–随机删除并且返回被删除值<br> spop(name)<br> 从集合移除一个成员，并将其返回,说明一下，集合是无序的，所有是随机删除的</p>
+<ol start="10">
+<li>删除–随机删除并且返回被删除值<br> spop(name)<br> 从集合移除一个成员，并将其返回,说明一下，集合是无序的，所有是随机删除的</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.spop<span class="token punctuation">(</span><span class="token string">"set2"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 这个删除的值是随机删除的，集合是无序的</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set2"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>11.删除–指定值删除<br> srem(name, values)<br> 在name对应的集合中删除某些值</p>
+<ol start="11">
+<li>删除–指定值删除<br> srem(name, values)<br> 在name对应的集合中删除某些值</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.srem<span class="token punctuation">(</span><span class="token string">"set2"</span>, 11<span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 从集合中删除指定值 11</span>
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set2"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h4 id="3-5-7-redis基本命令-有序set"><a href="#3-5-7-redis基本命令-有序set" class="headerlink" title="3.5.7 redis基本命令 有序set"></a>3.5.7 redis基本命令 有序set</h4><p>Set操作，Set集合就是不允许重复的列表，本身是无序的<br> 有序集合，在集合的基础上，为每元素排序；元素的排序需要根据另外一个值来进行比较，<br> 所以，对于有序集合，每一个元素有两个值，即：值和分数，分数专门用来做排序。</p>
-<p>1.新增<br> zadd(name, *args, **kwargs)<br> 在name对应的有序集合中添加元素<br> 如：</p>
+<ol>
+<li>新增<br>  zadd(name, *args, **kwargs)<br>  在name对应的有序集合中添加元素<br>  如：</li>
+</ol>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> redis
 <span class="token keyword">import</span> time
 
@@ -5388,9 +5517,13 @@ r<span class="token punctuation">.</span>zadd<span class="token punctuation">(</
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>zcard<span class="token punctuation">(</span><span class="token string">"zset2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 集合长度</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>zrange<span class="token punctuation">(</span><span class="token string">"zset1"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 获取有序集合中所有元素</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>zrange<span class="token punctuation">(</span><span class="token string">"zset2"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> withscores<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 获取有序集合中所有元素和分数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>2.获取有序集合元素个数 类似于len<br> zcard(name)<br> 获取name对应的有序集合元素的数量</p>
+<ol start="2">
+<li>获取有序集合元素个数 类似于len<br>  zcard(name)<br>  获取name对应的有序集合元素的数量</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.zcard<span class="token punctuation">(</span><span class="token string">"zset1"</span><span class="token punctuation">))</span> <span class="token comment" spellcheck="true"># 集合长度</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>3.获取有序集合的所有元素<br> r.zrange( name, start, end, desc=False, withscores=False, score_cast_func=float)<br> 按照索引范围获取name对应的有序集合的元素<br> 参数：<br> name，redis的name<br> start，有序集合索引起始位置（非分数）<br> end，有序集合索引结束位置（非分数）<br> desc，排序规则，默认按照分数从小到大排序<br> withscores，是否获取元素的分数，默认只获取元素的值<br> score_cast_func，对分数进行数据转换的函数</p>
+<ol start="3">
+<li>获取有序集合的所有元素<br>  r.zrange( name, start, end, desc=False, withscores=False, score_cast_func=float)<br>  按照索引范围获取name对应的有序集合的元素<br>  参数：<br>  name，redis的name<br>  start，有序集合索引起始位置（非分数）<br>  end，有序集合索引结束位置（非分数）<br>  desc，排序规则，默认按照分数从小到大排序<br>  withscores，是否获取元素的分数，默认只获取元素的值<br>  score_cast_func，对分数进行数据转换的函数</li>
+</ol>
 <p>3-1 从大到小排序(同zrange，集合是从大到小排序的)<br> zrevrange(name, start, end, withscores=False, score_cast_func=float)</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">zrevrange</span><span class="token punctuation">(</span><span class="token string">"zset1"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token shell-comment comment"># 只获取元素，不显示分数</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">zrevrange</span><span class="token punctuation">(</span><span class="token string">"zset1"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> withscores<span class="token operator">=</span>True<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token shell-comment comment"># 获取有序集合中所有元素和分数,分数倒序</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -5407,49 +5540,79 @@ r<span class="token punctuation">.</span>zadd<span class="token punctuation">(</
 <p>3-5 获取所有元素–迭代器<br> zscan_iter(name, match=None, count=None,score_cast_func=float)</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">for</span> i <span class="token keyword">in</span> r.zscan_iter<span class="token punctuation">(</span><span class="token string">"zset3"</span><span class="token punctuation">)</span>: <span class="token comment" spellcheck="true"># 遍历迭代器</span>
     print<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>4.zcount(name, min, max)<br> 获取name对应的有序集合中分数 在 [min,max] 之间的个数</p>
+<ol start="4">
+<li>zcount(name, min, max)<br>  获取name对应的有序集合中分数 在 [min,max] 之间的个数</li>
+</ol>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">zrange</span><span class="token punctuation">(</span><span class="token string">"zset3"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> withscores<span class="token operator">=</span>True<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">zcount</span><span class="token punctuation">(</span><span class="token string">"zset3"</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>5.自增<br> zincrby(name, value, amount)<br> 自增name对应的有序集合的 name 对应的分数</p>
+<ol start="5">
+<li>自增<br>  zincrby(name, value, amount)<br>  自增name对应的有序集合的 name 对应的分数</li>
+</ol>
 <pre class="line-numbers language-php"><code class="language-php">r<span class="token punctuation">.</span><span class="token function">zincrby</span><span class="token punctuation">(</span><span class="token string">"zset3"</span><span class="token punctuation">,</span> <span class="token string">"n2"</span><span class="token punctuation">,</span> amount<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>    <span class="token shell-comment comment"># 每次将n2的分数自增2</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">zrange</span><span class="token punctuation">(</span><span class="token string">"zset3"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> withscores<span class="token operator">=</span>True<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>6.获取值的索引号<br> zrank(name, value)<br> 获取某个值在 name对应的有序集合中的索引（从 0 开始）<br> 更多：<br> zrevrank(name, value)，从大到小排序</p>
+<ol start="6">
+<li>获取值的索引号<br>  zrank(name, value)<br>  获取某个值在 name对应的有序集合中的索引（从 0 开始）<br>  更多：<br>  zrevrank(name, value)，从大到小排序</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.zrank<span class="token punctuation">(</span><span class="token string">"zset3"</span>, <span class="token string">"n1"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># n1的索引号是0 这里按照分数顺序（从小到大）</span>
 print<span class="token punctuation">(</span>r.zrank<span class="token punctuation">(</span><span class="token string">"zset3"</span>, <span class="token string">"n6"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># n6的索引号是1</span>
 
 print<span class="token punctuation">(</span>r.zrevrank<span class="token punctuation">(</span><span class="token string">"zset3"</span>, <span class="token string">"n1"</span><span class="token punctuation">))</span>    <span class="token comment" spellcheck="true"># n1的索引号是29 这里安照分数倒序（从大到小）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>7.删除–指定值删除<br> zrem(name, values)<br> 删除name对应的有序集合中值是values的成员</p>
+<ol start="7">
+<li>删除–指定值删除<br>  zrem(name, values)<br>  删除name对应的有序集合中值是values的成员</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.zrem<span class="token punctuation">(</span><span class="token string">"zset3"</span>, <span class="token string">"n3"</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 删除有序集合中的元素n3 删除单个</span>
 print<span class="token punctuation">(</span>r.zrange<span class="token punctuation">(</span><span class="token string">"zset3"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>8.删除–根据排行范围删除，按照索引号来删除<br> zremrangebyrank(name, min, max)<br> 根据排行范围删除</p>
+<ol start="8">
+<li>删除–根据排行范围删除，按照索引号来删除<br>  zremrangebyrank(name, min, max)<br>  根据排行范围删除</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.zremrangebyrank<span class="token punctuation">(</span><span class="token string">"zset3"</span>, 0, 1<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 删除有序集合中的索引号是0, 1的元素</span>
 print<span class="token punctuation">(</span>r.zrange<span class="token punctuation">(</span><span class="token string">"zset3"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>9.删除–根据分数范围删除<br> zremrangebyscore(name, min, max)<br> 根据分数范围删除</p>
+<ol start="9">
+<li>删除–根据分数范围删除<br>  zremrangebyscore(name, min, max)<br>  根据分数范围删除</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.zremrangebyscore<span class="token punctuation">(</span><span class="token string">"zset3"</span>, 11, 22<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 删除有序集合中的分数是11-22的元素</span>
 print<span class="token punctuation">(</span>r.zrange<span class="token punctuation">(</span><span class="token string">"zset3"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>10.获取值对应的分数<br> zscore(name, value)<br> 获取name对应有序集合中 value 对应的分数</p>
+<ol start="10">
+<li>获取值对应的分数<br> zscore(name, value)<br> 获取name对应有序集合中 value 对应的分数</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.zscore<span class="token punctuation">(</span><span class="token string">"zset3"</span>, <span class="token string">"n27"</span><span class="token punctuation">))</span>   <span class="token comment" spellcheck="true"># 获取元素n27对应的分数27</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="3-5-8-其他常用操作"><a href="#3-5-8-其他常用操作" class="headerlink" title="3.5.8 其他常用操作"></a>3.5.8 其他常用操作</h4><p>1.删除<br> delete(*names)<br> 根据删除redis中的任意数据类型（string、hash、list、set、有序set）</p>
+<h4 id="3-5-8-其他常用操作"><a href="#3-5-8-其他常用操作" class="headerlink" title="3.5.8 其他常用操作"></a>3.5.8 其他常用操作</h4><ol>
+<li>删除<br>  delete(*names)<br>  根据删除redis中的任意数据类型（string、hash、list、set、有序set）</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.delete<span class="token punctuation">(</span><span class="token string">"gender"</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 删除key为gender的键值对</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>2.检查名字是否存在<br> exists(name)<br> 检测redis的name是否存在，存在就是True，False 不存在</p>
+<ol start="2">
+<li>检查名字是否存在<br>  exists(name)<br>  检测redis的name是否存在，存在就是True，False 不存在</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.exists<span class="token punctuation">(</span><span class="token string">"zset1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>3.模糊匹配<br> keys(pattern=’<em>‘)<br> 根据模型获取redis的name<br> 更多：<br> KEYS \</em> 匹配数据库中所有 key 。<br> KEYS h?llo 匹配 hello ， hallo 和 hxllo 等。<br> KEYS h*llo 匹配 hllo 和 heeeeello 等。<br> KEYS h[ae]llo 匹配 hello 和 hallo ，但不匹配 hillo</p>
+<ol start="3">
+<li>模糊匹配<br>  keys(pattern=’<em>‘)<br>  根据模型获取redis的name<br>  更多：<br>  KEYS \</em> 匹配数据库中所有 key 。<br>  KEYS h?llo 匹配 hello ， hallo 和 hxllo 等。<br>  KEYS h*llo 匹配 hllo 和 heeeeello 等。<br>  KEYS h[ae]llo 匹配 hello 和 hallo ，但不匹配 hillo</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.keys<span class="token punctuation">(</span><span class="token string">"foo*"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>4.设置超时时间<br> expire(name ,time)<br> 为某个redis的某个name设置超时时间</p>
+<ol start="4">
+<li>设置超时时间<br>  expire(name ,time)<br>  为某个redis的某个name设置超时时间</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.lpush<span class="token punctuation">(</span><span class="token string">"list5"</span>, 11, 22<span class="token punctuation">)</span>
 r.expire<span class="token punctuation">(</span><span class="token string">"list5"</span>, time<span class="token operator">=</span>3<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list5"</span>, 0, -1<span class="token punctuation">))</span>
 time.sleep<span class="token punctuation">(</span>3<span class="token punctuation">)</span>
 print<span class="token punctuation">(</span>r.lrange<span class="token punctuation">(</span><span class="token string">"list5"</span>, 0, -1<span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>5.重命名<br> rename(src, dst)<br> 对redis的name重命名</p>
+<ol start="5">
+<li>重命名<br>  rename(src, dst)<br>  对redis的name重命名</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">r.lpush<span class="token punctuation">(</span><span class="token string">"list5"</span>, 11, 22<span class="token punctuation">)</span>
 r.rename<span class="token punctuation">(</span><span class="token string">"list5"</span>, <span class="token string">"list5-1"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>6.随机获取name<br> randomkey()<br> 随机获取一个redis的name（不删除）</p>
+<ol start="6">
+<li>随机获取name<br>  randomkey()<br>  随机获取一个redis的name（不删除）</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.randomkey<span class="token punctuation">(</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>7.获取类型<br> type(name)<br> 获取name对应值的类型</p>
+<ol start="7">
+<li>获取类型<br>  type(name)<br>  获取name对应值的类型</li>
+</ol>
 <pre class="line-numbers language-go"><code class="language-go"><span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token keyword">type</span><span class="token punctuation">(</span><span class="token string">"set1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token keyword">type</span><span class="token punctuation">(</span><span class="token string">"hash2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>8.查看所有元素<br> scan(cursor=0, match=None, count=None)</p>
+<ol start="8">
+<li>查看所有元素<br>  scan(cursor=0, match=None, count=None)</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash">print<span class="token punctuation">(</span>r.hscan<span class="token punctuation">(</span><span class="token string">"hash2"</span><span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.sscan<span class="token punctuation">(</span><span class="token string">"set3"</span><span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.zscan<span class="token punctuation">(</span><span class="token string">"zset2"</span><span class="token punctuation">))</span>
@@ -5458,7 +5621,9 @@ print<span class="token punctuation">(</span>r.lrange<span class="token punctuat
 print<span class="token punctuation">(</span>r.smembers<span class="token punctuation">(</span><span class="token string">"set3"</span><span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.zrange<span class="token punctuation">(</span><span class="token string">"zset3"</span>, 0, -1<span class="token punctuation">))</span>
 print<span class="token punctuation">(</span>r.hgetall<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>9.查看所有元素–迭代器<br> scan_iter(match=None, count=None)</p>
+<ol start="9">
+<li>查看所有元素–迭代器<br>  scan_iter(match=None, count=None)</li>
+</ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token keyword">for</span> i <span class="token keyword">in</span> r.hscan_iter<span class="token punctuation">(</span><span class="token string">"hash1"</span><span class="token punctuation">)</span>:
     print<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
 
@@ -7459,7 +7624,7 @@ REDIS_PORT <span class="token operator">=</span> <span class="token number">6379
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">87.8k</span>&nbsp;字
+                class="white-color">87.7k</span>&nbsp;字
             
             
             
