@@ -5,7 +5,7 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="baidu-site-verification" content="code-wBoEgdV6ng" />
-    <meta name="keywords" content="WALLE, 比特人生的世界">
+    <meta name="keywords" content="树莓派USB音频设备录音播放验证, 比特人生的世界">
     <meta name="description" content="想做做有趣实用小东西的手艺人">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -28,7 +28,7 @@
 </script>
 
 
-    <title>WALLE | 比特人生的世界</title>
+    <title>树莓派USB音频设备录音播放验证 | 比特人生的世界</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -260,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">WALLE</h1>
+                    <h1 class="description center-align post-title">树莓派USB音频设备录音播放验证</h1>
                 </div>
             </div>
         </div>
@@ -381,12 +381,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/WALLE/">
-                                <span class="chip bg-color">WALLE</span>
-                            </a>
-                        
-                            <a href="/tags/WALL-E/">
-                                <span class="chip bg-color">WALL-E</span>
+                            <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BD%95%E9%9F%B3%EF%BC%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%92%AD%E6%94%BE%E9%9F%B3%E9%A2%91/">
+                                <span class="chip bg-color">树莓派录音，树莓派播放音频</span>
                             </a>
                         
                     </div>
@@ -397,8 +393,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/MarsPlan/" class="post-category">
-                                MarsPlan
+                            <a href="/categories/MarsRescue/" class="post-category">
+                                MarsRescue
                             </a>
                         
                     </div>
@@ -410,7 +406,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-02-25
+                    2021-05-29
                 </div>
                 
 
@@ -419,7 +415,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    41
+                    264
                 </div>
                 
 
@@ -446,7 +442,27 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="瓦力机器人全栈计划执行中…"><a href="#瓦力机器人全栈计划执行中…" class="headerlink" title="瓦力机器人全栈计划执行中…"></a>瓦力机器人全栈计划执行中…</h2><h3 id="WALLE瓦力机器人演示"><a href="#WALLE瓦力机器人演示" class="headerlink" title="WALLE瓦力机器人演示"></a>WALLE瓦力机器人演示</h3><h3 id="WALLE瓦力机器人结构"><a href="#WALLE瓦力机器人结构" class="headerlink" title="WALLE瓦力机器人结构"></a>WALLE瓦力机器人结构</h3><h3 id="WALLE瓦力机器人硬件"><a href="#WALLE瓦力机器人硬件" class="headerlink" title="WALLE瓦力机器人硬件"></a>WALLE瓦力机器人硬件</h3><h3 id="WALLE瓦力机器人软件"><a href="#WALLE瓦力机器人软件" class="headerlink" title="WALLE瓦力机器人软件"></a>WALLE瓦力机器人软件</h3>
+                <h2 id="USB麦克风验证"><a href="#USB麦克风验证" class="headerlink" title="USB麦克风验证"></a>USB麦克风验证</h2><p>有条件可以使用麦克风阵列：<a target="_blank" href="https://wiki.seeedstudio.com/cn/ReSpeaker-USB-Mic-Array/" rel="external nofollow noreferrer noopener">https://wiki.seeedstudio.com/cn/ReSpeaker-USB-Mic-Array/</a></p>
+<h3 id="查看麦克风设备"><a href="#查看麦克风设备" class="headerlink" title="查看麦克风设备"></a>查看麦克风设备</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> /proc/asound/cards<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>显示内容如下：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">pi@raspberrypi:~ $ <span class="token function">cat</span> /proc/asound/cards
+ 0 <span class="token punctuation">[</span>Headphones     <span class="token punctuation">]</span>: bcm2835_headphonbcm2835 Headphones - bcm2835 Headphones
+                      bcm2835 Headphones
+ 1 <span class="token punctuation">[</span>Camera         <span class="token punctuation">]</span>: USB-Audio - FHD Camera
+                      Sunplus IT Co FHD Camera at usb-3f980000.usb-1.4, high speed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>看到显示USB-Audio设备说明已经有USB的音频设备了</p>
+<h3 id="录音录制"><a href="#录音录制" class="headerlink" title="录音录制"></a>录音录制</h3><pre class="line-numbers language-bash"><code class="language-bash">arecord -D <span class="token string">"plughw:1,0"</span> -f S16_LE -r 16000 -d 5 record.wav<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><code>-D &quot;plughw:1,0&quot;</code>表示选择设备，外部设备就是plughw:1,0，内部设备就是plughw:0,0；</p>
+<p><code>-f S16_LE</code>表示使用录音采样率是有符号16bit小端，16000HZ采样率；</p>
+<p><code>-d 5</code>表示录音的时间；</p>
+<p><code>record.wav</code>表示录音保存的名字；</p>
+<h3 id="录音验证"><a href="#录音验证" class="headerlink" title="录音验证"></a>录音验证</h3><p>如果有扬声器或者3.5mm的耳机，可以通过如下命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装播放器</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> omxplayer
+<span class="token comment" spellcheck="true"># 播放本地音频</span>
+omxplayer -o local record.wav<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>也可以通过alsamixer调整声音的大小，TAB按键用于切换，按键上下键用于调整音量，ESC退出。</p>
+
                 
             </div>
             <hr/>
@@ -472,7 +488,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kui.ge/2021/02/walle/">https://kui.ge/2021/02/walle/</a>
+                    <a href="https://kui.ge/2021/05/shu-mei-pai-usb-yin-pin-she-bei-lu-yin-bo-fang-yan-zheng/">https://kui.ge/2021/05/shu-mei-pai-usb-yin-pin-she-bei-lu-yin-bo-fang-yan-zheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -510,12 +526,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/WALLE/">
-                                    <span class="chip bg-color">WALLE</span>
-                                </a>
-                            
-                                <a href="/tags/WALL-E/">
-                                    <span class="chip bg-color">WALL-E</span>
+                                <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BD%95%E9%9F%B3%EF%BC%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%92%AD%E6%94%BE%E9%9F%B3%E9%A2%91/">
+                                    <span class="chip bg-color">树莓派录音，树莓派播放音频</span>
                                 </a>
                             
                         </div>
@@ -687,7 +699,7 @@
         repo: 'aibittek.github.io',
         owner: 'aibittek',
         admin: "aibittek",
-        id: '2021-02-25T13-18-42',
+        id: '2021-05-29T10-43-45',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -715,17 +727,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/03/pythonspider/">
+                <a href="/2021/05/shu-mei-pai-usb-yin-pin-she-bei-lu-yin-bo-fang-yan-zheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="小白零基础7天学会Python Scrapy爬虫之旅">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="树莓派USB音频设备录音播放验证">
                         
-                        <span class="card-title">小白零基础7天学会Python Scrapy爬虫之旅</span>
+                        <span class="card-title">树莓派USB音频设备录音播放验证</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -735,9 +748,59 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-16
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MarsRescue/" class="post-category">
+                                    MarsRescue
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE%E5%BD%95%E9%9F%B3%EF%BC%8C%E6%A0%91%E8%8E%93%E6%B4%BE%E6%92%AD%E6%94%BE%E9%9F%B3%E9%A2%91/">
+                        <span class="chip bg-color">树莓派录音，树莓派播放音频</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/04/snowboy-hotword-detect/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="唤醒词自定义snowboy">
+                        
+                        <span class="card-title">唤醒词自定义snowboy</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -753,77 +816,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/snowboy/">
+                        <span class="chip bg-color">snowboy</span>
                     </a>
                     
-                    <a href="/tags/scrapy/">
-                        <span class="chip bg-color">scrapy</span>
+                    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                        <span class="chip bg-color">人工智能</span>
                     </a>
                     
-                    <a href="/tags/%E7%88%AC%E8%99%AB/">
-                        <span class="chip bg-color">爬虫</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/02/ru-he-bai-piao-shu-yu-zi-ji-de-mian-fei-wang-zhan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="如何白嫖属于自己的免费网站">
-                        
-                        <span class="card-title">如何白嫖属于自己的免费网站</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Earth/" class="post-category">
-                                    Earth
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/GitHub-pages/">
-                        <span class="chip bg-color">GitHub pages</span>
-                    </a>
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                    <a href="/tags/Typora/">
-                        <span class="chip bg-color">Typora</span>
-                    </a>
-                    
-                    <a href="/tags/PicGo/">
-                        <span class="chip bg-color">PicGo</span>
+                    <a href="/tags/%E8%AF%AD%E9%9F%B3%E5%94%A4%E9%86%92/">
+                        <span class="chip bg-color">语音唤醒</span>
                     </a>
                     
                 </div>

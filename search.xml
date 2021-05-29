@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>树莓派USB音频设备录音播放验证</title>
+      <link href="2021/05/shu-mei-pai-usb-yin-pin-she-bei-lu-yin-bo-fang-yan-zheng/"/>
+      <url>2021/05/shu-mei-pai-usb-yin-pin-she-bei-lu-yin-bo-fang-yan-zheng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="USB麦克风验证"><a href="#USB麦克风验证" class="headerlink" title="USB麦克风验证"></a>USB麦克风验证</h2><p>有条件可以使用麦克风阵列：<a href="https://wiki.seeedstudio.com/cn/ReSpeaker-USB-Mic-Array/" rel="external nofollow noreferrer">https://wiki.seeedstudio.com/cn/ReSpeaker-USB-Mic-Array/</a></p><h3 id="查看麦克风设备"><a href="#查看麦克风设备" class="headerlink" title="查看麦克风设备"></a>查看麦克风设备</h3><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> /proc/asound/cards<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>显示内容如下：</p><pre class="line-numbers language-bash"><code class="language-bash">pi@raspberrypi:~ $ <span class="token function">cat</span> /proc/asound/cards 0 <span class="token punctuation">[</span>Headphones     <span class="token punctuation">]</span>: bcm2835_headphonbcm2835 Headphones - bcm2835 Headphones                      bcm2835 Headphones 1 <span class="token punctuation">[</span>Camera         <span class="token punctuation">]</span>: USB-Audio - FHD Camera                      Sunplus IT Co FHD Camera at usb-3f980000.usb-1.4, high speed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>看到显示USB-Audio设备说明已经有USB的音频设备了</p><h3 id="录音录制"><a href="#录音录制" class="headerlink" title="录音录制"></a>录音录制</h3><pre class="line-numbers language-bash"><code class="language-bash">arecord -D <span class="token string">"plughw:1,0"</span> -f S16_LE -r 16000 -d 5 record.wav<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><code>-D &quot;plughw:1,0&quot;</code>表示选择设备，外部设备就是plughw:1,0，内部设备就是plughw:0,0；</p><p><code>-f S16_LE</code>表示使用录音采样率是有符号16bit小端，16000HZ采样率；</p><p><code>-d 5</code>表示录音的时间；</p><p><code>record.wav</code>表示录音保存的名字；</p><h3 id="录音验证"><a href="#录音验证" class="headerlink" title="录音验证"></a>录音验证</h3><p>如果有扬声器或者3.5mm的耳机，可以通过如下命令：</p><pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装播放器</span><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> omxplayer<span class="token comment" spellcheck="true"># 播放本地音频</span>omxplayer -o local record.wav<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>也可以通过alsamixer调整声音的大小，TAB按键用于切换，按键上下键用于调整音量，ESC退出。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MarsRescue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树莓派录音，树莓派播放音频 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>唤醒词自定义snowboy</title>
       <link href="2021/04/snowboy-hotword-detect/"/>
       <url>2021/04/snowboy-hotword-detect/</url>
