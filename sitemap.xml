@@ -151,20 +151,6 @@
   </url>
   
   <url>
-    <loc>https://kui.ge/tags/WALLE/</loc>
-    <lastmod>2021-07-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://kui.ge/tags/WALL-E/</loc>
-    <lastmod>2021-07-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://kui.ge/tags/%E6%AF%94%E7%89%B9%E4%BA%BA%E7%94%9F%E7%9A%84%E4%B8%96%E7%95%8C/</loc>
     <lastmod>2021-07-20</lastmod>
     <changefreq>daily</changefreq>
@@ -180,6 +166,20 @@
   
   <url>
     <loc>https://kui.ge/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2021-07-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kui.ge/tags/WALLE/</loc>
+    <lastmod>2021-07-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://kui.ge/tags/WALL-E/</loc>
     <lastmod>2021-07-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
