@@ -41,8 +41,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -1712,13 +1712,15 @@ imageReceiver<span class="token punctuation">.</span><span class="token function
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="5-实现分布式拍照分享"><a href="#5-实现分布式拍照分享" class="headerlink" title="5. 实现分布式拍照分享"></a>5. 实现分布式拍照分享</h2><h3 id="5-1-效果展示与分析"><a href="#5-1-效果展示与分析" class="headerlink" title="5.1 效果展示与分析"></a>5.1 效果展示与分析</h3><p>本章节所实现的效果如下：</p>
-<p>想直接体验这部分的功能，可以通过提供的资料的<strong>Src/TakePhotoV2.0.zip</strong>解压获得源码。</p>
 <p><img src="https://i.loli.net/2021/07/17/C4DK1ASqPjU6Qgn.gif" alt="共享拍照"></p>
 <p>分析：<strong>设备A</strong>拍摄的<strong>照片X</strong>要能在<strong>B设备</strong>上立即显示出来</p>
 <p>1、<strong>设备A</strong>要能够把<strong>照片X</strong>分享到<strong>B设备</strong>；</p>
 <p>2、<strong>设备A</strong>要能在<strong>B设备</strong>收到<strong>照片X副本</strong>后，远程通知B设备显示<strong>照片X副本</strong>；</p>
 <p><strong>重要（鸿蒙核心能力）</strong>：以上第一条使用到了鸿蒙系统的<strong>分布式文件系统服务</strong></p>
 <p><strong>重要（鸿蒙核心能力）</strong>：以上第二条使用到了鸿蒙系统的<strong>分布式调度启动远程FA</strong></p>
+<p>想直接体验这部分的功能，可以以下地址下载：</p>
+<pre><code>链接：https://pan.baidu.com/s/1H8q9qEXrFVKpynDpvS6_Nw 
+提取码：1234</code></pre>
 <h3 id="5-2-分布式调度启动远程FA"><a href="#5-2-分布式调度启动远程FA" class="headerlink" title="5.2 分布式调度启动远程FA"></a>5.2 分布式调度启动远程FA</h3><h4 id="5-2-1-分布式调度介绍"><a href="#5-2-1-分布式调度介绍" class="headerlink" title="5.2.1 分布式调度介绍"></a>5.2.1 分布式调度介绍</h4><p>开发者在应用中集成分布式调度能力，通过调用指定能力的分布式接口，实现跨设备能力调度。根据Ability模板及意图的不同，分布式任务调度向开发者提供六种能力：启动远程FA（Feature Ability）、启动远程PA（Particle Ability）、关闭远程PA、连接远程PA、断开连接远程PA和FA跨设备迁移。<br>实现远程启动FA，需要至少两个设备处于同一个分布式网络中，可以通过如下操作实现：</p>
 <ol>
 <li>所有设备接入<strong>同一网络</strong>；</li>
